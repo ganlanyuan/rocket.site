@@ -1,7 +1,7 @@
 @import 'normalize';
 @import 'reset';
 @import 'prism';
-@import '../../../src/scss/rocket';
+@import '../../v3/node_modules/rocket-sass/src/scss/rocket';
 $ro-layout: (
   'container': 1200px,
   'gutter': 30px,
@@ -174,4 +174,3 @@ svg {
 
 @import 'home';
 @import 'docs';
-@import '../../templates/code/scss/style-docs';
