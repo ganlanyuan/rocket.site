@@ -1,2 +1,13 @@
-.sass-cache/
 *.css.map
+*.DS_Store
+*.scssc
+*.swp
+*.jar
+*.log
+*.xml
+
+.sass-cache/
+bower_components/
+node_modules/
+tests/nightwatch/screenshots/
+LICENSE

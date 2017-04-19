@@ -1,0 +1,26 @@
+{
+  "name": "rocket.site",
+  "version": "1.0.0",
+  "description": "Website for rocket project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ganlanyuan/rocket.site.git"
+  },
+  "keywords": [
+    "rocket",
+    "sass"
+  ],
+  "author": "ganlanyuan <ganlanyuan@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ganlanyuan/rocket.site/issues"
+  },
+  "homepage": "https://github.com/ganlanyuan/rocket.site#readme",
+  "devDependencies": {
+    "rocket-sass": "^3.4.14"
+  }
+}
