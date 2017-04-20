@@ -1,11 +1,11 @@
 {% set reg_title = r/\s+|\-/g %}
 {% extends "./layout.njk" %}
 
-{% if pagename === 'docs' %}
+{% if pagename.indexOf('docs') !== -1 %}
   {% set dataContent = docs %}
-  {% import 'code/markup-docs.njk' as macro_markup %}
-  {% import 'code/_style-docs.njk' as macro_scss %}
-  {% import 'code/_syntax-docs.njk' as macro_syntax %}
+  {% import 'code/markup-' + pagename + '.njk' as macro_markup %}
+  {% import 'code/style-' + pagename + '.njk' as macro_scss %}
+  {% import 'code/_syntax-' + pagename + '.njk' as macro_syntax %}
 {% elif pagename === 'guide' %}
   {% set dataContent = guide %}
   {% import 'code/markup-guide.njk' as macro_markup %}
@@ -43,7 +43,7 @@
       {# nav toggle button #}
       <div class="docs-nav-toggle"></div>
 
-      {% if pagename === "docs" %}
+      {% if pagename.indexOf("docs") !== -1 %}
       <form action="" class="search-form">
         <input type="text" list="components" name="component" id="component" placeholder="Search" autocomplete autofocus>
         <datalist id="components">
@@ -57,13 +57,24 @@
       {% endif %}
     </div>
 
-    {% if pagename === "docs" %}
-    <p><small><em>Version: {{ version }}</em></small></p>
+    {% if pagename.indexOf("docs") !== -1 %}
+      {% set docLinks = {'docs': '4.0.0', 'docs.v3': '3.4.14'} %}
+      <ul>
+        {% for docPage, docVersion in docLinks %}
+          <li><small>
+            {% if docPage === pagename %}
+              Doc v{{ docVersion }}
+            {% else %}
+              <a href="{{ docPage }}.html">Doc v{{ docVersion }}</a>
+            {% endif %}
+          </small></li>
+        {% endfor %}
+      </ul>
     <p>Make sure you have read the <a href="guide.html">Guide</a> (especially <a href="guide.html#parameter">parameter</a> section) before using this docs.</p>
     {% endif %}
 
     {% for groupName, group in dataContent %}
-    <h2>{{ groupName | capitalize }}</h2>
+    <h2>【{{ groupName | capitalize }}】</h2>
     {% for componentName, component in group %}
       {% set componentName_new = componentName | replace(reg_title, '') %}
       <section id="{{ componentName }}">

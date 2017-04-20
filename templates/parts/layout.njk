@@ -1,3 +1,4 @@
+{% set svgSpritesPath = 'assets/svg/sprites.svg' %}
 <!doctype html>
 <!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie10 lt-ie9" lang="en"><![endif]-->
 <!--[if (IE 9)&!(IEMobile)]><html class="no-js lt-ie10" lang="en"><![endif]-->
@@ -35,6 +36,10 @@
   
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
   <link rel="stylesheet" href="assets/css/main.css">
+
+  {% if pagename.indexOf('docs') !== -1 %}
+    <link rel="stylesheet" href="assets/css/style-{{ pagename }}.css">
+  {% endif %}
   <script src="assets/js/prefixfree.js" async defer></script>
   <script src="assets/js/prism.js" async defer></script>
   <script>
@@ -69,6 +74,7 @@
       </a></div>
       <nav class="site-nav">
         <ul>
+          {% set mainNav = ['guide', 'docs', 'tutorial'] %}
           {% for item in mainNav %}
             <li {{ 'class=active' if item === pagename }}><a href="{{ item + '.html'}}" {{ 'target=_blank' if item === 'github'}}>{{ item | capitalize }}</a></li>
           {% endfor %}
@@ -92,9 +98,9 @@
   <div class="container">
     <div class="copyright">Code licensed under MIT license. Website licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div>
     <ul class="site-footer__links">
-      {% for title, link in footerNav %}
-      <li><a href="{{ link }}" target="_blank">{{ title | capitalize }}</a></li>
-      {% endfor %}
+      <li><a href="https://github.com/ganlanyuan/rocket" target="_blank">github</a></li>
+      <li><a href="https://github.com/ganlanyuan/rocket/issues" target="_blank">Fire an issue</a></li>
+      <li><a href="mailto:ganlanyuan@gmail.com" target="_blank">email me</a></li>
     </ul>
   </div>
 </footer>

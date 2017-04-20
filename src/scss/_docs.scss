@@ -19,6 +19,10 @@ pre[class*="language-"] {
 
 .docs-wrapper {
   @include container(1600px left); 
+  a { 
+    color: $color-link; 
+    &:hover { text-decoration: underline; }
+  }
   main {
     section { padding: 20px 0; }
     h2, h4, p, .code-wrapper { 

@@ -54,6 +54,7 @@ gulp.task('server', function() {
   gulp.watch([templates + 'code/*.yml'], function (e) {
     if (e.type !== 'deleted') {
       return gulp.src(e.path)
+        .pipe($.plumber())
         .pipe($.yaml({space: 2}))
         .pipe(gulp.dest(templates + 'code'));
     }
@@ -63,8 +64,9 @@ gulp.task('server', function() {
   gulp.watch([templates + 'code/scss/*.scss'], function (e) {
     if (e.type !== 'deleted') {
       return gulp.src(e.path)
+        .pipe($.plumber())
         .pipe($.change(function(content) {
-          return content.replace(/(\/\/=>\s+)/g, '');
+          return content.replace(/(\/\/=>\s+)/g, '').replace(/\@import\s\'.+\';/g, '');
         }))
         .pipe($.rename({extname: '.njk'}))
         .pipe(gulp.dest(templates + 'code'));
@@ -72,17 +74,22 @@ gulp.task('server', function() {
   });
 
   // njk to html
-  gulp.watch([templates + '**/*.njk', templates + 'code/*.json'], function (e) {
+  gulp.watch([templates + '*.njk', templates + 'code/*.json'], function (e) {
     if (e.type !== 'deleted') {
-      let njkSrc, data, dir = path.dirname(e.path);
+      let njkSrc = e.path, 
+          data = {}, 
+          pathData = path.parse(e.path), 
+          fileDir = pathData.dir, 
+          fileExt = pathData.ext,
+          fileName = pathData.name;
 
-      if (path.extname(e.path) === '.json') {
-        njkSrc = dir.replace('/code', '') + '/*.njk';
-      } else {
-        njkSrc = (dir.indexOf('parts') === -1) ? e.path : dir.replace('parts', '') + '*.njk';
+      if (fileExt === '.json') {
+        njkSrc = njkSrc.replace('/code', '').replace(fileExt, '.njk');
       }
 
-      data = requireUncached('./' + templates + 'code/data.json');
+      if (fileName !== 'index') {
+        data = requireUncached('./' + templates + 'code/' + fileName + '.json');
+      }
 
       data.is = function (type, obj) {
         var clas = Object.prototype.toString.call(obj).slice(8, -1);
@@ -126,19 +133,14 @@ gulp.task('server', function() {
   // scss to css
   gulp.watch(['**/*.scss'], function (e) {
     if (e.type !== 'deleted') {
-      let sassSrc, 
-          dest,
-          pathParsed = path.parse(e.path), 
-          dir = pathParsed.dir,
-          name = pathParsed.name;
+      let sassSrc = src + 'scss/main.scss', 
+          dest = assets + 'css',
+          pathData = path.parse(e.path), 
+          dir = pathData.dir,
+          name = pathData.name;
 
-      if (dir.indexOf('video') !== -1) {
-        sassSrc = e.path;
-        dest = assets + 'css/video';
-      } else {
-        sassSrc = src + 'scss/main.scss';
-        dest = assets + 'css';
-      }
+      if (dir.indexOf('video') !== -1 || dir.indexOf('templates/') !== -1) { sassSrc = e.path; }
+      if (dir.indexOf('video') !== -1) { dest += '/video'; }
 
       return gulp.src(sassSrc)  
         .pipe($.plumber())

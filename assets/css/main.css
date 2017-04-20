@@ -848,6 +848,14 @@ pre[class*="language-"] > code:before {
   margin-right: auto;
 }
 
+.docs-wrapper a {
+  color: #048af0;
+}
+
+.docs-wrapper a:hover {
+  text-decoration: underline;
+}
+
 .docs-wrapper main section {
   padding: 20px 0;
 }
