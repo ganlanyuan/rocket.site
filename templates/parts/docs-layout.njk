@@ -183,4 +183,7 @@
     {% endfor %}
   </main>
 </div>
+{% if pagename === 'docs.v3' %}
+  <script src="v3/node_modules/rocket-sass/dist/kit.min.js"></script>
+{% endif %}
 {% endblock %}
