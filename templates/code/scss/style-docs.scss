@@ -262,12 +262,12 @@ $responsive-table-4-data: (
 
 //=> {% elif componentName === "offcanvas_demo1" %}
 // normal
-.off-canvas-1 { @include off-canvas(slide-in submenu '.off-canvas-nav-1' ); }
+@include off-canvas(slide-in page '.off-canvas-1' nav '.off-canvas-nav-1' submenu);
  
 .off-canvas-nav-1 {
-  color: #fff;
   background-color: #000;
   a, label { 
+    color: #fff;
     display: block;
     padding: 0.5em 1em; 
   }

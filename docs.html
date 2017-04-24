@@ -726,50 +726,49 @@ th {
     border-bottom: 1px solid #dbdbdb;
     th, td { border-bottom: 0; }
   }
-}</code></pre><button class="btn copy-button" data-clipboard-target="#responsivetable-demo_stack-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><table class="responsive-table-4"><thead><tr><th>First Name</th><th>Last Name</th><th>Job Title</th><th>Favorite Color</th><th>Wars or Trek?</th><th>Porn Name</th><th>Date of Birth</th><th>Dream Vacation City</th><th>GPA</th><th>Arbitrary Data</th></tr></thead><tbody><tr><td>James</td><td>Matman</td><td>Chief Sandwich Eater</td><td>Lettuce Green</td><td>Trek</td><td>Digby Green</td><td>January 13, 1979</td><td>Gotham City</td><td>3.1</td><td>RBX-12</td></tr><tr><td>The</td><td>Tick</td><td>Crimefighter Sorta</td><td>Blue</td><td>Wars</td><td>John Smith</td><td>July 19, 1968</td><td>Athens</td><td>N/A</td><td>Edlund, Ben (July 1996).</td></tr></tbody></table></div></div></section><section id="off-canvas"><h4>Off-canvas</h4><p>Pure css off-canvas using<code class="language-html">input:checkbox</code>.</p><p><em class="capability">IE 8+, Firefox 3.6+, Chrome 15+, Safari 5.1+, Opera 10.6+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin off-canvas($mode $nav 'submenu' $nav-width $direction ($map $breakpoints) $overlay-background-color $duration)
+}</code></pre><button class="btn copy-button" data-clipboard-target="#responsivetable-demo_stack-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><table class="responsive-table-4"><thead><tr><th>First Name</th><th>Last Name</th><th>Job Title</th><th>Favorite Color</th><th>Wars or Trek?</th><th>Porn Name</th><th>Date of Birth</th><th>Dream Vacation City</th><th>GPA</th><th>Arbitrary Data</th></tr></thead><tbody><tr><td>James</td><td>Matman</td><td>Chief Sandwich Eater</td><td>Lettuce Green</td><td>Trek</td><td>Digby Green</td><td>January 13, 1979</td><td>Gotham City</td><td>3.1</td><td>RBX-12</td></tr><tr><td>The</td><td>Tick</td><td>Crimefighter Sorta</td><td>Blue</td><td>Wars</td><td>John Smith</td><td>July 19, 1968</td><td>Athens</td><td>N/A</td><td>Edlund, Ben (July 1996).</td></tr></tbody></table></div></div></section><section id="off-canvas"><h4>Off-canvas</h4><p>Pure css off-canvas using<code class="language-html">input:checkbox</code>.</p><p><em class="capability">IE 8+, Firefox 3.6+, Chrome 15+, Safari 5.1+, Opera 10.6+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin off-canvas($mode ('page' $page) ('nav' $nav) 'inside' 'submenu' $nav-width $direction ($map $breakpoints) $overlay-background-color $duration)
 // $mode: slide-in | slide-along | slide-out | rotate-in | rotate-out | rotate-in-reverse | scale-down | scale-up | open-door | push | reveal | drawer
 
-// For modes: slide-in, rotate-in, rotate-out, rotate-in-reverse, push and drawer, put nav inside ".page".
-// For modes: slide-along, slide-out, scale-down, scale-up, open-door and reveal, put nav outside ".page", after the checkbox.</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="offcanvas-demo1-markup">&lt;!-- modes: slide-in, rotate-in, rotate-out, rotate-in-reverse, push, drawer -->
+// For modes: slide-in, rotate-in, rotate-out, rotate-in-reverse, push and drawer, nav can be inside ".page", just make sure the keyword "inside" is added when you use the mixin.</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="offcanvas-demo1-markup">&lt;!-- modes: slide-in, rotate-in, rotate-out, rotate-in-reverse, push, drawer -->
 &lt;div>
   &lt;input type="checkbox" name="" id="nav-toggle-1" class="checkbox-hidden">
+  &lt;nav class="off-canvas-nav-1">
+    &lt;ul>
+      &lt;li>&lt;a href="">How It Works&lt;/a>&lt;/li>
+      &lt;li>&lt;a href="">Compare&lt;/a>&lt;/li>
+      &lt;!-- [data-has-submenu] is required -->
+      &lt;li data-has-submenu>
+        &lt;input type="checkbox" id="subnav-1-1" class="hidden-checkbox">
+        &lt;label for="subnav-1-1">&ampgt;&lt;/label>
+        &lt;a href="">Technology&lt;/a>
+
+        &lt;!-- sub menu -->
+        &lt;!-- [data-submenu], [data-back] are required -->
+        &lt;ul data-submenu>
+          &lt;li>&lt;label for="subnav-1-1" data-back>Back&lt;/label>&lt;/li>
+          &lt;li>&lt;a href="">sub item 1&lt;/a>&lt;/li>
+          &lt;li>&lt;a href="">sub item 2&lt;/a>&lt;/li>
+          &lt;li>&lt;a href="">sub item 3&lt;/a>&lt;/li>
+        &lt;/ul>
+      &lt;/li>
+      &lt;li>&lt;a href="">Careers&lt;/a>&lt;/li>
+      &lt;li>&lt;a href="">Help&lt;/a>&lt;/li>
+    &lt;/ul>
+  &lt;/nav>
   &lt;div class="off-canvas-1">
     &lt;header>
       &lt;label for="nav-toggle-1" class="menu">Menu&lt;/label>
       &lt;label for="nav-toggle-1" class="page-overlay">&lt;/label>
-      &lt;nav class="off-canvas-nav-1">
-        &lt;ul>
-          &lt;li>&lt;a href="">How It Works&lt;/a>&lt;/li>
-          &lt;li>&lt;a href="">Compare&lt;/a>&lt;/li>
-          &lt;!-- [data-has-submenu] is required -->
-          &lt;li data-has-submenu>
-            &lt;input type="checkbox" id="subnav-1-1" class="hidden-checkbox">
-            &lt;label for="subnav-1-1">&ampgt;&lt;/label>
-            &lt;a href="">Technology&lt;/a>
-
-            &lt;!-- sub menu -->
-            &lt;!-- [data-submenu], [data-back] are required -->
-            &lt;ul data-submenu>
-              &lt;li>&lt;label for="subnav-1-1" data-back>Back&lt;/label>&lt;/li>
-              &lt;li>&lt;a href="">sub item 1&lt;/a>&lt;/li>
-              &lt;li>&lt;a href="">sub item 2&lt;/a>&lt;/li>
-              &lt;li>&lt;a href="">sub item 3&lt;/a>&lt;/li>
-            &lt;/ul>
-          &lt;/li>
-          &lt;li>&lt;a href="">Careers&lt;/a>&lt;/li>
-          &lt;li>&lt;a href="">Help&lt;/a>&lt;/li>
-        &lt;/ul>
-      &lt;/nav>
     &lt;/header>
     &lt;div>Other content&lt;/div>
   &lt;/div>
 &lt;/div></code></pre><button class="btn copy-button" data-clipboard-target="#offcanvas-demo1-markup">Copy Code</button></div></li><li><header class="scss">scss</header><div><pre><code class="language-scss" id="offcanvas-demo1-scss">// normal
-.off-canvas-1 { @include off-canvas(slide-in submenu '.off-canvas-nav-1' ); }
+@include off-canvas(slide-in page '.off-canvas-1' nav '.off-canvas-nav-1' submenu);
  
 .off-canvas-nav-1 {
-  color: #fff;
   background-color: #000;
   a, label { 
+    color: #fff;
     display: block;
     padding: 0.5em 1em; 
   }
@@ -788,7 +787,7 @@ th {
   border-radius: 3px;
   border: 1px solid #ccc;
   margin-bottom: 10px;
-}</code></pre><button class="btn copy-button" data-clipboard-target="#offcanvas-demo1-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><div><input type="checkbox" name="" id="nav-toggle-1" class="checkbox-hidden"><div class="off-canvas-1"><header><label for="nav-toggle-1" class="menu">Menu</label><label for="nav-toggle-1" class="page-overlay"></label><nav class="off-canvas-nav-1"><ul><li><a href="">How It Works</a></li><li><a href="">Compare</a></li><li data-has-submenu><input type="checkbox" id="subnav-1-1" class="hidden-checkbox"><label for="subnav-1-1">></label><a href="">Technology</a><ul data-submenu><li><label for="subnav-1-1" data-back>Back</label></li><li><a href="">sub item 1</a></li><li><a href="">sub item 2</a></li><li><a href="">sub item 3</a></li></ul></li><li><a href="">Careers</a></li><li><a href="">Help</a></li></ul></nav></header><div>Other content</div></div></div></div></div></section><section id="validation"><h4>Validation</h4><p>Html5 form validation using<a href="https://github.com/ryanseddon/H5F" target="_blank">H5F</a>. H5F is included in<code class="language-html">kit.js</code>(with a little bit modification), so you don't need to add it again.</p><p>Set customized alerts information through<code class="language-html">&lt;div data-info="">&lt;/div></code>.</p><p><em class="capability">IE 8+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 10.6+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin validation($style $direction $shake $speed $duration 'default')
+}</code></pre><button class="btn copy-button" data-clipboard-target="#offcanvas-demo1-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><div><input type="checkbox" name="" id="nav-toggle-1" class="checkbox-hidden"><nav class="off-canvas-nav-1"><ul><li><a href="">How It Works</a></li><li><a href="">Compare</a></li><li data-has-submenu><input type="checkbox" id="subnav-1-1" class="hidden-checkbox"><label for="subnav-1-1">></label><a href="">Technology</a><ul data-submenu><li><label for="subnav-1-1" data-back>Back</label></li><li><a href="">sub item 1</a></li><li><a href="">sub item 2</a></li><li><a href="">sub item 3</a></li></ul></li><li><a href="">Careers</a></li><li><a href="">Help</a></li></ul></nav><div class="off-canvas-1"><header><label for="nav-toggle-1" class="menu">Menu</label><label for="nav-toggle-1" class="page-overlay"></label></header><div>Other content</div></div></div></div></div></section><section id="validation"><h4>Validation</h4><p>Html5 form validation using<a href="https://github.com/ryanseddon/H5F" target="_blank">H5F</a>. H5F is included in<code class="language-html">kit.js</code>(with a little bit modification), so you don't need to add it again.</p><p>Set customized alerts information through<code class="language-html">&lt;div data-info="">&lt;/div></code>.</p><p><em class="capability">IE 8+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 10.6+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin validation($style $direction $shake $speed $duration 'default')
 // $style: 'normal' | 'fade-in' | 'slide-in'
 // $direction: left | right | top | bottom</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="validation-demo1-markup">&lt;form action="" class="validation-1">
   &lt;ol>

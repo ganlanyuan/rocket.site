@@ -101,11 +101,10 @@
 // $count: num. (column count)
 
 {% elif componentName === "offcanvas_syntax" %}
-@mixin off-canvas($mode $nav 'submenu' $nav-width $direction ($map $breakpoints) $overlay-background-color $duration)
+@mixin off-canvas($mode ('page' $page) ('nav' $nav) 'inside' 'submenu' $nav-width $direction ($map $breakpoints) $overlay-background-color $duration)
 // $mode: slide-in | slide-along | slide-out | rotate-in | rotate-out | rotate-in-reverse | scale-down | scale-up | open-door | push | reveal | drawer
 
-// For modes: slide-in, rotate-in, rotate-out, rotate-in-reverse, push and drawer, put nav inside ".page".
-// For modes: slide-along, slide-out, scale-down, scale-up, open-door and reveal, put nav outside ".page", after the checkbox.
+// For modes: slide-in, rotate-in, rotate-out, rotate-in-reverse, push and drawer, nav can be inside ".page", just make sure the keyword "inside" is added when you use the mixin.
 
 {% elif componentName === "validation_syntax" %}
 @mixin validation($style $direction $shake $speed $duration 'default')

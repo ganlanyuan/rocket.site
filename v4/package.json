@@ -21,6 +21,6 @@
   },
   "homepage": "https://github.com/ganlanyuan/rocket.site#readme",
   "devDependencies": {
-    "rocket-sass": "^3.4.14"
+    "rocket-sass": "4.0.0-beta3"
   }
 }

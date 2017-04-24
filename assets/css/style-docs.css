@@ -2475,13 +2475,10 @@ th {
 }
 
 .off-canvas-1 {
-  -webkit-transition: transform 0.3s;
-  -moz-transition: transform 0.3s;
+  min-height: 100vh;
+  -webkit-transition: -webkit-transform 0.3s;
+  -moz-transition: -moz-transform 0.3s;
   transition: transform 0.3s;
-}
-
-.lt-ie9 input:checked ~ .off-canvas-1 {
-  margin-left: 240px;
 }
 
 input:not(:checked) ~ .off-canvas-1 .off-canvas-nav-1 [data-submenu] {
@@ -2495,13 +2492,13 @@ input:not(:checked) ~ .off-canvas-1 .off-canvas-nav-1 [data-submenu] {
   width: 240px;
   top: 0;
   bottom: 0;
-  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .off-canvas-nav-1 {
   z-index: 200;
-  -webkit-transition: transform 0.3s;
-  -moz-transition: transform 0.3s;
+  -webkit-transition: -webkit-transform 0.3s;
+  -moz-transition: -moz-transform 0.3s;
   transition: transform 0.3s;
   -webkit-transform: translateX(-240px);
   -moz-transform: translateX(-240px);
@@ -2511,19 +2508,11 @@ input:not(:checked) ~ .off-canvas-1 .off-canvas-nav-1 [data-submenu] {
 }
 
 input:checked ~ .off-canvas-nav-1 {
-  -webkit-transform: translateX(0);
-  -moz-transform: translateX(0);
-  -ms-transform: translateX(0);
-  -o-transform: translateX(0);
-  transform: translateX(0);
-}
-
-.lt-ie9 .off-canvas-nav-1 {
-  margin-left: -240px;
-}
-
-.lt-ie9 input:checked ~ .off-canvas-nav-1 {
-  margin-left: 0;
+  -webkit-transform: none;
+  -moz-transform: none;
+  -ms-transform: none;
+  -o-transform: none;
+  transform: none;
 }
 
 .off-canvas-nav-1 [data-has-submenu]:after {
@@ -2547,21 +2536,12 @@ input:checked ~ .off-canvas-nav-1 {
   transform: translateX(-240px);
 }
 
-.lt-ie9 .off-canvas-nav-1 [data-submenu] {
-  top: 0;
-  left: -240px;
-}
-
 .off-canvas-nav-1 input:checked ~ [data-submenu] {
-  -webkit-transform: translateX(0);
-  -moz-transform: translateX(0);
-  -ms-transform: translateX(0);
-  -o-transform: translateX(0);
-  transform: translateX(0);
-}
-
-.lt-ie9 .off-canvas-nav-1 input:checked ~ [data-submenu] {
-  left: 0;
+  -webkit-transform: none;
+  -moz-transform: none;
+  -ms-transform: none;
+  -o-transform: none;
+  transform: none;
 }
 
 .off-canvas-1 .page-overlay {
@@ -2578,21 +2558,17 @@ input:checked ~ .off-canvas-nav-1 {
   opacity: 0;
 }
 
-.lt-ie9 .off-canvas-1 .page-overlay {
-  display: none;
-}
-
 input:checked ~ .off-canvas-1 .page-overlay {
   right: 0;
   opacity: 0.1;
 }
 
 .off-canvas-nav-1 {
-  color: #fff;
   background-color: #000;
 }
 
 .off-canvas-nav-1 a, .off-canvas-nav-1 label {
+  color: #fff;
   display: block;
   padding: 0.5em 1em;
 }
