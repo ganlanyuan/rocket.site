@@ -112,7 +112,7 @@ gulp.task('server', function() {
         .pipe($.if(dev, $.htmltidy({
           doctype: 'html5',
           wrap: 0,
-          hideComments: true,
+          hideComments: false,
           indent: true,
           'indent-attributes': false,
           'drop-empty-elements': false,
@@ -124,7 +124,7 @@ gulp.task('server', function() {
           decodeEntities: true,
           minifyCSS: true,
           minifyJs: true,
-          removeComments: true,
+          removeComments: false,
         })))
         .pipe(gulp.dest('.'));
     }
