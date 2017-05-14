@@ -27,7 +27,7 @@ docs:
     - demo4
     - "`-grid-` works with breakpoints to make multi layouts for different devices."
     - demo5
-    liquid-2:
+    liquid:
     - Make a fluid 2-columns blog layout, with a fixed sidebar and a fluid main column.
     - "<em class='capability'>IE 8+, Firefox 4+, Chrome 19+, Safari 6+, Opera 15+</em>"
     - syntax
@@ -39,7 +39,7 @@ docs:
     - demo3
     - If the child elements are not `-div-`s, indicate them using `-child ($selector1 $selector2)-` format in the parameter.
     - demo4
-    liquid-3:
+    holy-grail:
     - 'Make a holy-grail layout: 2 fixed sidebars with a fluid main column.'
     - "<em class='capability'>IE 8+, Firefox 4+, Chrome 19+, Safari 6+, Opera 15+</em>"
     - syntax
@@ -95,11 +95,6 @@ docs:
     angled-edges:
     - Make angled edges layout.
     - "<em class='capability'>IE 8+, Firefox 3.6+, Chrome 15+, Safari 6+, Opera 10.6+</em>"
-    - syntax
-    - demo1
-    sticky-footer:
-    - Create `-sticky-footer-` to prevent layout collapse when content is less, e.g. 404 page.
-    - "<em class='capability'>IE 8+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 12.1+</em>"
     - syntax
     - demo1
     justify:
@@ -203,31 +198,16 @@ docs:
     - "<em class='capability'>IE 8+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 10.6+</em>"
     - syntax
     - demo1
-    media-list:
-    - Separate media element and the main content into 2 columns.
-    - "<em class='capability'>IE 8+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 10.6+</em>"
-    - syntax
-    - demo1
     flex-media:
     - Make video or inline svg flexible within its container.
     - "<em class='capability'>IE 7+, Firefox 3.6+, Chrome 16+, Safari 4+, Opera 10.6+</em>"
     - syntax
     - demo1
   addons:
-    type:
-    - "`-type-` is a shorthand mixin for `-font-size-`, `-font-weight-`, `-font-style-`, `-line-height-`, `-font-family-`, `-text-align-`, `-text-transform-`."
-    - "<em class='capability'>IE 6+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 10.6+</em>"
-    - syntax
-    - demo1
     fluid-type:
     - Make `-font-size-` or other properties change smoothly depending on the window size.
     - "Stolen from <a href='http://www.sassmeister.com/gist/7f22e44ace49b5124eec' target='_blank'>here</a> \n More on <a href='https://blog.codepen.io/2016/10/31/fluid-type-blogs/' target='_blank'>fluid-type-blogs</a>."
     - "<em class='capability'>IE 6+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 10.6+</em>"
-    - syntax
-    - demo1
-    responsive-type:
-    - "`-type-` works with breakpoints. \nEverything you can do with `-type-` you can do with `-responsive-type-`."
-    - "<em class='capability'>IE 9+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 10.6+</em>"
     - syntax
     - demo1
     hide-text:
@@ -235,14 +215,6 @@ docs:
     - "<em class='capability'>IE 7+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 10.6+</em>"
     - syntax
     - demo1
-    opacity:
-    - Set `-opacity-` property for IE8- and modern browsers.
-    - syntax
-    - style1
-    ie-rgba:
-    - Get `-rgba()-` color for IE8.
-    - syntax
-    - style1
     ro-breakpoint:
     - "A shorthand @mixin for mediaquery. \nNote: `-ro-breakpoint-` uses one breakpoint (e.g. 800) for both `-min-` and `-max-` instead of two (e.g. 799 for `-max-`, 800 for `-min-`). If you don't want this behaiver, you can use `-$breakpoint-fix: false;-` to disable it."
     - "<em class='capability'>IE 9+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 10.6+</em>"
@@ -262,16 +234,6 @@ docs:
     - demo1
     between:
     - Apply styles to child elements when they are between 2 given amounts.
-    - syntax
-    - demo1
-    visible:
-    - Make elements visible on some portions of the viewport.
-    - "<em class='capability'>IE 9+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 10.6+</em>"
-    - syntax
-    - demo1
-    hidden:
-    - Hide elements on some portions of the viewport.
-    - "<em class='capability'>IE 9+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 10.6+</em>"
     - syntax
     - demo1
   color-functions:
