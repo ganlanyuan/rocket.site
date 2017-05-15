@@ -162,6 +162,11 @@ pre[class*="language-"] {
   .code-wrapper { display: none; }
 }
 
+// version line
+.version-line {
+  margin-bottom: 5%;
+}
+
 // code
 .code-wrapper { 
   background-color: $lightgray;

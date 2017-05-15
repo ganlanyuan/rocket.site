@@ -8,7 +8,7 @@ let dev = false;
 let sourcemapDest = '../sourcemaps';
 let src = 'src/',
   assets = 'assets/',
-  templates = 'templates/';
+  templates = '**/templates/';
   
 let NAMES = {
   cssMain: 'main.css',
@@ -51,45 +51,71 @@ gulp.task('server', function() {
   });
 
   // yml to json
-  gulp.watch([templates + 'code/*.yml'], function (e) {
+  gulp.watch([templates + '**/*.yml'], function (e) {
     if (e.type !== 'deleted') {
       return gulp.src(e.path)
         .pipe($.plumber())
         .pipe($.yaml({space: 2}))
-        .pipe(gulp.dest(templates + 'code'));
+        .pipe(gulp.dest(path.dirname(e.path)));
     }
   });
 
   // scss to njk
-  gulp.watch([templates + 'code/scss/*.scss'], function (e) {
+  gulp.watch([templates + '**/*.scss'], function (e) {
     if (e.type !== 'deleted') {
       return gulp.src(e.path)
         .pipe($.plumber())
         .pipe($.change(function(content) {
           return content.replace(/(\/\/=>\s+)/g, '').replace(/\@import\s\'.+\';/g, '');
         }))
-        .pipe($.rename({extname: '.njk'}))
-        .pipe(gulp.dest(templates + 'code'));
+        .pipe($.rename(function (path) { 
+          path.basename = path.basename.replace('_', ''); 
+          path.extname = ".njk"; 
+        }))
+        .pipe(gulp.dest(path.dirname(e.path)));
+    }
+  });
+
+  // scss to css
+  gulp.watch(['**/*.scss'], function (e) {
+    if (e.type !== 'deleted') {
+      let fpath = e.path,
+          pathData = path.parse(fpath), 
+          dir = pathData.dir,
+          sassSrc = src + 'scss/main.scss', 
+          version = (dir.indexOf('v3/') !== -1) ? '/v3' : (dir.indexOf('v4/') !== -1) ? '/v4' : '',
+          dest = assets + 'css' + version;
+
+      if (dir.indexOf('video') !== -1 || dir.indexOf('templates/') !== -1) { 
+        sassSrc = fpath; 
+      }
+      if (dir.indexOf('video') !== -1) { 
+        dest += '/video'; 
+      }
+
+      return gulp.src(sassSrc)  
+        .pipe($.plumber())
+        .pipe($.if(dev, $.sourcemaps.init()))
+        .pipe($.sass({
+          outputStyle: 'expanded', 
+          precision: 7
+        }).on('error', $.sass.logError))  
+        .pipe($.if(dev, $.sourcemaps.write(sourcemapDest)))
+        .pipe(gulp.dest(dest));
     }
   });
 
   // njk to html
-  gulp.watch([templates + '*.njk', templates + 'code/*.json'], function (e) {
-    if (e.type !== 'deleted') {
-      let njkSrc = e.path, 
-          data = {}, 
-          pathData = path.parse(e.path), 
+  gulp.watch(['index.njk', templates + '*.njk', templates + '*.json'], function (e) {
+    if (e.type !== 'deleted' && e.path.indexOf('parts') === -1) {
+      let pathData = path.parse(e.path),
           fileDir = pathData.dir, 
-          fileExt = pathData.ext,
-          fileName = pathData.name;
+          fileName = pathData.name,
+          fileNameUpdated = (fileName.indexOf('-') === -1) ? fileName : fileName.replace('_', '').slice(0, fileName.indexOf('-')),
+          njkSrc = fileDir + '/' + fileNameUpdated + '.njk',
+          version = (fileDir.indexOf('v3') !== -1) ? 'v3' : (fileDir.indexOf('v4') !== -1) ? 'v4' : '';
 
-      if (fileExt === '.json') {
-        njkSrc = njkSrc.replace('/code', '').replace(fileExt, '.njk');
-      }
-
-      if (fileName !== 'index') {
-        data = requireUncached('./' + templates + 'code/' + fileName + '.json');
-      }
+      let data = (fileName !== 'index') ? requireUncached('./' + version + '/templates/' + fileNameUpdated + '.json') : {};
 
       data.is = function (type, obj) {
         var clas = Object.prototype.toString.call(obj).slice(8, -1);
@@ -101,6 +127,8 @@ gulp.task('server', function() {
       data.belongTo = function (str, arr) {
         return arr.indexOf(str) !== -1;
       };
+      data.version = version;
+      data.page = fileNameUpdated;
 
       return gulp.src(njkSrc)
         .pipe($.plumber())
@@ -108,7 +136,10 @@ gulp.task('server', function() {
           watch: true,
           noCache: true,
         }))
-        .pipe($.rename(function (path) { path.extname = ".html"; }))
+        .pipe($.rename(function (path) { 
+          path.filename = fileNameUpdated; 
+          path.extname = ".html"; 
+        }))
         .pipe($.if(dev, $.htmltidy({
           doctype: 'html5',
           wrap: 0,
@@ -126,31 +157,7 @@ gulp.task('server', function() {
           minifyJs: true,
           removeComments: false,
         })))
-        .pipe(gulp.dest('.'));
-    }
-  });
-
-  // scss to css
-  gulp.watch(['**/*.scss'], function (e) {
-    if (e.type !== 'deleted') {
-      let sassSrc = src + 'scss/main.scss', 
-          dest = assets + 'css',
-          pathData = path.parse(e.path), 
-          dir = pathData.dir,
-          name = pathData.name;
-
-      if (dir.indexOf('video') !== -1 || dir.indexOf('templates/') !== -1) { sassSrc = e.path; }
-      if (dir.indexOf('video') !== -1) { dest += '/video'; }
-
-      return gulp.src(sassSrc)  
-        .pipe($.plumber())
-        .pipe($.if(dev, $.sourcemaps.init()))
-        .pipe($.sass({
-          outputStyle: 'expanded', 
-          precision: 7
-        }).on('error', $.sass.logError))  
-        .pipe($.if(dev, $.sourcemaps.write(sourcemapDest)))
-        .pipe(gulp.dest(dest));
+        .pipe(gulp.dest('./' + version));
     }
   });
 

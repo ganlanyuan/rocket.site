@@ -1,41 +1,45 @@
+@import '../../../v4/node_modules/rocket-sass/src/scss/rocket';
 
-
-{% macro get(componentName) %}
-{% if componentName === "layoutsetting_style1" %}
+//=> {% macro get(componentName) %}
+//=> {% if componentName === "layoutsetting_style1" %}
 $ro-layout: (
   container: 1024px,
   gutter: 20px,
 );
 
-{% elif componentName === "container_demo1" %}
-.container1 { @include container(600px); }
+//=> {% elif componentName === "container_demo1" %}
+.container1 { @include container( ('container': 600px) ); }
 
-{% elif componentName === "container_demo2" %}
+//=> {% elif componentName === "container_demo2" %}
 .container2 {
-  @include container(800px gutter 2% left);
+  @include container( (
+    'container': 800px,
+    'gutter': 2%,
+    'align': left
+    ) );
 }
 
-{% elif componentName === "grid_demo1" %}
+//=> {% elif componentName === "grid_demo1" %}
 .grid1 { @include grid( (3 7 4) ); }
 // 1st div child: 3 columns;
 // 2nd div child: 7 columns;
 // 3rd div child: 4 columns;
 
-{% elif componentName === "grid_demo2" %}
+//=> {% elif componentName === "grid_demo2" %}
 .grid2 { @include grid( (3 7 4 : 1 0 0) ); }
 // or (3:1, 7:0, 4:0)
 // orders: 1 0 0. The first div child will go last.
 
-{% elif componentName === "grid_demo3" %}
+//=> {% elif componentName === "grid_demo3" %}
 $main: ( (3 7 4) (2 5) );
 .grid3 { @include grid($main); }
 // 1st row: (3 7 4)
 // 2nd row: (2 5)
 
-{% elif componentName === "grid_demo4" %}
+//=> {% elif componentName === "grid_demo4" %}
 .grid4 { @include grid( (2 5) child section); }
 
-{% elif componentName === "grid_demo5" %}
+//=> {% elif componentName === "grid_demo5" %}
 $breakpoints: (
   medium: 800px,
   large: 1200px,
@@ -47,58 +51,58 @@ $main: (
 );
 .grid5 { @include grid($main $breakpoints); }
 
-{% elif componentName === "liquid2_demo1" %}
-.liquid-2-1 { @include liquid-2( ('auto' 200px) ); }
+//=> {% elif componentName === "liquid_demo1" %}
+.liquid-1 { @include liquid( ('auto' 200px) ); }
 // 1st column: fluid;
 // 2nd column: 200px;
 
-{% elif componentName === "liquid2_demo2" %}
-.liquid-2-2 {
-  @include liquid-2( ('auto' 200px : 2 1) gutter 10px);
+//=> {% elif componentName === "liquid_demo2" %}
+.liquid-2 {
+  @include liquid( ('auto' 200px : 2 1) gutter 10px);
 }
 // order: 2 1;
 
-{% elif componentName === "liquid2_demo3" %}
-.liquid-2-3 {
-  @include liquid-2( (600px: ('auto':2, 200px:1)) min screen );
+//=> {% elif componentName === "liquid_demo3" %}
+.liquid-3 {
+  @include liquid( (600px: ('auto':2, 200px:1)) min screen );
 }
 
-{% elif componentName === "liquid2_demo4" %}
-.liquid-2-4 { @include liquid-2( ('auto' 200px) child (main aside) ); }
+//=> {% elif componentName === "liquid_demo4" %}
+.liquid-4 { @include liquid( ('auto' 200px) child (main aside) ); }
 // 1st column: fluid;
 // 2nd column: 200px;
 
-{% elif componentName === "liquid3_demo1" %}
-.liquid-3-1 { @include liquid-3( (150px 'auto' 200px) ); }
+//=> {% elif componentName === "holygrail_demo1" %}
+.holy-grail-1 { @include holy-grail( (150px 'auto' 200px) ); }
 // 1st column: 150px;
 // 2nd column: fluid;
 // 3rd column: 200px;
 
-{% elif componentName === "liquid3_demo2" %}
-.liquid-3-2 { 
-  @include liquid-3( (150px 'auto' 200px : 0 2 1) gutter 30px ); 
+//=> {% elif componentName === "holygrail_demo2" %}
+.holy-grail-2 { 
+  @include holy-grail( (150px 'auto' 200px : 0 2 1) gutter 30px ); 
 }
 // order: 0 2 1;
 
-{% elif componentName === "liquid3_demo3" %}
-.liquid-3-3 { 
-  @include liquid-3( (600px: (150px:0, 'auto':2, 200px:1)) gutter 30px); 
+//=> {% elif componentName === "holygrail_demo3" %}
+.holy-grail-3 { 
+  @include holy-grail( (600px: (150px:0, 'auto':2, 200px:1)) gutter 30px); 
 }
 
-{% elif componentName === "liquid3_demo4" %}
-.liquid-3-4 { 
-  @include liquid-3( (150px, 'auto', 200px) child (nav main aside)); 
+//=> {% elif componentName === "holygrail_demo4" %}
+.holy-grail-4 { 
+  @include holy-grail( (150px, 'auto', 200px) child (nav main aside)); 
 }
 
-{% elif componentName === "gallery_demo1" %}
+//=> {% elif componentName === "gallery_demo1" %}
 .gallery-1 { @include gallery(3); }
 
-{% elif componentName === "gallery_demo2" %}
+//=> {% elif componentName === "gallery_demo2" %}
 .gallery-2 { @include gallery(4 gutter 2% RTL); }
 // gutter: 2%;
 // direction: right-to-left
 
-{% elif componentName === "gallery_demo3" %}
+//=> {% elif componentName === "gallery_demo3" %}
 .gallery-3 {
   @include gallery( ('default': 2, 600px: 3, 800px: 4) ); 
 }
@@ -106,16 +110,16 @@ $main: (
 // 600px and up: 3 items per row
 // 800px and up: 4 items per row
 
-{% elif componentName === "gallery_demo4" %}
+//=> {% elif componentName === "gallery_demo4" %}
 .gallery-4 { @include gallery(3 child div); }
 
-{% elif componentName === "masonry_demo1" %}
+//=> {% elif componentName === "masonry_demo1" %}
 .masonry-1 { @include masonry(3); }
 
-{% elif componentName === "masonry_demo2" %}
+//=> {% elif componentName === "masonry_demo2" %}
 .masonry-2 { @include masonry(4 gutter 20px); }
 
-{% elif componentName === "masonry_demo3" %}
+//=> {% elif componentName === "masonry_demo3" %}
 $masonry-3-layout: (
   'default': 1, 
   600px: 2, 
@@ -124,7 +128,7 @@ $masonry-3-layout: (
 );
 .masonry-3 { @include masonry($masonry-3-layout child '.panel'); }
 
-{% elif componentName === "metro_demo1" %}
+//=> {% elif componentName === "metro_demo1" %}
 .metro-1 { 
   @include metro( (w5 w3 2 h2 w2 w4 of 5) gutter 10px); 
   > li:nth-child(3) { float: right; };
@@ -134,34 +138,34 @@ $masonry-3-layout: (
 // h2: 1 units width x 2 units height
 // "of 5": totaly 5 units width;
 
-{% elif componentName === "diamond_demo1" %}
+//=> {% elif componentName === "diamond_demo1" %}
 .diamond-1 { @include diamond(3 'tight'); }
 
-{% elif componentName === "diamond_demo2" %}
+//=> {% elif componentName === "diamond_demo2" %}
 .diamond-2 { @include diamond(20%); }
 // diamond width: 20%
 
-{% elif componentName === "diamond_demo3" %}
+//=> {% elif componentName === "diamond_demo3" %}
 .diamond-3 { @include diamond(octagon 200px); }
 // diamond width: 200px
 
-{% elif componentName === "anglededges_demo1" %}
+//=> {% elif componentName === "anglededges_demo1" %}
 .angled-edges-1 {
   @include angled-edges(both #fff -5deg flip);
   background-color: #58CAFF;
 }
 
-{% elif componentName === "stickyfooter_demo1" %}
+//=> {% elif componentName === "stickyfooter_demo1" %}
 .sticky-footer-1 {
   @include sticky-footer('main'); 
   header, main, footer { padding: 10px; background-color: #f5f5f5; }
   main { background-color: #FBA158; }
 }
 
-{% elif componentName === "justify_demo1" %}
+//=> {% elif componentName === "justify_demo1" %}
 .justify-1 { @include justify('li'); }
 
-{% elif componentName === "center_demo1" %}
+//=> {% elif componentName === "center_demo1" %}
 .center-1 {
   @include center();
   position: absolute;
@@ -172,7 +176,7 @@ $masonry-3-layout: (
   > div { display: inline-block; padding: 10px; background-color: #FBA158; }
 }
 
-{% elif componentName === "charts_demo1" %}
+//=> {% elif componentName === "charts_demo1" %}
 $charts-data1: (
   #5AB5E1: 8.9 10.5 19.3 21.45,
 );
@@ -189,7 +193,7 @@ $charts-data2: (
   margin-bottom: 2em;
 }
 
-{% elif componentName === "responsivetable_demo_flipscroll" %}
+//=> {% elif componentName === "responsivetable_demo_flipscroll" %}
 table {
   text-align: left;
   width: 100%;
@@ -216,7 +220,7 @@ th {
   }
 }
  
-{% elif componentName === "responsivetable_demo_scroll" %}
+//=> {% elif componentName === "responsivetable_demo_scroll" %}
 .responsive-table-2 { 
   // Requirements: $breakpoint
   @include rp-table('scroll' bp 1400px) {
@@ -231,13 +235,13 @@ th {
   } 
 }
  
-{% elif componentName === "responsivetable_demo_toggle" %}
+//=> {% elif componentName === "responsivetable_demo_toggle" %}
 .responsive-table-3 {
   // Requirements: $breakpoint, $count
   @include rp-table('toggle' 'bp' 1400px 'count' 10);
 }
  
-{% elif componentName === "responsivetable_demo_stack" %}
+//=> {% elif componentName === "responsivetable_demo_stack" %}
 $responsive-table-4-data: (
   'First Name', 
   'Last Name', 
@@ -260,7 +264,7 @@ $responsive-table-4-data: (
   }
 }
 
-{% elif componentName === "offcanvas_demo1" %}
+//=> {% elif componentName === "offcanvas_demo1" %}
 // normal
 @include off-canvas(slide-in page '.off-canvas-1' nav '.off-canvas-nav-1' submenu);
  
@@ -288,10 +292,10 @@ $responsive-table-4-data: (
   margin-bottom: 10px;
 }
 
-{% elif componentName === "validation_demo1" %}
+//=> {% elif componentName === "validation_demo1" %}
 .validation-1 { @include validation(slide-in right default); }
 
-{% elif componentName === "button_demo1" %}
+//=> {% elif componentName === "button_demo1" %}
 $padding: "0.5em 0.8em";
 
 .button-simple { @include button($padding simple); }
@@ -305,7 +309,7 @@ $padding: "0.5em 0.8em";
 }
 
 
-{% elif componentName === "parallelogram_demo1" %}
+//=> {% elif componentName === "parallelogram_demo1" %}
 .parallelogram-1 { 
   @include parallelogram(#0C81E7 -30deg); 
 
@@ -315,7 +319,7 @@ $padding: "0.5em 0.8em";
   color: #fff;
 }
 
-{% elif componentName === "dropshadows_demo1" %}
+//=> {% elif componentName === "dropshadows_demo1" %}
 .drop-shadow-1 { @include drop-shadows(lifted bottom 15px); }
 .drop-shadow-2 { @include drop-shadows(raised bottom 15px); }
 .drop-shadow-3 { @include drop-shadows(perspective bottom 15px); }
@@ -329,7 +333,7 @@ $padding: "0.5em 0.8em";
   background-color: #f7f7f7;
 }
 
-{% elif componentName === "switch_demo1" %}
+//=> {% elif componentName === "switch_demo1" %}
 .switch-1 { 
   @include switch(round text ("on" "off") 36px blue); 
   margin-bottom: 10px;
@@ -338,7 +342,7 @@ $padding: "0.5em 0.8em";
   @include switch(slider round 20px red); 
 }
 
-{% elif componentName === "pushtoggle_" %}
+//=> {% elif componentName === "pushtoggle_" %}
 .push-toggle-1 { 
   // default style
   label {
@@ -355,7 +359,7 @@ $padding: "0.5em 0.8em";
   }
 }
 
-{% elif componentName === "checkbox_demo1" %}
+//=> {% elif componentName === "checkbox_demo1" %}
 .checkbox-1 {
   margin-top: 10px;
 
@@ -381,7 +385,7 @@ $padding: "0.5em 0.8em";
 }
 
 
-{% elif componentName === "inputfile_demo1" %}
+//=> {% elif componentName === "inputfile_demo1" %}
 .input-file-1 {
   @include input-file() {
     margin: 10px 0;
@@ -397,7 +401,7 @@ $padding: "0.5em 0.8em";
   }
 }
 
-{% elif componentName === "tabs_demo1" %}
+//=> {% elif componentName === "tabs_demo1" %}
 .tabs-1 { 
   @include tabs(3 'carousel'); 
   @include tabs-active(3) {
@@ -408,13 +412,13 @@ $padding: "0.5em 0.8em";
   } 
 }
 
-{% elif componentName === "accordion_demo1" %}
+//=> {% elif componentName === "accordion_demo1" %}
 .accordion-1 {
   @include accordion(div 200px);
   > label { display: block; padding: 10px; background-color: #f5f5f5; }
 }
 
-{% elif componentName === "dropdown_demo1" %}
+//=> {% elif componentName === "dropdown_demo1" %}
 .dropdown-1 {
   @include dropdown(click right default);
   display: inline-block;
@@ -422,7 +426,7 @@ $padding: "0.5em 0.8em";
   margin-top: 20px;
 }
 
-{% elif componentName === "tooltip_demo1" %}
+//=> {% elif componentName === "tooltip_demo1" %}
 .tooltip-1 {
   @include tooltip(right #b02df3); 
 }
@@ -430,23 +434,23 @@ $padding: "0.5em 0.8em";
   @include tooltip(radius bottom #b02df3); 
 }
 
-{% elif componentName === "medialist_demo1" %}
+//=> {% elif componentName === "medialist_demo1" %}
 .media-list-1 .media { @include media-list('media' 15px); } 
 .media-list-2 .media { @include media-list('media' 15px right); }
 .media-body { @include media-list('media-body'); }
 
-{% elif componentName === "flexmedia_demo1" %}
+//=> {% elif componentName === "flexmedia_demo1" %}
 .flex-media-1 { @include flex-media(315/560); }
 .flex-media-2 { @include flex-media(1 svg); }
 
-{% elif componentName === "type_demo1" %}
+//=> {% elif componentName === "type_demo1" %}
 .type-1 { @include type(30px 1.8 'Georgia, Helvetica, sans-serif'); }
 .type-2 { @include type(30px 1.8 uppercase bold italic right); }
 
-{% elif componentName === "fluidtype_demo1" %}
+//=> {% elif componentName === "fluidtype_demo1" %}
 .fluid-type-1 { @include fluid-type(font-size, (320px: 16px, 1024px: 40px)); }
 
-{% elif componentName === "responsivetype_demo1" %}
+//=> {% elif componentName === "responsivetype_demo1" %}
 $responsive-type-1: (
   'default': (15px 1.3 right uppercase),
   900px: 18px,
@@ -466,7 +470,7 @@ $responsive-type-2: (
 );
 .responsive-type-2 { @include rp-type($responsive-type-2 $bp); }
 
-{% elif componentName === "hidetext_demo1" %}
+//=> {% elif componentName === "hidetext_demo1" %}
 .hide-text-1 {
   @extend %hide-text;
   width: 100px;
@@ -474,10 +478,10 @@ $responsive-type-2: (
   background: #ccc url('http://placehold.it/100x60/DD279E/ffffff?text=Brand') 0 0 no-repeat;
 }
 
-{% elif componentName === "opacity_style1" %}
+//=> {% elif componentName === "opacity_style1" %}
 .opacity { @include opacity(0.3); }
 
-{% elif componentName === "iergba_style1" %}
+//=> {% elif componentName === "iergba_style1" %}
 .lt-ie9 .ie-rgba { @include ie-rgba(rgba(0,0,0,0.7)); }
 // output:
 // .lt-ie9 .ie-rgba {
@@ -486,7 +490,7 @@ $responsive-type-2: (
 //   zoom: 1;
 // }
 
-{% elif componentName === "robreakpoint_style1" %}
+//=> {% elif componentName === "robreakpoint_style1" %}
 @include bp('min' 640) {};
 // @media (min-width: 40em) {};
 @include bp('min' 'height' 640) {};
@@ -496,39 +500,39 @@ $responsive-type-2: (
 @include bp(400 767 1000 1200 1500) {};
 // @media (min-width: 25em) and (max-width: 47.875em), (min-width: 62.5em) and (max-width: 74.9375em), (min-width: 93.75em){}
 
-{% elif componentName === "atleast_demo1" %}
+//=> {% elif componentName === "atleast_demo1" %}
 .at-least-1 {
   li { display: inline-block; width: 100px; }
   @include at-least('li' 4) { background-color: #25e425; }
 }
 
-{% elif componentName === "atmost_demo1" %}
+//=> {% elif componentName === "atmost_demo1" %}
 .at-most-1 {
   li { display: inline-block; width: 100px; }
   @include at-most('li' 4) { background-color: #25e425; }
 }
 
-{% elif componentName === "equalto_demo1" %}
+//=> {% elif componentName === "equalto_demo1" %}
 .equal-to-1 {
   li { display: inline-block; width: 100px; }
   @include equal-to('li' 4) { background-color: #25e425; }
 }
 
-{% elif componentName === "between_demo1" %}
+//=> {% elif componentName === "between_demo1" %}
 .between-1 {
   li { display: inline-block; width: 100px; }
   @include between('li' 4 6) { background-color: #25e425; }
 }
 
-{% elif componentName === "visible_demo1" %}
+//=> {% elif componentName === "visible_demo1" %}
 .visible-1 { @include visible(700px); }
 .visible-2 { @include visible(0 700px); }
 
-{% elif componentName === "hidden_demo1" %}
+//=> {% elif componentName === "hidden_demo1" %}
 .hidden-1 { @include hidden(700px); }
 .hidden-2 { @include hidden(300px 500px 700px); }
 
-{% elif componentName === "contrast_demo1" %}
+//=> {% elif componentName === "contrast_demo1" %}
 .contrast-1 {
   background-color: #a6e36e; 
   color: contrast(#a6e36e);
@@ -542,38 +546,38 @@ $responsive-type-2: (
   color: contrast(#6666FF light #D6D6E6);
 }
 
-{% elif componentName === "adjacent_demo1" %}
+//=> {% elif componentName === "adjacent_demo1" %}
 .adjacent-0 { background-color: #155BDF; }
 .adjacent-1 { background-color: adjacent(#155BDF 1); }
 .adjacent-2 { background-color: adjacent(#155BDF 2); }
 .adjacent-3 { background-color: adjacent(#155BDF 3); }
 
-{% elif componentName === "complementary_demo1" %}
+//=> {% elif componentName === "complementary_demo1" %}
 .complementary-0 { background-color: #155BDF; }
 .complementary-1 { background-color: complementary(#155BDF 1); }
 
-{% elif componentName === "splitcomplementary_demo1" %}
+//=> {% elif componentName === "splitcomplementary_demo1" %}
 .split-complementary-0 { background-color: #155BDF; }
 .split-complementary-1 { background-color: split-complementary(#155BDF 1); }
 .split-complementary-2 { background-color: split-complementary(#155BDF 2); }
 .split-complementary-3 { background-color: split-complementary(#155BDF 3); }
 
-{% elif componentName === "triad_demo1" %}
+//=> {% elif componentName === "triad_demo1" %}
 .triad-0 { background-color: #155BDF; }
 .triad-1 { background-color: triad(#155BDF 1); }
 .triad-2 { background-color: triad(#155BDF 2); }
 
-{% elif componentName === "rectangle_demo1" %}
+//=> {% elif componentName === "rectangle_demo1" %}
 .rectangle-0 { background-color: #155BDF; }
 .rectangle-1 { background-color: rectangle(#155BDF 1); }
 .rectangle-2 { background-color: rectangle(#155BDF 2); }
 .rectangle-3 { background-color: rectangle(#155BDF 3); }
 
-{% elif componentName === "square_demo1" %}
+//=> {% elif componentName === "square_demo1" %}
 .square-0 { background-color: #155BDF; }
 .square-1 { background-color: square(#155BDF 1); }
 .square-2 { background-color: square(#155BDF 2); }
 .square-3 { background-color: square(#155BDF 3); }
 
-{% endif %}
-{% endmacro %}
+//=> {% endif %}
+//=> {% endmacro %}

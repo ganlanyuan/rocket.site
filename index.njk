@@ -1,5 +1,5 @@
 {% set pagename = 'home' %}
-{% extends "parts/layout.njk" %}
+{% extends "v4/templates/parts/layout.njk" %}
 
 {% block video %}
 <div class="video-wrapper container-wide">
@@ -106,7 +106,7 @@ npm install rocket-sass --save</code></pre>
 <section class="whats-next section">
   <div class="container-narrow">
     <h2 class="heading2">What's next?</h2>
-    <p>Start with the <a href="guide.html">Guide</a>? Read the <a href="docs.html">Document</a>? Follow a simply <a href="tutorial.html">Tutorial</a>?</p>
+    <p>Start with the <a href="{{ latestVersion + '/' }}guide.html">Guide</a>? Read the <a href="{{ latestVersion + '/' }}docs.html">Document</a>? Follow a simply <a href="{{ latestVersion + '/' }}tutorial.html">Tutorial</a>?</p>
   </div>
 </section>
 <section class="support section">

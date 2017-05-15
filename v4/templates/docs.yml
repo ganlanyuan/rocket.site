@@ -2,7 +2,7 @@
 docs:
   layout:
     layout setting:
-    - Default container for `-container-` and gutter for `-container-`, `-grid-`, `-gallery-`, `-liquid-2-`, `-liquid-3-`, `-metro-` and `-masonry-`.
+    - Default container for `-container-` and gutter for `-container-`, `-grid-`, `-gallery-`, `-liquid-`, `-holy-grail-`, `-metro-` and `-masonry-`.
     - style1
     container:
     - Create a container to constrain your content. The container can be pushed to the left, right edge or center aligned.
@@ -45,7 +45,7 @@ docs:
     - syntax
     - Use string `-'auto'-` to indicate the fluid main column.
     - demo1
-    - Same with `-liquid-2-`, you can change the order using a `-map-` and gutter using a keyword `-'gutter'-`.
+    - Same with `-liquid-`, you can change the order using a `-map-` and gutter using a keyword `-'gutter'-`.
     - demo2
     - Works with breakpoint.
     - demo3
