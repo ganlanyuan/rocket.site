@@ -176,20 +176,20 @@ $masonry-3-layout: (
   > div { display: inline-block; padding: 10px; background-color: #FBA158; }
 }
 
-{% elif componentName === "charts_demo1" %}
-$charts-data1: (
+{% elif componentName === "chart_demo1" %}
+$chart-data1: (
   #5AB5E1: 8.9 10.5 19.3 21.45,
 );
-.charts-1 { @include charts($charts-data1 'bar' 'steps' (2 22)); }
+.chart-1 { @include chart($chart-data1 'bar' 'steps' (2 22)); }
  
-$charts-data2: (
+$chart-data2: (
   #E44B22: 8.9 10.5 19.3 21.45,
   #E48A22: 5 10 16 22,
   #22A1E4: 10.7 12 12 18,
 );
-.charts-2 { @include charts($charts-data2 'column' 'steps' (2 24) 'hide' ('numbers')); }
+.chart-2 { @include chart($chart-data2 'column' 'steps' (2 24) 'hide' ('numbers')); }
 
-[class*="charts-"] {
+[class*="chart-"] {
   margin-bottom: 2em;
 }
 
@@ -320,10 +320,10 @@ $padding: "0.5em 0.8em";
 }
 
 {% elif componentName === "dropshadows_demo1" %}
-.drop-shadow-1 { @include drop-shadows(lifted bottom 15px); }
-.drop-shadow-2 { @include drop-shadows(raised bottom 15px); }
-.drop-shadow-3 { @include drop-shadows(perspective bottom 15px); }
-.drop-shadow-4 { @include drop-shadows(curve bottom 15px); }
+.drop-shadow-1 { @include drop-shadow(lifted bottom 15px); }
+.drop-shadow-2 { @include drop-shadow(raised bottom 15px); }
+.drop-shadow-3 { @include drop-shadow(perspective bottom 15px); }
+.drop-shadow-4 { @include drop-shadow(curve bottom 15px); }
 [class*="drop-shadow-"] {
   display: inline-block;
   width: 8em;
@@ -401,13 +401,13 @@ $padding: "0.5em 0.8em";
   }
 }
 
-{% elif componentName === "tabs_demo1" %}
-.tabs-1 { 
-  @include tabs(3 'carousel'); 
-  @include tabs-active(3) {
+{% elif componentName === "tab_demo1" %}
+.tab-1 { 
+  @include tab(3 'carousel'); 
+  @include tab-active(3) {
     color: #1899FF;
   } 
-  @include tabs-panel-active(3) {
+  @include tab-panel-active(3) {
     border: 1px solid #1899FF;
   } 
 }

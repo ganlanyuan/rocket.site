@@ -121,8 +121,8 @@
       ]
     },
     "components": {
-      "charts": [
-        "Pure css responsive charts.",
+      "chart": [
+        "Pure css responsive chart.",
         "<em class='capability'>IE 8+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 10.6+</em>",
         "syntax",
         "Use the following HTML structure. ",
@@ -172,8 +172,8 @@
         "syntax",
         "demo1"
       ],
-      "drop-shadows": [
-        "Pure css drop shadow effects. \nToken from Nicolas Gallagher at <a href='http://nicolasgallagher.com/css-drop-shadows-without-images/' target='_blank'>css-drop-shadows-without-images</a>.",
+      "drop-shadow": [
+        "Pure css drop shadow effects. \nToken from Nicolas Gallagher at <a href='http://nicolasgallagher.com/css-drop-shadow-without-images/' target='_blank'>css-drop-shadow-without-images</a>.",
         "<em class='capability'>IE 9+, Firefox 4+, Chrome 15+, Safari 5.1+, Opera 10.6+</em>",
         "syntax",
         "demo1"
@@ -202,8 +202,8 @@
         "syntax",
         "demo1"
       ],
-      "tabs": [
-        "Make tabs use `-input:radio-`. \nUse`-tabs-active-` to set up tab active styles and `-tabs-panel-active-` for tab panel active styles. \nTo reduce complexity, `-.ro-tabs-` and `-.ro-panels-` are required.",
+      "tab": [
+        "Make tab use `-input:radio-`. \nUse`-tab-active-` to set up tab active styles and `-tab-panel-active-` for tab panel active styles. \nTo reduce complexity, `-.ro-tab-` and `-.ro-panels-` are required.",
         "<em class='capability'>IE 8+, Firefox 3.6+, Chrome 15+, Safari 5.1+, Opera 12.1+</em>",
         "syntax",
         "demo1"
