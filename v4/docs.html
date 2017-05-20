@@ -99,19 +99,14 @@ $main: (
 &lt;/div></code></pre><button class="btn copy-button" data-clipboard-target="#liquid-demo4-markup">Copy Code</button></div></li><li><header class="scss">scss</header><div><pre><code class="language-scss" id="liquid-demo4-scss">.liquid-4 { @include liquid( ('auto' 200px) child (main aside) ); }
 // 1st column: fluid;
 // 2nd column: 200px;</code></pre><button class="btn copy-button" data-clipboard-target="#liquid-demo4-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><div class="liquid-4"><main data-content>1</main><aside data-content>2</aside></div></div></div></section><section id="holy-grail"><h4>Holy-grail</h4><p>Make a holy-grail layout: 2 fixed sidebars with a fluid main column.</p><p><em class="capability">IE 8+, Firefox 4+, Chrome 19+, Safari 6+, Opera 15+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin holy-grail( (
-  'layout': list | map, // (3 5 4) | (640px: ( (3 5) (1) ), 900px: (3 5 4))
+  'layout': list | map, // ('auto' 100px 250px) | (900px: (100px 'auto' 250px))
   'gutter': px | em | rem | %, 
-  'selector': string, 
+  'selector': string | list, // 'li' | ('nav' 'main' 'aside')  
   'breakpoint': map, // ('small': 640px, 'medium': 768px, 'large': 1024px) 
   'condition': 'min' | 'max', 
   'media': 'all' | 'aural' | 'braille' | 'handheld' | 'print' | 'projection' | 'screen' | 'tty' | 'tv' | 'embossed' | ..., 
-  'direction': string
-  ) )
-// $layout: list | map
-// $condition: 'min' | 'max'
-// $media: media types
-// $breakpoints: map, e.g. (small: 640px, medium: 768px, large: 1024px)
-// $direction: LTR | RTL</code></pre></div></div><p>Use string<code class="language-html">'auto'</code>to indicate the fluid main column.</p><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="holygrail-demo1-markup">&lt;div class="holy-grail-1">
+  'direction': 'LTR' | 'RTL'
+  ) )</code></pre></div></div><p>Use string<code class="language-html">'auto'</code>to indicate the fluid main column.</p><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="holygrail-demo1-markup">&lt;div class="holy-grail-1">
   &lt;div data-content>sidebar1&lt;/div>
   &lt;div data-content>main&lt;/div>
   &lt;div data-content>sidebar2&lt;/div>
@@ -138,20 +133,15 @@ $main: (
 &lt;/div></code></pre><button class="btn copy-button" data-clipboard-target="#holygrail-demo4-markup">Copy Code</button></div></li><li><header class="scss">scss</header><div><pre><code class="language-scss" id="holygrail-demo4-scss">.holy-grail-4 { 
   @include holy-grail( (150px, 'auto', 200px) child (nav main aside)); 
 }</code></pre><button class="btn copy-button" data-clipboard-target="#holygrail-demo4-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><div class="holy-grail-4"><nav data-content>sidebar1</nav><main data-content>main</main><aside data-content>sidebar2</aside></div></div></div></section><section id="gallery"><h4>Gallery</h4><p>Make a photo gallery layout.</p><p><em class="capability">IE 8+, Firefox 3.6+, Chrome 21+, Safari 6.2+, Opera 15+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin gallery( (
-  'layout': list | map, // (3 5 4) | (640px: ( (3 5) (1) ), 900px: (3 5 4))
+  'layout': integer | map, // 3 | ('dafault': 2, 600px: 3, 900px: 4)
   'gutter': px | em | rem | %, 
-  'selector': string, 
+  'selector': string, // 'li'
   'breakpoint': map, // ('small': 640px, 'medium': 768px, 'large': 1024px) 
   'condition': 'min' | 'max', 
   'media': 'all' | 'aural' | 'braille' | 'handheld' | 'print' | 'projection' | 'screen' | 'tty' | 'tv' | 'embossed' | ..., 
-  'direction': string,
+  'direction': 'LTR' | 'RTL',
   'keep': boolean
-  ) )
-// $layout: number | map
-// $condition: 'min' | 'max'
-// $media: media types
-// $breakpoints: map, e.g. (small: 640px, medium: 768px, large: 1024px)
-// $direction: LTR | RTL</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="gallery-demo1-markup">&lt;ul class="gallery-1">
+  ) )</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="gallery-demo1-markup">&lt;ul class="gallery-1">
   &lt;li>&lt;div data-content>&lt;/div>&lt;/li>
   &lt;li>&lt;div data-content>&lt;/div>&lt;/li>
   &lt;li>&lt;div data-content>&lt;/div>&lt;/li>
@@ -183,21 +173,17 @@ $main: (
   &lt;div>&lt;div data-content>&lt;/div>&lt;/div>
   &lt;div>&lt;div data-content>&lt;/div>&lt;/div>
 &lt;/div></code></pre><button class="btn copy-button" data-clipboard-target="#gallery-demo4-markup">Copy Code</button></div></li><li><header class="scss">scss</header><div><pre><code class="language-scss" id="gallery-demo4-scss">.gallery-4 { @include gallery(3 child div); }</code></pre><button class="btn copy-button" data-clipboard-target="#gallery-demo4-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><div class="gallery-4"><div><div data-content></div></div><div><div data-content></div></div><div><div data-content></div></div><div><div data-content></div></div><div><div data-content></div></div></div></div></div></section><section id="masonry"><h4>Masonry</h4><p>Using<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Columns/Using_multi-column_layouts" target="_blank">CSS3 multiple-column layout</a>to make<code class="language-html">masonry</code>layout.</p><p><em class="capability">IE 10+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 11.5+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin masonry( (
-  'layout': list | map, // (3 5 4) | (640px: ( (3 5) (1) ), 900px: (3 5 4))
+  'layout': integer | map, // 3 | ('dafault': 2, 600px: 3, 900px: 4)
   'gutter': px | em | rem | %, 
-  'selector': string, 
+  'selector': string, // 'li' 
   'breakpoint': map, // ('small': 640px, 'medium': 768px, 'large': 1024px) 
   'condition': 'min' | 'max', 
   'media': 'all' | 'aural' | 'braille' | 'handheld' | 'print' | 'projection' | 'screen' | 'tty' | 'tv' | 'embossed' | ...,
   'keep': boolean
   ) )
-// $layout: number | map
-// $condition: 'min' | 'max'
-// $media: media types
-// $breakpoints: map, e.g. (small: 640px, medium: 768px, large: 1024px)
 
 // *** fallback: IE9- *** //
-.no-csscolumns {
+.lt-ie10 {
   .masonry {
     text-align: center;
     > li {
@@ -236,19 +222,15 @@ $main: (
   1024px: 4
 );
 .masonry-3 { @include masonry($masonry-3-layout child '.panel'); }</code></pre><button class="btn copy-button" data-clipboard-target="#masonry-demo3-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><div class="masonry-3"><div class="panel"><div data-content><img class="full" src="http://placehold.it/300x300/cccccc/cccccc" alt=""><p>1. Lorem ipsum dolor sit amet, incidunt voluptatibus in, labore itaque consequuntur facere blanditiis! Debitis nihil reiciendis, cum quis vitae non eveniet laudantium?</p></div></div><div class="panel"><div data-content><img class="full" src="http://placehold.it/300x100/cccccc/cccccc" alt=""><p>2. Porro cupiditate suscipit, repellat non doloribus dicta possimus hic magni facere ipsa minima laboriosam eum magnam, expedita ratione saepe neque id. Adipisci.</p></div></div><div class="panel"><div data-content><img class="full" src="http://placehold.it/300x200/cccccc/cccccc" alt=""><p>3. Deserunt dolorum eum obcaecati, nihil optio reprehenderit sapiente. Accusantium illum officiis natus inventore quo. Possimus id architecto, ut impedit eveniet numquam voluptates.</p></div></div><div class="panel"><div data-content><img class="full" src="http://placehold.it/300x400/cccccc/cccccc" alt=""><p>4. Est fugiat reprehenderit, maiores. Vero facilis porro aspernatur doloribus, minus, sunt, unde quibusdam modi at nulla reiciendis nihil commodi deserunt nemo dignissimos. Voluptatum quisquam nam fuga, ut odit dolore explicabo?</p></div></div><div class="panel"><div data-content><img class="full" src="http://placehold.it/300x200/cccccc/cccccc" alt=""><p>5. Obcaecati modi molestiae debitis expedita enim praesentium dignissimos, consequuntur excepturi magni velit tenetur earum? Assumenda quam facilis, incidunt obcaecati dignissimos laboriosam qui magnam aliquid dolorem asperiores?</p></div></div><div class="panel"><div data-content><img class="full" src="http://placehold.it/300x100/cccccc/cccccc" alt=""><p>6. Perferendis unde ullam fugiat sapiente error explicabo quam reprehenderit, dolorum.</p></div></div></div></div></div></section><section id="metro"><h4>Metro</h4><p>Make a (Windows 8 style) metro layout.</p><p><em class="capability">IE 8+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 10.6+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin metro( (
-  'layout': list | map, // (3 5 4) | (640px: ( (3 5) (1) ), 900px: (3 5 4))
-  'ratio': $ratio, 
+  'layout': list | map, // (w1 w3 h2 w4 of 5) | (600px: w6h1 w2h2 w4h2 of 6)
+  'ratio': num, // (9/16) 
   'gutter': px | em | rem | %, 
-  'selector': string, 
+  'selector': string, // 'div'
   'breakpoint': map, // ('small': 640px, 'medium': 768px, 'large': 1024px) 
   'condition': 'min' | 'max', 
   'media': 'all' | 'aural' | 'braille' | 'handheld' | 'print' | 'projection' | 'screen' | 'tty' | 'tv' | 'embossed' | ..., 
   'keep': boolean
-  ) )
-// $layout: list | map
-// $condition: 'min' | 'max'
-// $media: media types
-// $breakpoints: map, e.g. (small: 640px, medium: 768px, large: 1024px)</code></pre></div></div><p>Use<code class="language-html">ul > li</code>,<code class="language-html">ol > li</code>or<code class="language-html">div > div</code>HTML structure. Wrap the content with<code class="language-html">.metro-item</code>.</p><div class="code-wrapper"><header class="markup">markup</header><div><pre class="language-markup"><code>&lt;ul class="metro">
+  ) )</code></pre></div></div><p>Use<code class="language-html">ul > li</code>,<code class="language-html">ol > li</code>or<code class="language-html">div > div</code>HTML structure. Wrap the content with<code class="language-html">.metro-item</code>.</p><div class="code-wrapper"><header class="markup">markup</header><div><pre class="language-markup"><code>&lt;ul class="metro">
   &lt;li>&lt;div class="metro-item">&lt;/div>&lt;/li>
   &lt;li>&lt;div class="metro-item">&lt;/div>&lt;/li>
   &lt;li>&lt;div class="metro-item">&lt;/div>&lt;/li>
@@ -269,9 +251,9 @@ $main: (
 // 2: 2 units width x 2 units height
 // h2: 1 units width x 2 units height
 // "of 5": totaly 5 units width;</code></pre><button class="btn copy-button" data-clipboard-target="#metro-demo1-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><ul class="metro-1"><li><div class="metro-item"><div data-content></div></div></li><li><div class="metro-item"><div data-content></div></div></li><li><div class="metro-item"><div data-content></div></div></li><li><div class="metro-item"><div data-content></div></div></li><li><div class="metro-item"><div data-content></div></div></li><li><div class="metro-item"><div data-content></div></div></li></ul></div></div></section><section id="diamond"><h4>Diamond</h4><p>Make diamond (octagon) shape layout. To reduce complexity,<code class="language-html">diamond</code>requires<code class="language-html">.diamond-content</code>to wrap its content.</p><p><em class="capability">IE 9+, Firefox 3.6+, Chrome 15+, Safari 5.1+, Opera 11.5+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin diamond( ( 
-  'layout': $count | $size, 
-  'shape': $shape, // 'diamond' | 'octagon'
-  'tight': false, 
+  'layout': integer | % | px | em | ... | map, // 3 | 25% | (600px:3, 800px:4) | (600px:33.33%, 800px:25%), interger => item count, % | px | em | ... => item width
+  'shape': 'diamond' | 'octagon',  
+  'tight': boolean, 
   'keep': boolean
 ) )</code></pre></div></div><p>Use<code class="language-html">.diamond-content</code>to wrap the content.</p><div class="code-wrapper"><header class="markup">markup</header><div><pre class="language-markup"><code>&lt;div class="your-class">
   &lt;div class="diamond-content">Content goes here&lt;/div>
@@ -310,13 +292,11 @@ $main: (
   &lt;/div>
 &lt;/div></code></pre><button class="btn copy-button" data-clipboard-target="#diamond-demo3-markup">Copy Code</button></div></li><li><header class="scss">scss</header><div><pre><code class="language-scss" id="diamond-demo3-scss">.diamond-3 { @include diamond(octagon 200px); }
 // diamond width: 200px</code></pre><button class="btn copy-button" data-clipboard-target="#diamond-demo3-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><div class="diamond-3"><div class="diamond-content" data-content><div>content</div></div></div></div></div></section><section id="angled-edges"><h4>Angled-edges</h4><p>Make angled edges layout.</p><p><em class="capability">IE 8+, Firefox 3.6+, Chrome 15+, Safari 6+, Opera 10.6+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin angled-edges( (
-  'edge': $edges, 
-  'angle': $angle,
-  'color': $edge-color,
-  'flip': $flip
-) );
-// $edges: top | bottom | both
-// $edge-color: deg</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="anglededges-demo1-markup">&lt;div class="angled-edges-sibling">
+  'edge': 'top' | 'bottom' | 'both', 
+  'angle': deg,
+  'color': color,
+  'flip': boolean
+) );</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="anglededges-demo1-markup">&lt;div class="angled-edges-sibling">
   &lt;p>Quis ab placeat totam beatae dolorum, harum omnis tempora dolore exercitationem quia, soluta qui deleniti numquam.&lt;/p>
 &lt;/div>
 &lt;div class="angled-edges-1">
@@ -330,7 +310,7 @@ $main: (
   @include angled-edges(both #fff -5deg flip);
   background-color: #58CAFF;
 }</code></pre><button class="btn copy-button" data-clipboard-target="#anglededges-demo1-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><div class="angled-edges-sibling"><p>Quis ab placeat totam beatae dolorum, harum omnis tempora dolore exercitationem quia, soluta qui deleniti numquam.</p></div><div class="angled-edges-1"><p>Ipsam ducimus velit iure voluptatum, voluptate perferendis, asperiores, perspiciatis blanditiis autem exercitationem repellendus, rem ea reprehenderit.</p><p>Enim itaque pariatur nulla, iste unde similique nemo obcaecati odio omnis! Animi earum praesentium et maxime.</p><p>Obcaecati rerum consequatur quae itaque ratione, dolor, similique sit, earum distinctio enim consectetur eius quam nisi.</p></div><div class="angled-edges-sibling"><p>Libero eum accusamus molestiae cum recusandae. Omnis doloremque eos amet, saepe minima fugiat inventore? Non, quaerat.</p></div></div></div></section><section id="justify"><h4>Justify</h4><p>Make child elements justify aligned.</p><p><em class="capability">IE 8+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 12.1+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin justify( (
-  'selector': $selector
+  'selector': string // 'div' (optional)
 ) )</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="justify-demo1-markup">&lt;ul class="justify-1">
   &lt;li>1&lt;/li>
   &lt;li>2&lt;/li>
@@ -338,7 +318,7 @@ $main: (
   &lt;li>4&lt;/li>
   &lt;li>5&lt;/li>
 &lt;/ul></code></pre><button class="btn copy-button" data-clipboard-target="#justify-demo1-markup">Copy Code</button></div></li><li><header class="scss">scss</header><div><pre><code class="language-scss" id="justify-demo1-scss">.justify-1 { @include justify('li'); }</code></pre><button class="btn copy-button" data-clipboard-target="#justify-demo1-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><ul class="justify-1"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li></ul></div></div></section><section id="center"><h4>Center</h4><p>Make child element horizontally and vertically center aligned.</p><p><em class="capability">IE 8+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 12.1+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin center( (
-  'selector': $selector
+  'selector': string // 'div' (optional)
 ) )</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="center-demo1-markup">&lt;div class="center-1">
   &lt;div>The child element is center aligned.&lt;/div>
 &lt;/div></code></pre><button class="btn copy-button" data-clipboard-target="#center-demo1-markup">Copy Code</button></div></li><li><header class="scss">scss</header><div><pre><code class="language-scss" id="center-demo1-scss">.center-1 {
@@ -350,20 +330,18 @@ $main: (
   height: 100%;
   > div { display: inline-block; padding: 10px; background-color: #FBA158; }
 }</code></pre><button class="btn copy-button" data-clipboard-target="#center-demo1-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><div class="center-1"><div>The child element is center aligned.</div></div></div></div></section><h2>Components</h2><section id="chart"><h4>Chart</h4><p>Pure css responsive chart.</p><p><em class="capability">IE 8+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 10.6+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin chart( (
-  'data': $data,
-  'type': $type,
-  'bar-height': $bar-height, 
-  'bar-gap': $bar-gap, 
-  'steps': $step-scale $step-full, 
+  'data': map, // (#0080FF: 8.9 10.5 19.3 21.45, #FF8000: 5 10 16 22, #666666: 10.7 12 12 18)
+  'style': 'bar' | 'column',
+  'bar-height': px | em | rem, 
+  'bar-gap': px | em | rem, // Required if style is 'bar' 
+  'steps': list, // (5 100) => (scale full-size)
   'gutter': px | em | rem | %, 
-  'animation': $animation-val, 
-  'hide': $hide
-) )
-// $data: map. (color: data, color: data, ...)
-// $type: bar | column
-// $bar-gap: px | em. Required if mode is "bar".
-// $bar-height: px | em
-// $steps: list. (step count)</code></pre></div></div><p>Use the following HTML structure.</p><p><code class="language-html">.items</code>is the body of the chart. Inside each item,<code class="language-html">&lt;strong></code>s indicate the item title, empty<code class="language-html">&lt;span></code>s indicate the graphic.</p><p><code class="language-html">.ticks</code>will be used to show scale lines. The empty<code class="language-html">&lt;span></code>s inside it will be used to display the scale numbers.</p><p><code class="language-html">.labels</code>will be used to show the labels.</p><div class="code-wrapper"><header class="markup">markup</header><div><pre class="language-markup"><code>&lt;div class="your-chart">
+  'tick-line-color': color, // default: #e7e7e7
+  'hide': list, // ('units' 'labels' 'numbers') 
+  'animation': boolean, 
+  'duration': s,
+  'timing-function': string // 'ease'
+) )</code></pre></div></div><p>Use the following HTML structure.</p><p><code class="language-html">.items</code>is the body of the chart. Inside each item,<code class="language-html">&lt;strong></code>s indicate the item title, empty<code class="language-html">&lt;span></code>s indicate the graphic.</p><p><code class="language-html">.ticks</code>will be used to show scale lines. The empty<code class="language-html">&lt;span></code>s inside it will be used to display the scale numbers.</p><p><code class="language-html">.labels</code>will be used to show the labels.</p><div class="code-wrapper"><header class="markup">markup</header><div><pre class="language-markup"><code>&lt;div class="your-chart">
   &lt;ul class="items">
     &lt;li class="item-1">&lt;strong>title1&lt;/strong>&lt;span>&lt;/span>&lt;/li>
     &lt;li class="item-2">&lt;strong>title2&lt;/strong>&lt;span>&lt;/span>&lt;/li>
@@ -489,18 +467,15 @@ $chart-data2: (
   margin-bottom: 2em;
 }</code></pre><button class="btn copy-button" data-clipboard-target="#chart-demo1-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><div class="chart-1"><!-- items: chart body --><ul class="items"><li class="item-1"><strong>Copper</strong><!-- title --><span></span><!-- graphic --></li><li class="item-2"><strong>Silver</strong><span></span></li><li class="item-3"><strong>Gold</strong><span></span></li><li class="item-4"><strong>Platinum</strong><span></span></li></ul><!-- ticks: chart grid --><div class="ticks"><div class="tick-1"><span></span></div><div class="tick-2"><span></span></div><div class="tick-3"><span></span></div><div class="tick-4"><span></span></div><div class="tick-5"><span></span></div><div class="tick-6"><span></span></div><div class="tick-7"><span></span></div><div class="tick-8"><span></span></div><div class="tick-9"><span></span></div><div class="tick-10"><span></span></div><div class="tick-11"><span></span></div><div class="tick-12"><span></span></div><div class="tick-13"><span></span></div></div><!-- labels: chart label --><div class="labels"><div class="label-1">sales</div></div></div><br><div class="chart-2"><ul class="items"><li class="item-1"><strong>Copper</strong><span></span><span></span><span></span></li><li class="item-2"><strong>Silver</strong><span></span><span></span><span></span></li><li class="item-3"><strong>Gold</strong><span></span><span></span><span></span></li><li class="item-4"><strong>Platinum</strong><span></span><span></span><span></span></li></ul><div class="ticks"><div class="tick-1"><span></span></div><div class="tick-2"><span></span></div><div class="tick-3"><span></span></div><div class="tick-4"><span></span></div><div class="tick-5"><span></span></div><div class="tick-6"><span></span></div><div class="tick-7"><span></span></div><div class="tick-8"><span></span></div><div class="tick-9"><span></span></div><div class="tick-10"><span></span></div><div class="tick-11"><span></span></div><div class="tick-12"><span></span></div><div class="tick-13"><span></span></div></div><div class="labels"><div class="label-1">sales</div><div class="label-2">expenses</div><div class="label-3">profit</div></div></div></div></div></section><section id="responsive-table"><h4>Responsive-table</h4><p>Display complex data tables on small screen.</p><p>Referance:<a href="http://dbushell.com/2012/01/05/responsive-tables-2/" target="_blank">responsive-tables-2</a>,<a href="https://github.com/nadangergeo/RWD-Table-Patterns" target="_blank">RWD-Table-Patterns</a></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>// rp-table() for shorthand
 @mixin responsive-table( (
-  'style': $style,
-  'data': $data, 
-  'color': $border-color, 
-  'breakpoint': $breakpoint,
-  'th-width': $th-width,
-  'count': $count
+  'style': 'flip-scroll' | 'scroll' | 'toggle' | 'stack',
+  'breakpoint': integer | px | em | rem | %, 
+  'count': integer, // column count, for 'toggle' style
+  'data': list, // Required for 'stack' style. &lt;th> content, e.g. ("First Name", "Last Name", "Job Title", "Favorite Color", "Wars or Trek?", "Porn Name", "Date of Birth", "Dream Vacation City", "GPA", "Arbitrary Data")
+  'border-color': color, // Required for 'stack' style
+  'th-width': % // for 'stack' style
 ) ) { 
   @content;
-}
-// $style: flip-scroll | scroll | toggle | stack
-// $data: list. (&lt;th> content)
-// $count: num. (column count)</code></pre></div></div><p>Flip-scroll:<em class="capability">IE 10+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 12.1+</em></p><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="responsivetable-demo_flipscroll-markup">&lt;table class="responsive-table-1">
+}</code></pre></div></div><p>Flip-scroll:<em class="capability">IE 10+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 12.1+</em></p><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="responsivetable-demo_flipscroll-markup">&lt;table class="responsive-table-1">
   &lt;thead>
     &lt;tr>
       &lt;th>First Name&lt;/th>
@@ -794,20 +769,18 @@ th {
     th, td { border-bottom: 0; }
   }
 }</code></pre><button class="btn copy-button" data-clipboard-target="#responsivetable-demo_stack-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><table class="responsive-table-4"><thead><tr><th>First Name</th><th>Last Name</th><th>Job Title</th><th>Favorite Color</th><th>Wars or Trek?</th><th>Porn Name</th><th>Date of Birth</th><th>Dream Vacation City</th><th>GPA</th><th>Arbitrary Data</th></tr></thead><tbody><tr><td>James</td><td>Matman</td><td>Chief Sandwich Eater</td><td>Lettuce Green</td><td>Trek</td><td>Digby Green</td><td>January 13, 1979</td><td>Gotham City</td><td>3.1</td><td>RBX-12</td></tr><tr><td>The</td><td>Tick</td><td>Crimefighter Sorta</td><td>Blue</td><td>Wars</td><td>John Smith</td><td>July 19, 1968</td><td>Athens</td><td>N/A</td><td>Edlund, Ben (July 1996).</td></tr></tbody></table></div></div></section><section id="off-canvas"><h4>Off-canvas</h4><p>Pure css off-canvas using<code class="language-html">input:checkbox</code>.</p><p><em class="capability">IE 8+, Firefox 3.6+, Chrome 15+, Safari 5.1+, Opera 10.6+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin off-canvas( (
-  'style': $style,
-  'nav': $nav,
-  'submenu': $submenu,
-  'nav-size': $nav-size,
-  'direction': string,
-  'tops': $tops,
+  'style': 'slide-in' | 'slide-along' | 'slide-out' | 'rotate-in' | 'rotate-out' | 'rotate-in-reverse' | 'scale-down' | 'scale-up' | 'open-door' | 'push' | 'reveal' | 'drawer'
+  'page': string, // '.page'
+  'nav': string, // '.site-nav'
+  'submenu': boolean,
+  'nav-size': px | em | rem | %,
+  'direction': 'left' | 'right' | 'top' | 'bottom',
   'breakpoint': map, // ('small': 640px, 'medium': 768px, 'large': 1024px)
-  'overlay-color': $overlay-color,
-  'duration': $duration
+  'overlay-color': color,
+  'duration': s,
+  'tops': map // Required if style is 'drawer'. The top positions of the nav. e.g. (500px: 20px, 768px: 30px, 1025: 40px)
 ) )
-// $style: slide-in | slide-along | slide-out | rotate-in | rotate-out | rotate-in-reverse | scale-down | scale-up | open-door | push | reveal | drawer
-
-// For modes: slide-in, rotate-in, rotate-out, rotate-in-reverse, push and drawer, put nav inside ".page".
-// For modes: slide-along, slide-out, scale-down, scale-up, open-door and reveal, put nav outside ".page", after the checkbox.</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="offcanvas-demo1-markup">&lt;!-- modes: slide-in, rotate-in, rotate-out, rotate-in-reverse, push, drawer -->
+// For styles: slide-in, rotate-in, rotate-out, rotate-in-reverse, push and drawer, nav can be put inside ".page".</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="offcanvas-demo1-markup">&lt;!-- modes: slide-in, rotate-in, rotate-out, rotate-in-reverse, push, drawer -->
 &lt;div>
   &lt;input type="checkbox" name="" id="nav-toggle-1" class="checkbox-hidden">
   &lt;nav class="off-canvas-nav-1">
@@ -866,16 +839,14 @@ th {
   border: 1px solid #ccc;
   margin-bottom: 10px;
 }</code></pre><button class="btn copy-button" data-clipboard-target="#offcanvas-demo1-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><!-- modes: slide-in, rotate-in, rotate-out, rotate-in-reverse, push, drawer --><div><input type="checkbox" name="" id="nav-toggle-1" class="checkbox-hidden"><nav class="off-canvas-nav-1"><ul><li><a href="">How It Works</a></li><li><a href="">Compare</a></li><!-- [data-has-submenu] is required --><li data-has-submenu><input type="checkbox" id="subnav-1-1" class="hidden-checkbox"><label for="subnav-1-1">></label><a href="">Technology</a><!-- sub menu --><!-- [data-submenu], [data-back] are required --><ul data-submenu><li><label for="subnav-1-1" data-back>Back</label></li><li><a href="">sub item 1</a></li><li><a href="">sub item 2</a></li><li><a href="">sub item 3</a></li></ul></li><li><a href="">Careers</a></li><li><a href="">Help</a></li></ul></nav><div class="off-canvas-1"><header><label for="nav-toggle-1" class="menu">Menu</label><label for="nav-toggle-1" class="page-overlay"></label></header><div>Other content</div></div></div></div></div></section><section id="validation"><h4>Validation</h4><p>Html5 form validation using<a href="https://github.com/ryanseddon/H5F" target="_blank">H5F</a>. H5F is included in<code class="language-html">kit.js</code>(with a little bit modification), so you don't need to add it again.</p><p>Set customized alerts information through<code class="language-html">&lt;div data-info="">&lt;/div></code>.</p><p><em class="capability">IE 8+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 10.6+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin validation( (
-  'style': $style, 
-  'direction': string,
-  'shake': $shake,
-  'z-index': $z-index,
-  'speed': $speed,
-  'duration': $duration,
-  'default': $default
-) )
-// $style: 'normal' | 'fade-in' | 'slide-in'
-// $direction: left | right | top | bottom</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="validation-demo1-markup">&lt;form action="" class="validation-1">
+  'style': 'normal' | 'fade-in' | 'slide-in', 
+  'direction': 'left' | 'right' | 'top' | 'bottom',
+  'shake': boolean,
+  'z-index': integer,
+  'speed': s,
+  'duration': s,
+  'default': boolean
+) )</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="validation-demo1-markup">&lt;form action="" class="validation-1">
   &lt;ol>
     &lt;li>
       &lt;label for="name">Name&lt;/label>
@@ -907,17 +878,13 @@ th {
   window.onload = function () {
     H5F.setup(document.querySelectorAll(".validation-1"));
   }</script></div></div></section><section id="button"><h4>Button</h4><p>Create buttons and effects.</p><p><em class="capability">IE 8+, Firefox 3.6+, Chrome 15+, Safari 5.1+, Opera 10.6+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin button( (
-  'style': $style,
-  'color': $background-color $active-color,
-  'selector': string, 
-  'direction': string,
-  'duration': $duration, 
-  'timing-function': $timing-function
-) )
-// $padding: string. e.g. "5px 10px"
-// style: 'highlight' | 'simple' | 'slide' | 'ripple' | 'veil' | 'push' | 'cut' | 'bubble' | 'line-drawing'
-// direction: left, right, top, bottom, 'horizontal', 'vertical'
-// selector: class | id | property | pseudo. You could change the button status by adding this selector.</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="button-demo1-markup">&lt;span class="button-simple">button&lt;/span>
+  'style': 'highlight' | 'simple' | 'slide' | 'ripple' | 'veil' | 'push' | 'cut' | 'bubble' | 'line-drawing',
+  'color': color | list, // (#2B8ACF #52cfdb)
+  'selector': string, // switch button styles by adding this selector
+  'direction': 'left' | 'right' | 'top' | 'bottom' | 'horizontal' | 'vertical',
+  'duration': s, 
+  'timing-function': string // ease
+) )</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="button-demo1-markup">&lt;span class="button-simple">button&lt;/span>
 &lt;span class="button-push" data-text="star">&lt;span>push&lt;/span>&lt;/span>
 &lt;span class="button-bubble">bubble&lt;/span>
 
@@ -938,11 +905,9 @@ th {
   vertical-align: middle;
   margin: 10px;
 }</code></pre><button class="btn copy-button" data-clipboard-target="#button-demo1-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><span class="button-simple">button</span><span class="button-push" data-text="star"><span>push</span></span><span class="button-bubble">bubble</span><span class="button-line-drawing">line-drawing<!-- 4 pairs of empty spans required --><span></span><span></span><span></span><span></span></span></div></div></section><section id="parallelogram"><h4>Parallelogram</h4><p>Make parallelogram box using CSS3.</p><p><em class="capability">IE 9+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 10.6+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin parallelogram( (
-  'color': $color,
-  'angle': $angle
-) )
-// $color: color
-// $angle: deg</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="parallelogram-demo1-markup">&lt;div class="parallelogram-1">Parallelogram demo&lt;/div></code></pre><button class="btn copy-button" data-clipboard-target="#parallelogram-demo1-markup">Copy Code</button></div></li><li><header class="scss">scss</header><div><pre><code class="language-scss" id="parallelogram-demo1-scss">.parallelogram-1 { 
+  'color': color,
+  'angle': deg
+) )</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="parallelogram-demo1-markup">&lt;div class="parallelogram-1">Parallelogram demo&lt;/div></code></pre><button class="btn copy-button" data-clipboard-target="#parallelogram-demo1-markup">Copy Code</button></div></li><li><header class="scss">scss</header><div><pre><code class="language-scss" id="parallelogram-demo1-scss">.parallelogram-1 { 
   @include parallelogram(#0C81E7 -30deg); 
 
   display: inline-block;
@@ -950,23 +915,17 @@ th {
   padding: 20px;
   color: #fff;
 }</code></pre><button class="btn copy-button" data-clipboard-target="#parallelogram-demo1-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><div class="parallelogram-1">Parallelogram demo</div></div></div></section><section id="drop-shadow"><h4>Drop-shadow</h4><p>Pure css drop shadow effects.<br>Token from Nicolas Gallagher at<a href="http://nicolasgallagher.com/css-drop-shadow-without-images/" target="_blank">css-drop-shadow-without-images</a>.</p><p><em class="capability">IE 9+, Firefox 4+, Chrome 15+, Safari 5.1+, Opera 10.6+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin drop-shadow( (
-  'style': $style, 
-  'direction': string,
-  'color': $color, 
-  'shadow-size': $shadow-size
-) )
-// $style: 'lifted' | 'raised' | 'perspective' | 'curve'
-// $direction: left | right | top | bottom | 'horizontal' | 'vertical'</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="dropshadow-demo1-markup"></code></pre><button class="btn copy-button" data-clipboard-target="#dropshadow-demo1-markup">Copy Code</button></div></li><li><header class="scss">scss</header><div><pre><code class="language-scss" id="dropshadow-demo1-scss"></code></pre><button class="btn copy-button" data-clipboard-target="#dropshadow-demo1-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"></div></div></section><section id="switch"><h4>Switch</h4><p>Make switch using<code class="language-html">input:checkbox</code>.</p><p><em class="capability">IE 8+, Firefox 3.6+, Chrome 15+, Safari 5.1+, Opera 10.6+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin switch( (
-  'style': $style, 
-  'color': $color, 
-  'size': $size, 
-  'text' $text,
-  'border-radius': $border-radius
-) )
-// $style: 'toggle' | 'slider'
-// $size: px | em
-// $color: color
-// $text: list. e.g. ('on' 'off')</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="switch-demo1-markup">&lt;div class="switch-1">
+  'style': 'lifted' | 'raised' | 'perspective' | 'curve', 
+  'direction': 'left' | 'right' | 'top' | 'bottom' | 'horizontal' | 'vertical',
+  'color': color, 
+  'shadow-size': px | em | rem
+) )</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="dropshadow-demo1-markup"></code></pre><button class="btn copy-button" data-clipboard-target="#dropshadow-demo1-markup">Copy Code</button></div></li><li><header class="scss">scss</header><div><pre><code class="language-scss" id="dropshadow-demo1-scss"></code></pre><button class="btn copy-button" data-clipboard-target="#dropshadow-demo1-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"></div></div></section><section id="switch"><h4>Switch</h4><p>Make switch using<code class="language-html">input:checkbox</code>.</p><p><em class="capability">IE 8+, Firefox 3.6+, Chrome 15+, Safari 5.1+, Opera 10.6+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin switch( (
+  'style': 'toggle' | 'slider', 
+  'color': color | list, 
+  'size': px | em | rem, 
+  'text' list, // ('on' 'off')
+  'border-radius': px | em | rem | %
+) )</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="switch-demo1-markup">&lt;div class="switch-1">
   &lt;input type="checkbox" id="switch-id-1" name="switch">
   &lt;!-- span is required if you want to show text -->
   &lt;label for="switch-id-1">&lt;span>&lt;/span>&lt;/label>
@@ -1054,21 +1013,17 @@ th {
     }
   }
 }</code></pre><button class="btn copy-button" data-clipboard-target="#inputfile-demo1-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><div class="input-file-1"><input type="file" id="input-file-id" data-multiple-caption="{count} files selected" multiple><label for="input-file-id">Choose a file</label></div><script src="v4/node_modules/rocket-sass/src/js/components/input-file.js"></script><script type="text/javascript">inputFile('#input-file-id');</script></div></div></section><section id="tab"><h4>Tab</h4><p>Make tab use<code class="language-html">input:radio</code>.<br>Use<code class="language-html">tab-active</code>to set up tab active styles and<code class="language-html">tab-panel-active</code>for tab panel active styles.<br>To reduce complexity,<code class="language-html">.ro-tab</code>and<code class="language-html">.ro-panels</code>are required.</p><p><em class="capability">IE 8+, Firefox 3.6+, Chrome 15+, Safari 5.1+, Opera 12.1+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin tab( (
-  'style': $style,
-  'count': $count 
+  'style': 'normal' | 'carousel' | 'customize',
+  'count': integer 
 ) )
-// $count: tab count
-// $style: 'normal' | 'carousel' | 'customize'
 
 @mixin tab-active((
-  'count': $count
+  'count': integer
 ))
-// $count: tab count
 
 @mixin tab-panel-active((
-  'count': $count
-))
-// $count: tab count</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="tab-demo1-markup">&lt;div class="tab-1">
+  'count': integer
+))</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="tab-demo1-markup">&lt;div class="tab-1">
   &lt;input type="radio" name="tab-radio-name" id="tab-radio-id-1" checked>
   &lt;input type="radio" name="tab-radio-name" id="tab-radio-id-2">
   &lt;input type="radio" name="tab-radio-name" id="tab-radio-id-3">
@@ -1101,9 +1056,9 @@ th {
     border: 1px solid #1899FF;
   } 
 }</code></pre><button class="btn copy-button" data-clipboard-target="#tab-demo1-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><div class="tab-1"><input type="radio" name="tab-radio-name" id="tab-radio-id-1" checked> <input type="radio" name="tab-radio-name" id="tab-radio-id-2"> <input type="radio" name="tab-radio-name" id="tab-radio-id-3"><!-- class .ro-tab is required --><div class="ro-tab"><label for="tab-radio-id-1">tab 1</label><label for="tab-radio-id-2">tab 2</label><label for="tab-radio-id-3">tab 3</label></div><!-- class .ro-panels is required --><div class="ro-panels"><div><p>Praesentium velit, aliquam ex, fuga aperiam tempora harum rem obcaecati ut corrupti autem laudantium cupiditate, nostrum similique ducimus numquam commodi?</p></div><div><p>Labore illo, doloremque laboriosam velit molestiae sequi provident vitae minima nobis tempore eius nulla deserunt, repellat aliquid odit, illum. Quod!</p></div><div><p>Expedita earum soluta repudiandae voluptas dolorem doloremque maiores iusto rem fugit itaque. Ab facere aperiam libero, iusto facilis praesentium laborum.</p></div></div></div></div></div></section><section id="accordion"><h4>Accordion</h4><p>Pure css accordion.</p><p><em class="capability">IE 7+, Firefox 3.6+, Chrome 15+, Safari 5.1+, Opera 10.6+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin accordion( (
-  'selector': string, 
-  'max-height': $max-height, 
-  'duration': $duration
+  'selector': string, // 'div' 
+  'max-height': px | em | rem, 
+  'duration': s
 ) )</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="accordion-demo1-markup">&lt;div class="accordion-1">
   &lt;input type="checkbox" name="accordion-1" id="accordion-checkbox-1">
   &lt;label for="accordion-checkbox-1">About Us&lt;/label>
@@ -1121,17 +1076,13 @@ th {
   @include accordion(div 200px);
   > label { display: block; padding: 10px; background-color: #f5f5f5; }
 }</code></pre><button class="btn copy-button" data-clipboard-target="#accordion-demo1-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><div class="accordion-1"><input type="checkbox" name="accordion-1" id="accordion-checkbox-1"><label for="accordion-checkbox-1">About Us</label><div><p>Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.</p></div></div><div class="accordion-1"><input type="checkbox" name="accordion-1" id="accordion-checkbox-2"><label for="accordion-checkbox-2">Contact Us</label><div><p>Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.</p></div></div></div></div></section><section id="dropdown"><h4>Dropdown</h4><p>Make dropdown using<code class="language-html">:hover</code>or<code class="language-html">input:checkbox</code>.</p><p><em class="capability">IE 7+, Firefox 3.6+, Chrome 15+, Safari 5.1+, Opera 10.6+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin dropdown( (
-  'style': $style,
-  'selector': string, 
-  'activate': $activate, 
-  'direction': string,
-  'duration': $duration, 
-  'default': $default
-) )
-// $selector: string. Dropdown content selector.
-// $activate: 'hover' | 'click'
-// $style: 'display' | 'scale' | 'rotate'
-// default: use default styles</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="dropdown-demo1-markup">&lt;div class="dropdown-1">
+  'style': 'display' | 'scale' | 'rotate',
+  'selector': string, // 'ul'
+  'activate': 'hover' | 'click', 
+  'direction': 'left' | 'right',
+  'duration': s, 
+  'default': boolean
+) )</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="dropdown-demo1-markup">&lt;div class="dropdown-1">
   &lt;span>dropdown&lt;/span>
   &lt;!-- if you set $show: click, input and label are required. -->
   &lt;input type="checkbox" name="" id="your-dropdown-id">
@@ -1147,22 +1098,18 @@ th {
   min-height: 140px;
   margin-top: 20px;
 }</code></pre><button class="btn copy-button" data-clipboard-target="#dropdown-demo1-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><div class="dropdown-1"><span>dropdown</span><!-- if you set $show: click, input and label are required. --> <input type="checkbox" name="" id="your-dropdown-id"><label for="your-dropdown-id">→</label><ul><li><a href="">item01</a></li><li><a href="">item02</a></li><li><a href="">item03</a></li></ul></div></div></div></section><section id="tooltip"><h4>Tooltip</h4><p>Pure css<code class="language-html">tooltip</code>.</p><p><em class="capability">IE 8+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 10.6+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin tooltip( (
-  'position': $position,
-  'color': $color, 
-  'content': $content,
-  'border-radius': $border-radius
-) )
-// $position: left | right | top | bottom
-// $width(optional): px | em
-// $height(optional): px | em
-// radius (0.22em), adjust it using "$ro-tooltip-radius: your value;")</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="tooltip-demo1-markup">&lt;p>Hic, deleniti &lt;a href="" class="tooltip-2" data-tooltip="bottom tooltip">quibusdam&lt;/a> itaque expedita placeat in veritatis &lt;a href="" class="tooltip-1" data-tooltip="right tooltip">consectetur&lt;/a> explicabo non odit sed animi quos adipisci. Vero dolores animi impedit tempore tenetur.&lt;/p></code></pre><button class="btn copy-button" data-clipboard-target="#tooltip-demo1-markup">Copy Code</button></div></li><li><header class="scss">scss</header><div><pre><code class="language-scss" id="tooltip-demo1-scss">.tooltip-1 {
+  'position': 'left' | 'right' | 'top' | 'bottom',
+  'color': color, 
+  'content': string, // optional
+  'border-radius': px | em | rem | %
+) )</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="tooltip-demo1-markup">&lt;p>Hic, deleniti &lt;a href="" class="tooltip-2" data-tooltip="bottom tooltip">quibusdam&lt;/a> itaque expedita placeat in veritatis &lt;a href="" class="tooltip-1" data-tooltip="right tooltip">consectetur&lt;/a> explicabo non odit sed animi quos adipisci. Vero dolores animi impedit tempore tenetur.&lt;/p></code></pre><button class="btn copy-button" data-clipboard-target="#tooltip-demo1-markup">Copy Code</button></div></li><li><header class="scss">scss</header><div><pre><code class="language-scss" id="tooltip-demo1-scss">.tooltip-1 {
   @include tooltip(right #b02df3); 
 }
 .tooltip-2 {
   @include tooltip(radius bottom #b02df3); 
 }</code></pre><button class="btn copy-button" data-clipboard-target="#tooltip-demo1-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><p>Hic, deleniti<a href="" class="tooltip-2" data-tooltip="bottom tooltip">quibusdam</a>itaque expedita placeat in veritatis<a href="" class="tooltip-1" data-tooltip="right tooltip">consectetur</a>explicabo non odit sed animi quos adipisci. Vero dolores animi impedit tempore tenetur.</p></div></div></section><section id="flex-media"><h4>Flex-media</h4><p>Make video or inline svg flexible within its container.</p><p><em class="capability">IE 7+, Firefox 3.6+, Chrome 16+, Safari 4+, Opera 10.6+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin flex-media( (
-  'ratio': $ratio,
-  'selector': $selector
+  'ratio': float | %, // 0.56 | 56%
+  'selector': string // 'iframe'
 ) )</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="flexmedia-demo1-markup">&lt;div class="flex-media-1">
   &lt;iframe width="560" height="315" src="//www.youtube.com/embed/Rb0UmrCXxVA" frameborder="0" allowfullscreen>&lt;/iframe>
 &lt;/div>
@@ -1170,21 +1117,19 @@ th {
   &lt;svg xmlns="http://www.w3.org/2000/svg" id="heart-fill" viewBox="0 0 48 48">&lt;title>heart-fill&lt;/title>&lt;path d="M42.9 26.6L24 45.5 5.1 26.6A13.8 13.8 0 1 1 24 6.6a13.7 13.7 0 0 1 23.5 9.7c0 4-1.8 7.8-4.6 10.3z" fill="currentColor" fill-rule="evenodd"/>&lt;/svg>
 &lt;/div></code></pre><button class="btn copy-button" data-clipboard-target="#flexmedia-demo1-markup">Copy Code</button></div></li><li><header class="scss">scss</header><div><pre><code class="language-scss" id="flexmedia-demo1-scss">.flex-media-1 { @include flex-media(315/560); }
 .flex-media-2 { @include flex-media(1 svg); }</code></pre><button class="btn copy-button" data-clipboard-target="#flexmedia-demo1-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><div class="flex-media-1"><iframe width="560" height="315" src="//www.youtube.com/embed/Rb0UmrCXxVA" frameborder="0" allowfullscreen></iframe></div><div class="flex-media-2"><svg xmlns="http://www.w3.org/2000/svg" id="heart-fill" viewBox="0 0 48 48"><title>heart-fill</title><path d="M42.9 26.6L24 45.5 5.1 26.6A13.8 13.8 0 1 1 24 6.6a13.7 13.7 0 0 1 23.5 9.7c0 4-1.8 7.8-4.6 10.3z" fill="currentColor" fill-rule="evenodd"/></svg></div></div></div></section><h2>Addons</h2><section id="fluid-type"><h4>Fluid-type</h4><p>Make<code class="language-html">font-size</code>or other properties change smoothly depending on the window size.</p><p>Stolen from<a href="http://www.sassmeister.com/gist/7f22e44ace49b5124eec" target="_blank">here</a><br>More on<a href="https://blog.codepen.io/2016/10/31/fluid-type-blogs/" target="_blank">fluid-type-blogs</a>.</p><p><em class="capability">IE 6+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 10.6+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin fluid-type( (
-  'property': $property, 
-  'breakpoint': $breakpoint
-) )
-// $property: font-size | margin | padding
-// $data: map</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="fluidtype-demo1-markup">&lt;div class="fluid-type-1">Neque impedit, voluptatem quas!&lt;/div></code></pre><button class="btn copy-button" data-clipboard-target="#fluidtype-demo1-markup">Copy Code</button></div></li><li><header class="scss">scss</header><div><pre><code class="language-scss" id="fluidtype-demo1-scss">.fluid-type-1 { @include fluid-type(font-size, (320px: 16px, 1024px: 40px)); }</code></pre><button class="btn copy-button" data-clipboard-target="#fluidtype-demo1-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><div class="fluid-type-1">Neque impedit, voluptatem quas!</div></div></div></section><section id="hide-text"><h4>Hide-text</h4><p>Visually hide the text content of an element.</p><p><em class="capability">IE 7+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 10.6+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin hide-text();
+  'property': 'font-size' | 'margin' | 'padding', 
+  'breakpoint': map // (320px: 18px, 1024px: 24px)
+) )</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="fluidtype-demo1-markup">&lt;div class="fluid-type-1">Neque impedit, voluptatem quas!&lt;/div></code></pre><button class="btn copy-button" data-clipboard-target="#fluidtype-demo1-markup">Copy Code</button></div></li><li><header class="scss">scss</header><div><pre><code class="language-scss" id="fluidtype-demo1-scss">.fluid-type-1 { @include fluid-type(font-size, (320px: 16px, 1024px: 40px)); }</code></pre><button class="btn copy-button" data-clipboard-target="#fluidtype-demo1-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><div class="fluid-type-1">Neque impedit, voluptatem quas!</div></div></div></section><section id="hide-text"><h4>Hide-text</h4><p>Visually hide the text content of an element.</p><p><em class="capability">IE 7+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 10.6+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin hide-text();
 %hide-text {};</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="hidetext-demo1-markup">&lt;div class="hide-text-1">Brand Name&lt;/div></code></pre><button class="btn copy-button" data-clipboard-target="#hidetext-demo1-markup">Copy Code</button></div></li><li><header class="scss">scss</header><div><pre><code class="language-scss" id="hidetext-demo1-scss">.hide-text-1 {
   @extend %hide-text;
   width: 100px;
   height: 60px;
   background: #ccc url('http://placehold.it/100x60/DD279E/ffffff?text=Brand') 0 0 no-repeat;
 }</code></pre><button class="btn copy-button" data-clipboard-target="#hidetext-demo1-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><div class="hide-text-1">Brand Name</div></div></div></section><section id="ro-breakpoint"><h4>Ro-breakpoint</h4><p>A shorthand @mixin for mediaquery.<br>Note:<code class="language-html">ro-breakpoint</code>uses one breakpoint (e.g. 800) for both<code class="language-html">min</code>and<code class="language-html">max</code>instead of two (e.g. 799 for<code class="language-html">max</code>, 800 for<code class="language-html">min</code>). If you don't want this behaiver, you can use<code class="language-html">$breakpoint-fix: false;</code>to disable it.</p><p><em class="capability">IE 9+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 10.6+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin ro-breakpoint( (
-  'breakpoint': $breakpoint,
+  'breakpoint': integer | list, // 600 | (600 900)
   'condition': 'min' | 'max',
   'media': 'all' | 'aural' | 'braille' | 'handheld' | 'print' | 'projection' | 'screen' | 'tty' | 'tv' | 'embossed' | ..., 
-  'feature': $feature
+  'feature': 'width' | 'height'
 ) )</code></pre></div></div><div class="code-wrapper"><header class="scss">scss</header><div><pre class="language-scss"><code>@include bp('min' 640) {};
 // @media (min-width: 40em) {};
 @include bp('min' 'height' 640) {};
@@ -1193,8 +1138,8 @@ th {
 // @media screen and (max-width: 39.9375em) {};
 @include bp(400 767 1000 1200 1500) {};
 // @media (min-width: 25em) and (max-width: 47.875em), (min-width: 62.5em) and (max-width: 74.9375em), (min-width: 93.75em){}</code></pre></div></div></section><section id="at-least"><h4>At-least</h4><p>Apply styles to child elements when they are equal to or more than a given amount.</p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin at-least( (
-  'selector': string, 
-  'count': $count
+  'selector': string, // 'li' 
+  'count': integer
 ) ) {
   @content;
 }</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="atleast-demo1-markup">&lt;ul class="at-least-1">
@@ -1211,8 +1156,8 @@ th {
   li { display: inline-block; width: 100px; }
   @include at-least('li' 4) { background-color: #25e425; }
 }</code></pre><button class="btn copy-button" data-clipboard-target="#atleast-demo1-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><ul class="at-least-1"><li data-content></li><li data-content></li><li data-content></li></ul><ul class="at-least-1"><li data-content></li><li data-content></li><li data-content></li><li data-content></li></ul></div></div></section><section id="at-most"><h4>At-most</h4><p>Apply styles to child elements when they are equal to or less than a given amount.</p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin at-most( (
-  'selector': string, 
-  'count': $count
+  'selector': string, // 'li' 
+  'count': integer
 ) ) {
   @content;
 }</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="atmost-demo1-markup">&lt;ul class="at-most-1">
@@ -1230,8 +1175,8 @@ th {
   li { display: inline-block; width: 100px; }
   @include at-most('li' 4) { background-color: #25e425; }
 }</code></pre><button class="btn copy-button" data-clipboard-target="#atmost-demo1-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><ul class="at-most-1"><li data-content></li><li data-content></li><li data-content></li></ul><ul class="at-most-1"><li data-content></li><li data-content></li><li data-content></li><li data-content></li><li data-content></li></ul></div></div></section><section id="equal-to"><h4>Equal-to</h4><p>Apply styles to child elements when they are equal to a given amount.</p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin equal-to( (
-  'selector': string, 
-  'count': $count
+  'selector': string, // 'li' 
+  'count': integer
 ) ) {
   @content;
 }</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="equalto-demo1-markup">&lt;ul class="equal-to-1">
@@ -1255,8 +1200,9 @@ th {
   li { display: inline-block; width: 100px; }
   @include equal-to('li' 4) { background-color: #25e425; }
 }</code></pre><button class="btn copy-button" data-clipboard-target="#equalto-demo1-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><ul class="equal-to-1"><li data-content></li><li data-content></li><li data-content></li></ul><ul class="equal-to-1"><li data-content></li><li data-content></li><li data-content></li><li data-content></li></ul><ul class="equal-to-1"><li data-content></li><li data-content></li><li data-content></li><li data-content></li><li data-content></li></ul></div></div></section><section id="between"><h4>Between</h4><p>Apply styles to child elements when they are between 2 given amounts.</p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin between( (
-  'selector': string, 
-  'count': $count-min $count-max) {
+  'selector': string, // 'li' 
+  'count': list // (3 6)
+) ) {
   @content;
 }</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="between-demo1-markup">&lt;ul class="between-1">
   &lt;li data-content>&lt;/li>
@@ -1272,9 +1218,9 @@ th {
   li { display: inline-block; width: 100px; }
   @include between('li' 4 6) { background-color: #25e425; }
 }</code></pre><button class="btn copy-button" data-clipboard-target="#between-demo1-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><ul class="between-1"><li data-content></li><li data-content></li><li data-content></li></ul><ul class="between-1"><li data-content></li><li data-content></li><li data-content></li><li data-content></li></ul></div></div></section><h2>Color-functions</h2><section id="contrast"><h4>Contrast</h4><p>Get a light or dark color based on a given color.</p><p>By default, the light color is<code class="language-html">#fff</code>and black color is<code class="language-html">#000</code>, but you can use your own.</p><p><em class="capability">IE 6+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 10.6+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@function contrast( (
-  'color': $color,
-  'light': $light, 
-  'dark': $dark
+  'color': color,
+  'light': color, 
+  'dark': color
 ) )</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="contrast-demo1-markup">&lt;p class="contrast-1">Consequatur pariatur, minima, ex facere molestias praesentium ipsum laborum porro earum modi optio ad quam.&lt;/p>
 &lt;p class="contrast-2">Impedit dolorum sit nisi, aliquam, nemo repellendus vitae, ipsa et voluptatum dignissimos recusandae eum accusamus.&lt;/p>
 &lt;p class="contrast-3">Veniam id, nostrum fuga saepe ab voluptate incidunt nemo maiores esse praesentium animi inventore qui.&lt;/p></code></pre><button class="btn copy-button" data-clipboard-target="#contrast-demo1-markup">Copy Code</button></div></li><li><header class="scss">scss</header><div><pre><code class="language-scss" id="contrast-demo1-scss">.contrast-1 {
@@ -1289,38 +1235,30 @@ th {
   background-color: #6666FF;
   color: contrast(#6666FF light #D6D6E6);
 }</code></pre><button class="btn copy-button" data-clipboard-target="#contrast-demo1-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><p class="contrast-1">Consequatur pariatur, minima, ex facere molestias praesentium ipsum laborum porro earum modi optio ad quam.</p><p class="contrast-2">Impedit dolorum sit nisi, aliquam, nemo repellendus vitae, ipsa et voluptatum dignissimos recusandae eum accusamus.</p><p class="contrast-3">Veniam id, nostrum fuga saepe ab voluptate incidunt nemo maiores esse praesentium animi inventore qui.</p></div></div></section><section id="adjacent"><h4>Adjacent</h4><p>Get a adjacent color based on a given color.</p><p><em class="capability">IE 6+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 10.6+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@function adjacent( (
-  'scale': $scale, 
-  'color': $color, 
-  'saturation': $saturation,
-  'lightness': $lightness,
-  'angle': $angle
-) )
-// $order: integer
-// $saturation: percent
-// $lightness: percent
-// $dist(distribution): number</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="adjacent-demo1-markup">&lt;div class="adjacent-0" data-content>&lt;/div>
+  'color': color, 
+  'count': integer, // 30 
+  'saturation': %,
+  'lightness': %,
+  'scale': integer // 30
+) )</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="adjacent-demo1-markup">&lt;div class="adjacent-0" data-content>&lt;/div>
 &lt;div class="adjacent-1" data-content>&lt;/div>
 &lt;div class="adjacent-2" data-content>&lt;/div>
 &lt;div class="adjacent-3" data-content>&lt;/div></code></pre><button class="btn copy-button" data-clipboard-target="#adjacent-demo1-markup">Copy Code</button></div></li><li><header class="scss">scss</header><div><pre><code class="language-scss" id="adjacent-demo1-scss">.adjacent-0 { background-color: #155BDF; }
 .adjacent-1 { background-color: adjacent(#155BDF 1); }
 .adjacent-2 { background-color: adjacent(#155BDF 2); }
 .adjacent-3 { background-color: adjacent(#155BDF 3); }</code></pre><button class="btn copy-button" data-clipboard-target="#adjacent-demo1-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><div class="adjacent-0" data-content></div><div class="adjacent-1" data-content></div><div class="adjacent-2" data-content></div><div class="adjacent-3" data-content></div></div></div></section><section id="complementary"><h4>Complementary</h4><p>Get the complementary color based on a given color.</p><p><em class="capability">IE 6+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 10.6+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@function complementary( (
-  'color': $color, 
-  'saturation': $saturation,
-  'lightness': $lightness,
-  'angle': $angle
-) )
-// $order: integer
-// $saturation: percent
-// $lightness: percent
-// $dist(distribution): number</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="complementary-demo1-markup">&lt;div class="complementary-0" data-content>&lt;/div>
+  'color': color, 
+  'saturation': %,
+  'lightness': %,
+  'scale': integer // 30
+) )</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="complementary-demo1-markup">&lt;div class="complementary-0" data-content>&lt;/div>
 &lt;div class="complementary-1" data-content>&lt;/div></code></pre><button class="btn copy-button" data-clipboard-target="#complementary-demo1-markup">Copy Code</button></div></li><li><header class="scss">scss</header><div><pre><code class="language-scss" id="complementary-demo1-scss">.complementary-0 { background-color: #155BDF; }
 .complementary-1 { background-color: complementary(#155BDF 1); }</code></pre><button class="btn copy-button" data-clipboard-target="#complementary-demo1-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><div class="complementary-0" data-content></div><div class="complementary-1" data-content></div></div></div></section><section id="split-complementary"><h4>Split-complementary</h4><p>Get a split-complementary color based on a given color.</p><p><em class="capability">IE 6+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 10.6+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@function split-complementary( (
-  'scale': $scale, 
-  'color': $color, 
-  'saturation': $saturation,
-  'lightness': $lightness,
-  'angle': $angle
+  'color': color, 
+  'count': integer, // 30 
+  'saturation': %,
+  'lightness': %,
+  'scale': integer // 30
 ) )</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="splitcomplementary-demo1-markup">&lt;div class="split-complementary-0" data-content>&lt;/div>
 &lt;div class="split-complementary-1" data-content>&lt;/div>
 &lt;div class="split-complementary-2" data-content>&lt;/div>
@@ -1328,46 +1266,34 @@ th {
 .split-complementary-1 { background-color: split-complementary(#155BDF 1); }
 .split-complementary-2 { background-color: split-complementary(#155BDF 2); }
 .split-complementary-3 { background-color: split-complementary(#155BDF 3); }</code></pre><button class="btn copy-button" data-clipboard-target="#splitcomplementary-demo1-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><div class="split-complementary-0" data-content></div><div class="split-complementary-1" data-content></div><div class="split-complementary-2" data-content></div><div class="split-complementary-3" data-content></div></div></div></section><section id="triad"><h4>Triad</h4><p>Get a triad color based on a given color.</p><p><em class="capability">IE 6+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 10.6+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@function triad( (
-  'scale': $scale, 
-  'color': $color, 
-  'saturation': $saturation,
-  'lightness': $lightness,
-  'angle': $angle
-) )
-// $order: integer
-// $saturation: percent
-// $lightness: percent
-// $dist(distribution): number</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="triad-demo1-markup">&lt;div class="triad-0" data-content>&lt;/div>
+  'color': color, 
+  'count': integer, // 30 
+  'saturation': %,
+  'lightness': %,
+  'scale': integer // 30
+) )</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="triad-demo1-markup">&lt;div class="triad-0" data-content>&lt;/div>
 &lt;div class="triad-1" data-content>&lt;/div>
 &lt;div class="triad-2" data-content>&lt;/div></code></pre><button class="btn copy-button" data-clipboard-target="#triad-demo1-markup">Copy Code</button></div></li><li><header class="scss">scss</header><div><pre><code class="language-scss" id="triad-demo1-scss">.triad-0 { background-color: #155BDF; }
 .triad-1 { background-color: triad(#155BDF 1); }
 .triad-2 { background-color: triad(#155BDF 2); }</code></pre><button class="btn copy-button" data-clipboard-target="#triad-demo1-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><div class="triad-0" data-content></div><div class="triad-1" data-content></div><div class="triad-2" data-content></div></div></div></section><section id="rectangle"><h4>Rectangle</h4><p>Get a rectangle color based on a given color.</p><p><em class="capability">IE 6+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 10.6+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@function rectangle( (
-  'scale': $scale, 
-  'color': $color, 
-  'saturation': $saturation,
-  'lightness': $lightness,
-  'angle': $angle
-) )
-// $order: integer
-// $saturation: percent
-// $lightness: percent
-// $dist(distribution): number</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="rectangle-demo1-markup">&lt;div class="rectangle-0" data-content>&lt;/div>
+  'color': color, 
+  'count': integer, // 30 
+  'saturation': %,
+  'lightness': %,
+  'scale': integer // 30
+) )</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="rectangle-demo1-markup">&lt;div class="rectangle-0" data-content>&lt;/div>
 &lt;div class="rectangle-1" data-content>&lt;/div>
 &lt;div class="rectangle-2" data-content>&lt;/div>
 &lt;div class="rectangle-3" data-content>&lt;/div></code></pre><button class="btn copy-button" data-clipboard-target="#rectangle-demo1-markup">Copy Code</button></div></li><li><header class="scss">scss</header><div><pre><code class="language-scss" id="rectangle-demo1-scss">.rectangle-0 { background-color: #155BDF; }
 .rectangle-1 { background-color: rectangle(#155BDF 1); }
 .rectangle-2 { background-color: rectangle(#155BDF 2); }
 .rectangle-3 { background-color: rectangle(#155BDF 3); }</code></pre><button class="btn copy-button" data-clipboard-target="#rectangle-demo1-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><div class="rectangle-0" data-content></div><div class="rectangle-1" data-content></div><div class="rectangle-2" data-content></div><div class="rectangle-3" data-content></div></div></div></section><section id="square"><h4>Square</h4><p>Get a square color based on a given color.</p><p><em class="capability">IE 6+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 10.6+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@function square( (
-  'scale': $scale, 
-  'color': $color, 
-  'saturation': $saturation,
-  'lightness': $lightness,
-  'angle': $angle
-) )
-// $order: integer
-// $saturation: percent
-// $lightness: percent
-// $dist(distribution): number</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="square-demo1-markup">&lt;div class="square-0" data-content>&lt;/div>
+  'color': color, 
+  'count': integer, // 30 
+  'saturation': %,
+  'lightness': %,
+  'scale': integer // 30
+) )</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="square-demo1-markup">&lt;div class="square-0" data-content>&lt;/div>
 &lt;div class="square-1" data-content>&lt;/div>
 &lt;div class="square-2" data-content>&lt;/div>
 &lt;div class="square-3" data-content>&lt;/div></code></pre><button class="btn copy-button" data-clipboard-target="#square-demo1-markup">Copy Code</button></div></li><li><header class="scss">scss</header><div><pre><code class="language-scss" id="square-demo1-scss">.square-0 { background-color: #155BDF; }
