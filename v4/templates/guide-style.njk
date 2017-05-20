@@ -13,29 +13,9 @@ $breakpoints: (
 );
 
 {% elif componentName === "parameter_style1" %}
-// case 1
-.heading { @include type(24px bold italic); }
-
-// case 2
-.heading { @include type(bold italic 24px); }
-
-{% elif componentName === "parameter_style2" %}
-// syntax
-@mixin container($container ('gutter' $gutter) $alignment)
-
-// usage
-.selector { @include container(1000px left gutter 20px); }
-// The gutter value 20px must appear right after the string "gutter"
-
-{% elif componentName === "parameter_style3" %}
-// 1 parameter ✓
-h1 { @include type(24px bold italic); }
-
-// 1 parameter ✓
-h1 { @include type( (24px, bold, italic) ); }
-
-// 3 parameter ✗
-h1 { @include type(24px, bold, italic); }
+.grid1 { @include grid( (
+  'layout': (3 7 4) 
+) ); }
 
 {% elif componentName === "style1" %}
 
