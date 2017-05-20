@@ -86,12 +86,13 @@ gulp.task('server', function() {
           version = (dir.indexOf('v3/') !== -1) ? '/v3' : (dir.indexOf('v4/') !== -1) ? '/v4' : '',
           dest = assets + 'css' + version;
 
-      if (dir.indexOf('video') !== -1 || dir.indexOf('templates/') !== -1) { 
+      if (dir.indexOf('video') !== -1 || dir.indexOf('templates') !== -1) { 
         sassSrc = fpath; 
       }
       if (dir.indexOf('video') !== -1) { 
         dest += '/video'; 
       }
+      console.log(sassSrc, dest)
 
       return gulp.src(sassSrc)  
         .pipe($.plumber())
