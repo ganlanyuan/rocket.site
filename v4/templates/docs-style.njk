@@ -286,7 +286,10 @@ th {
 
 .responsive-table-1 { 
   // Requirements: $breakpoint
-  @include rp-table('flip-scroll' bp 1400px) {
+  @include rp-table( (
+    'style': 'flip-scroll', 
+    'breakpoint': 1400px
+  ) ) {
     border: 1px solid #dbdbdb;
     th, td { 
       border-width: 0 1px 1px 0;
@@ -298,7 +301,10 @@ th {
 {% elif componentName === "responsivetable_demo_scroll" %}
 .responsive-table-2 { 
   // Requirements: $breakpoint
-  @include rp-table('scroll' bp 1400px) {
+  @include rp-table( (
+    'style': 'scroll',
+    'breakpoint': 1400px
+  ) ) {
     .table {
       border-right-width: 1px;
       th:last-child, td:last-child { border-right-width: 0; }
@@ -313,7 +319,11 @@ th {
 {% elif componentName === "responsivetable_demo_toggle" %}
 .responsive-table-3 {
   // Requirements: $breakpoint, $count
-  @include rp-table('toggle' 'bp' 1400px 'count' 10);
+  @include rp-table( (
+    'style': 'toggle', 
+    'breakpoint': 1400px, 
+    'count': 10
+  ) );
 }
  
 {% elif componentName === "responsivetable_demo_stack" %}
@@ -331,7 +341,12 @@ $responsive-table-4-data: (
 );
 .responsive-table-4 {
   // Requirements: $data, $border-color, $th-width
-  @include rp-table('stack' 'bp' 1400px #dbdbdb 'data' $responsive-table-4-data) {
+  @include rp-table( (
+    'style': 'stack', 
+    'breakpoint': 1400px, 
+    'border-color': #dbdbdb, 
+    'data': $responsive-table-4-data
+  ) ) {
     tr:nth-of-type(2n) { background-color: #f5f5f5; }
     td:before { margin-right: 7px; }
     border-bottom: 1px solid #dbdbdb;
@@ -341,7 +356,12 @@ $responsive-table-4-data: (
 
 {% elif componentName === "offcanvas_demo1" %}
 // normal
-@include off-canvas(slide-in page '.off-canvas-1' nav '.off-canvas-nav-1' submenu);
+@include off-canvas( (
+  'style': 'slide-in', 
+  'page': '.off-canvas-1', 
+  'nav': '.off-canvas-nav-1', 
+  'submenu': true
+) );
  
 .off-canvas-nav-1 {
   background-color: #000;
@@ -368,15 +388,28 @@ $responsive-table-4-data: (
 }
 
 {% elif componentName === "validation_demo1" %}
-.validation-1 { @include validation(slide-in right default); }
+.validation-1 { @include validation( (
+  'style': 'slide-in', 
+  'direction': 'right', 
+  'default': true
+) ); }
 
 {% elif componentName === "button_demo1" %}
-$padding: "0.5em 0.8em";
-
-.button-simple { @include button($padding simple); }
-.button-push { @include button($padding push); }
-.button-bubble { @include button($padding #2B8ACF 5px bubble ':hover'); }
-.button-line-drawing { @include button($padding 'line-drawing' ':hover'); }
+.button-simple { @include button( (
+  'style': 'simple'
+) ); }
+.button-push { @include button( (
+  'style': 'push'
+) ); }
+.button-bubble { @include button( (
+  'style': 'bubble', 
+  'color': #2B8ACF, 
+  'selector': ':hover'
+) ); }
+.button-line-drawing { @include button( (
+  'style': 'line-drawing', 
+  'selector': ':hover'
+) ); }
 
 [class*="button-"] {
   vertical-align: middle;
@@ -386,7 +419,10 @@ $padding: "0.5em 0.8em";
 
 {% elif componentName === "parallelogram_demo1" %}
 .parallelogram-1 { 
-  @include parallelogram(#0C81E7 -30deg); 
+  @include parallelogram( (
+    'color': #0C81E7,
+    'angle': -30deg
+  ) ); 
 
   display: inline-block;
   margin-left: 30px;
@@ -395,10 +431,26 @@ $padding: "0.5em 0.8em";
 }
 
 {% elif componentName === "dropshadows_demo1" %}
-.drop-shadow-1 { @include drop-shadow(lifted bottom 15px); }
-.drop-shadow-2 { @include drop-shadow(raised bottom 15px); }
-.drop-shadow-3 { @include drop-shadow(perspective bottom 15px); }
-.drop-shadow-4 { @include drop-shadow(curve bottom 15px); }
+.drop-shadow-1 { @include drop-shadow( (
+  'style': 'lifted', 
+  'direction': 'bottom',
+  'shadow-size': 15px
+) ); }
+.drop-shadow-2 { @include drop-shadow( (
+  'style': 'raised', 
+  'direction': 'bottom',
+  'shadow-size': 15px
+) ); }
+.drop-shadow-3 { @include drop-shadow( (
+  'style': 'perspective', 
+  'direction': 'bottom',
+  'shadow-size': 15px
+) ); }
+.drop-shadow-4 { @include drop-shadow( (
+  'style': 'curve', 
+  'direction': 'bottom',
+  'shadow-size': 15px
+) ); }
 [class*="drop-shadow-"] {
   display: inline-block;
   width: 8em;
@@ -410,11 +462,19 @@ $padding: "0.5em 0.8em";
 
 {% elif componentName === "switch_demo1" %}
 .switch-1 { 
-  @include switch(round text ("on" "off") 36px blue); 
+  @include switch( (
+    'text': ("on" "off"),
+    'size': 36px,
+    'color': blue
+  ) ); 
   margin-bottom: 10px;
 }
 .switch-2 { 
-  @include switch(slider round 20px red); 
+  @include switch( (
+    'style': 'slider',
+    'size': 20px,
+    'color': red
+  ) ); 
 }
 
 {% elif componentName === "pushtoggle_" %}
@@ -478,11 +538,18 @@ $padding: "0.5em 0.8em";
 
 {% elif componentName === "tab_demo1" %}
 .tab-1 { 
-  @include tab(3 'carousel'); 
-  @include tab-active(3) {
+  @include tab( (
+    'style': 'carousel',
+    'count': 3
+  ) ); 
+  @include tab-active( (
+    'count': 3
+  ) ) {
     color: #1899FF;
   } 
-  @include tab-panel-active(3) {
+  @include tab-panel-active( (
+    'count': 3
+  ) ) {
     border: 1px solid #1899FF;
   } 
 }

@@ -651,7 +651,10 @@ th {
 
 .responsive-table-1 { 
   // Requirements: $breakpoint
-  @include rp-table('flip-scroll' bp 1400px) {
+  @include rp-table( (
+    'style': 'flip-scroll', 
+    'breakpoint': 1400px
+  ) ) {
     border: 1px solid #dbdbdb;
     th, td { 
       border-width: 0 1px 1px 0;
@@ -707,7 +710,10 @@ th {
   responsiveTable(document.querySelector('.responsive-table-2'), 1300);
 &lt;/script></code></pre><button class="btn copy-button" data-clipboard-target="#responsivetable-demo_scroll-markup">Copy Code</button></div></li><li><header class="scss">scss</header><div><pre><code class="language-scss" id="responsivetable-demo_scroll-scss">.responsive-table-2 { 
   // Requirements: $breakpoint
-  @include rp-table('scroll' bp 1400px) {
+  @include rp-table( (
+    'style': 'scroll',
+    'breakpoint': 1400px
+  ) ) {
     .table {
       border-right-width: 1px;
       th:last-child, td:last-child { border-right-width: 0; }
@@ -788,7 +794,11 @@ th {
   &lt;/table>
 &lt;/div></code></pre><button class="btn copy-button" data-clipboard-target="#responsivetable-demo_toggle-markup">Copy Code</button></div></li><li><header class="scss">scss</header><div><pre><code class="language-scss" id="responsivetable-demo_toggle-scss">.responsive-table-3 {
   // Requirements: $breakpoint, $count
-  @include rp-table('toggle' 'bp' 1400px 'count' 10);
+  @include rp-table( (
+    'style': 'toggle', 
+    'breakpoint': 1400px, 
+    'count': 10
+  ) );
 }</code></pre><button class="btn copy-button" data-clipboard-target="#responsivetable-demo_toggle-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><div class="responsive-table-3"><input name="" id="toggle-1" checked type="checkbox"> <input name="" id="toggle-2" type="checkbox"> <input name="" id="toggle-3" type="checkbox"> <input name="" id="toggle-4" checked type="checkbox"> <input name="" id="toggle-5" type="checkbox"> <input name="" id="toggle-6" checked type="checkbox"> <input name="" id="toggle-7" type="checkbox"> <input name="" id="toggle-8" type="checkbox"> <input name="" id="toggle-9" type="checkbox"> <input name="" id="toggle-10" type="checkbox"> <input name="" id="control-panel" type="checkbox"> <input name="" id="display-all" type="checkbox"><label for="control-panel">Display</label><label for="display-all">Display All</label><div class="control-panel"><label for="toggle-1">First Name</label><label for="toggle-2">Last Name</label><label for="toggle-3">Job Title</label><label for="toggle-4">Favorite Color</label><label for="toggle-5">Wars or Trek?</label><label for="toggle-6">Porn Name</label><label for="toggle-7">Date of Birth</label><label for="toggle-8">Dream Vacation City</label><label for="toggle-9">GPA</label><label for="toggle-10">Arbitrary Data</label></div><table><thead><tr><th>First Name</th><th>Last Name</th><th>Job Title</th><th>Favorite Color</th><th>Wars or Trek?</th><th>Porn Name</th><th>Date of Birth</th><th>Dream Vacation City</th><th>GPA</th><th>Arbitrary Data</th></tr></thead><tbody><tr><td>James</td><td>Matman</td><td>Chief Sandwich Eater</td><td>Lettuce Green</td><td>Trek</td><td>Digby Green</td><td>January 13, 1979</td><td>Gotham City</td><td>3.1</td><td>RBX-12</td></tr><tr><td>The</td><td>Tick</td><td>Crimefighter Sorta</td><td>Blue</td><td>Wars</td><td>John Smith</td><td>July 19, 1968</td><td>Athens</td><td>N/A</td><td>Edlund, Ben (July 1996).</td></tr></tbody></table></div></div></div><p>Stack:<em class="capability">IE 10+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 10.6+</em></p><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="responsivetable-demo_stack-markup">&lt;table class="responsive-table-4">
   &lt;thead>
     &lt;tr>
@@ -844,7 +854,12 @@ th {
 );
 .responsive-table-4 {
   // Requirements: $data, $border-color, $th-width
-  @include rp-table('stack' 'bp' 1400px #dbdbdb 'data' $responsive-table-4-data) {
+  @include rp-table( (
+    'style': 'stack', 
+    'breakpoint': 1400px, 
+    'border-color': #dbdbdb, 
+    'data': $responsive-table-4-data
+  ) ) {
     tr:nth-of-type(2n) { background-color: #f5f5f5; }
     td:before { margin-right: 7px; }
     border-bottom: 1px solid #dbdbdb;
@@ -896,7 +911,12 @@ th {
     &lt;div>Other content&lt;/div>
   &lt;/div>
 &lt;/div></code></pre><button class="btn copy-button" data-clipboard-target="#offcanvas-demo1-markup">Copy Code</button></div></li><li><header class="scss">scss</header><div><pre><code class="language-scss" id="offcanvas-demo1-scss">// normal
-@include off-canvas(slide-in page '.off-canvas-1' nav '.off-canvas-nav-1' submenu);
+@include off-canvas( (
+  'style': 'slide-in', 
+  'page': '.off-canvas-1', 
+  'nav': '.off-canvas-nav-1', 
+  'submenu': true
+) );
  
 .off-canvas-nav-1 {
   background-color: #000;
@@ -956,7 +976,11 @@ th {
   window.onload = function () {
     H5F.setup(document.querySelectorAll(".validation-1"));
   }
-&lt;/script></code></pre><button class="btn copy-button" data-clipboard-target="#validation-demo1-markup">Copy Code</button></div></li><li><header class="scss">scss</header><div><pre><code class="language-scss" id="validation-demo1-scss">.validation-1 { @include validation(slide-in right default); }</code></pre><button class="btn copy-button" data-clipboard-target="#validation-demo1-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><form action="" class="validation-1"><ol><li><label for="name">Name</label><input type="text" id="name" pattern="[a-zA-Z]{6,}" required><!-- alerts --><div data-info="valid">User name is valid.</div><div data-info="required">Valid user name required.</div><div data-info="error">User name must be at least 6 characters.</div></li><li><label for="name">Email</label><input type="email" id="email" required><!-- alerts --><div data-info="valid">Email is valid.</div><div data-info="required">Email is required.</div><div data-info="error">The email address you entered is not valid.</div></li><li><input type="submit" value="Submit"></li></ol></form><script>// run form validation
+&lt;/script></code></pre><button class="btn copy-button" data-clipboard-target="#validation-demo1-markup">Copy Code</button></div></li><li><header class="scss">scss</header><div><pre><code class="language-scss" id="validation-demo1-scss">.validation-1 { @include validation( (
+  'style': 'slide-in', 
+  'direction': 'right', 
+  'default': true
+) ); }</code></pre><button class="btn copy-button" data-clipboard-target="#validation-demo1-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><form action="" class="validation-1"><ol><li><label for="name">Name</label><input type="text" id="name" pattern="[a-zA-Z]{6,}" required><!-- alerts --><div data-info="valid">User name is valid.</div><div data-info="required">Valid user name required.</div><div data-info="error">User name must be at least 6 characters.</div></li><li><label for="name">Email</label><input type="email" id="email" required><!-- alerts --><div data-info="valid">Email is valid.</div><div data-info="required">Email is required.</div><div data-info="error">The email address you entered is not valid.</div></li><li><input type="submit" value="Submit"></li></ol></form><script>// run form validation
   window.onload = function () {
     H5F.setup(document.querySelectorAll(".validation-1"));
   }</script></div></div></section><section id="button"><h4>Button</h4><p>Create buttons and effects.</p><p><em class="capability">IE 8+, Firefox 3.6+, Chrome 15+, Safari 5.1+, Opera 10.6+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin button( (
@@ -976,12 +1000,21 @@ th {
   &lt;span>&lt;/span>
   &lt;span>&lt;/span>
   &lt;span>&lt;/span>
-&lt;/span></code></pre><button class="btn copy-button" data-clipboard-target="#button-demo1-markup">Copy Code</button></div></li><li><header class="scss">scss</header><div><pre><code class="language-scss" id="button-demo1-scss">$padding: "0.5em 0.8em";
-
-.button-simple { @include button($padding simple); }
-.button-push { @include button($padding push); }
-.button-bubble { @include button($padding #2B8ACF 5px bubble ':hover'); }
-.button-line-drawing { @include button($padding 'line-drawing' ':hover'); }
+&lt;/span></code></pre><button class="btn copy-button" data-clipboard-target="#button-demo1-markup">Copy Code</button></div></li><li><header class="scss">scss</header><div><pre><code class="language-scss" id="button-demo1-scss">.button-simple { @include button( (
+  'style': 'simple'
+) ); }
+.button-push { @include button( (
+  'style': 'push'
+) ); }
+.button-bubble { @include button( (
+  'style': 'bubble', 
+  'color': #2B8ACF, 
+  'selector': ':hover'
+) ); }
+.button-line-drawing { @include button( (
+  'style': 'line-drawing', 
+  'selector': ':hover'
+) ); }
 
 [class*="button-"] {
   vertical-align: middle;
@@ -990,7 +1023,10 @@ th {
   'color': color,
   'angle': deg
 ) )</code></pre></div></div><div class="demo-container" data-show="code"><div class="toggle-container"><button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button></div><div class="code-wrapper"><ul><li><header class="markup">markup</header><div><pre><code class="language-markup" id="parallelogram-demo1-markup">&lt;div class="parallelogram-1">Parallelogram demo&lt;/div></code></pre><button class="btn copy-button" data-clipboard-target="#parallelogram-demo1-markup">Copy Code</button></div></li><li><header class="scss">scss</header><div><pre><code class="language-scss" id="parallelogram-demo1-scss">.parallelogram-1 { 
-  @include parallelogram(#0C81E7 -30deg); 
+  @include parallelogram( (
+    'color': #0C81E7,
+    'angle': -30deg
+  ) ); 
 
   display: inline-block;
   margin-left: 30px;
@@ -1016,11 +1052,19 @@ th {
   &lt;input type="checkbox" id="switch-id-2" name="switch">
   &lt;label for="switch-id-2">&lt;/label>
 &lt;/div></code></pre><button class="btn copy-button" data-clipboard-target="#switch-demo1-markup">Copy Code</button></div></li><li><header class="scss">scss</header><div><pre><code class="language-scss" id="switch-demo1-scss">.switch-1 { 
-  @include switch(round text ("on" "off") 36px blue); 
+  @include switch( (
+    'text': ("on" "off"),
+    'size': 36px,
+    'color': blue
+  ) ); 
   margin-bottom: 10px;
 }
 .switch-2 { 
-  @include switch(slider round 20px red); 
+  @include switch( (
+    'style': 'slider',
+    'size': 20px,
+    'color': red
+  ) ); 
 }</code></pre><button class="btn copy-button" data-clipboard-target="#switch-demo1-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><div class="switch-1"><input type="checkbox" id="switch-id-1" name="switch"><!-- span is required if you want to show text --><label for="switch-id-1"><span></span></label></div><div class="switch-2"><input type="checkbox" id="switch-id-2" name="switch"><label for="switch-id-2"></label></div></div></div></section><section id="push-toggle"><h4>Push-toggle</h4><p>Make push toggle with<code class="language-html">input:radio</code>.</p><p><em class="capability">IE 8+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 10.6+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin push-toggle() {
   // Active styles go here
   @content;
@@ -1130,11 +1174,18 @@ th {
     &lt;/div>
   &lt;/div>
 &lt;/div></code></pre><button class="btn copy-button" data-clipboard-target="#tab-demo1-markup">Copy Code</button></div></li><li><header class="scss">scss</header><div><pre><code class="language-scss" id="tab-demo1-scss">.tab-1 { 
-  @include tab(3 'carousel'); 
-  @include tab-active(3) {
+  @include tab( (
+    'style': 'carousel',
+    'count': 3
+  ) ); 
+  @include tab-active( (
+    'count': 3
+  ) ) {
     color: #1899FF;
   } 
-  @include tab-panel-active(3) {
+  @include tab-panel-active( (
+    'count': 3
+  ) ) {
     border: 1px solid #1899FF;
   } 
 }</code></pre><button class="btn copy-button" data-clipboard-target="#tab-demo1-scss">Copy Code</button></div></li></ul></div><div class="preview-wrapper"><div class="tab-1"><input type="radio" name="tab-radio-name" id="tab-radio-id-1" checked> <input type="radio" name="tab-radio-name" id="tab-radio-id-2"> <input type="radio" name="tab-radio-name" id="tab-radio-id-3"><!-- class .ro-tab is required --><div class="ro-tab"><label for="tab-radio-id-1">tab 1</label><label for="tab-radio-id-2">tab 2</label><label for="tab-radio-id-3">tab 3</label></div><!-- class .ro-panels is required --><div class="ro-panels"><div><p>Praesentium velit, aliquam ex, fuga aperiam tempora harum rem obcaecati ut corrupti autem laudantium cupiditate, nostrum similique ducimus numquam commodi?</p></div><div><p>Labore illo, doloremque laboriosam velit molestiae sequi provident vitae minima nobis tempore eius nulla deserunt, repellat aliquid odit, illum. Quod!</p></div><div><p>Expedita earum soluta repudiandae voluptas dolorem doloremque maiores iusto rem fugit itaque. Ab facere aperiam libero, iusto facilis praesentium laborum.</p></div></div></div></div></div></section><section id="accordion"><h4>Accordion</h4><p>Pure css accordion.</p><p><em class="capability">IE 7+, Firefox 3.6+, Chrome 15+, Safari 5.1+, Opera 10.6+</em></p><div class="code-wrapper"><header class="scss">scss: syntax</header><div><pre class="language-scss"><code>@mixin accordion( (
