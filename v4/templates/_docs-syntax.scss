@@ -258,7 +258,7 @@
 
 //=> {% elif componentName === "tooltip_syntax" %}
 @mixin tooltip( (
-  'position': 'left' | 'right' | 'top' | 'bottom',
+  'direction': 'left' | 'right' | 'top' | 'bottom',
   'color': color, 
   'content': string, // optional
   'border-radius': px | em | rem | %

@@ -1,68 +1,116 @@
 {% macro get(componentName) %}
 {% if componentName === "container_demo1" %}
-<div class="container1" data-content>
-  <!-- contents -->
+<div class="container1">
+  <div data-content></div>
 </div>
 
 {% elif componentName === "container_demo2" %}
-<div class="container2" data-content>
-  <!-- contents -->
+<div class="container2">
+  <div data-content></div>
 </div>
 
 {% elif componentName === "grid_demo1" %}
 <div class="grid1">
-  <div data-content>1</div>
-  <div data-content>2</div>
-  <div data-content>3</div>
+  <div>
+    <div data-content>1</div>
+  </div>
+  <div>
+    <div data-content>2</div>
+  </div>
+  <div>
+    <div data-content>3</div>
+  </div>
 </div>
 
 {% elif componentName === "grid_demo2" %}
 <div class="grid2">
-  <div data-content>1</div>
-  <div data-content>2</div>
-  <div data-content>3</div>
+  <div>
+    <div data-content>1</div>
+  </div>
+  <div>
+    <div data-content>2</div>
+  </div>
+  <div>
+    <div data-content>3</div>
+  </div>
 </div>
 
 {% elif componentName === "grid_demo3" %}
 <div class="grid3">
-  <div data-content>1</div>
-  <div data-content>2</div>
-  <div data-content>3</div>
-  <div data-content>4</div>
-  <div data-content>5</div>
+  <div>
+    <div data-content>1</div>
+  </div>
+  <div>
+    <div data-content>2</div>
+  </div>
+  <div>
+    <div data-content>3</div>
+  </div>
+  <div>
+    <div data-content>4</div>
+  </div>
+  <div>
+    <div data-content>5</div>
+  </div>
 </div>
 
 {% elif componentName === "grid_demo4" %}
 <div class="grid4">
-  <section data-content>1</section>
-  <section data-content>2</section>
+  <section>
+    <div data-content>1</div>
+  </section>
+  <section>
+    <div data-content>2</div>
+  </section>
 </div>
 
 {% elif componentName === "grid_demo5" %}
 <div class="grid5">
-  <div data-content>1</div>
-  <div data-content>2</div>
-  <div data-content>3</div>
-  <div data-content>4</div>
-  <div data-content>5</div>
+  <div>
+    <div data-content>1</div>
+  </div>
+  <div>
+    <div data-content>2</div>
+  </div>
+  <div>
+    <div data-content>3</div>
+  </div>
+  <div>
+    <div data-content>4</div>
+  </div>
+  <div>
+    <div data-content>5</div>
+  </div>
 </div>
 
 {% elif componentName === "liquid_demo1" %}
 <div class="liquid-1">
-  <div data-content>1</div>
-  <div data-content>2</div>
+  <div>
+    <div data-content>1</div>
+  </div>
+  <div>
+    <div data-content>2</div>
+  </div>
 </div>
 
 {% elif componentName === "liquid_demo2" %}
 <div class="liquid-2">
-  <div data-content>1</div>
-  <div data-content>2</div>
+  <div>
+    <div data-content>1</div>
+  </div>
+  <div>
+    <div data-content>2</div>
+  </div>
 </div>
 
 {% elif componentName === "liquid_demo3" %}
 <div class="liquid-3">
-  <div data-content>1</div>
-  <div data-content>2</div>
+  <div>
+    <div data-content>1</div>
+  </div>
+  <div>
+    <div data-content>2</div>
+  </div>
 </div>
 
 {% elif componentName === "liquid_demo4" %}
@@ -73,30 +121,48 @@
 
 {% elif componentName === "holygrail_demo1" %}
 <div class="holy-grail-1">
-  <div data-content>sidebar1</div>
-  <div data-content>main</div>
-  <div data-content>sidebar2</div>
+  <div>
+    <div data-content>sidebar1</div>
+  </div>
+  <div>
+    <div data-content>main</div>
+  </div>
+  <div>
+    <div data-content>sidebar2</div>
+  </div>
 </div>
 
 {% elif componentName === "holygrail_demo2" %}
 <div class="holy-grail-2">
-  <div data-content>sidebar1</div>
-  <div data-content>main</div>
-  <div data-content>sidebar2</div>
+  <div>
+    <div data-content>sidebar1</div>
+  </div>
+  <div>
+    <div data-content>main</div>
+  </div>
+  <div>
+    <div data-content>sidebar2</div>
+  </div>
 </div>
 
 {% elif componentName === "holygrail_demo3" %}
 <div class="holy-grail-3">
-  <div data-content>sidebar1</div>
-  <div data-content>main</div>
-  <div data-content>sidebar2</div>
+  <div>
+    <div data-content>sidebar1</div>
+  </div>
+  <div>
+    <div data-content>main</div>
+  </div>
+  <div>
+    <div data-content>sidebar2</div>
+  </div>
 </div>
 
 {% elif componentName === "holygrail_demo4" %}
 <div class="holy-grail-4">
-  <nav data-content>sidebar1</nav>
-  <main data-content>main</main>
-  <aside data-content>sidebar2</aside>
+  <nav><div data-content>sidebar1</div></nav>
+  <main><div data-content>main</div></main>
+  <aside><div data-content>sidebar2</div></aside>
 </div>
 
 {% elif componentName === "gallery_demo1" %}
@@ -505,7 +571,7 @@
     </tbody>
   </table>
 </div>
-<script type="text/javascript" src="v4/node_modules/rocket-sass/src/js/components/responsive-table.js"></script>
+<script type="text/javascript" src="node_modules/rocket-sass/src/js/components/responsive-table.js"></script>
 <script>
   responsiveTable(document.querySelector('.responsive-table-2'), 1300);
 </script>
@@ -686,6 +752,7 @@
     </li>
   </ol>
 </form>
+<script src="../assets/js/h5f.min.js"></script>
 <script>
   // run form validation
   window.onload = function () {
@@ -755,7 +822,7 @@
   <label for="input-file-id">Choose a file</label>
 </div>
 
-<script src="v4/node_modules/rocket-sass/src/js/components/input-file.js"></script>
+<script src="node_modules/rocket-sass/src/js/components/input-file.js"></script>
 <script type="text/javascript">
   inputFile('#input-file-id');
 </script>

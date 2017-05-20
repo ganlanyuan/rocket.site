@@ -4,7 +4,7 @@ const browserSync = require('browser-sync').create();
 const nunjucks = require('nunjucks');
 const path = require('path');
 
-let dev = false;
+let dev = true;
 let sourcemapDest = '../sourcemaps';
 let src = 'src/',
   assets = 'assets/',
@@ -92,7 +92,6 @@ gulp.task('server', function() {
       if (dir.indexOf('video') !== -1) { 
         dest += '/video'; 
       }
-      console.log(sassSrc, dest)
 
       return gulp.src(sassSrc)  
         .pipe($.plumber())

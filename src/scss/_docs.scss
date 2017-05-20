@@ -24,7 +24,7 @@ pre[class*="language-"] {
     &:hover { text-decoration: underline; }
   }
   main {
-    section { padding: 20px 0; }
+    > section { padding: 20px 0; }
     h2, h4, p, .code-wrapper { 
       margin-bottom: 20px;
     }
