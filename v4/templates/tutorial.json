@@ -41,10 +41,7 @@
         "All the content is now constrain to 1170px and the container box is center aligned. View the <a href='https://ganlanyuan.github.io/rocket-reen/add-container/' target='_blank'>page</a>."
       ],
       "add basic styles": [
-        "After add more styles, <a href='https://ganlanyuan.github.io/rocket-reen/basic-styles/' target='_blank'>the page</a> looks much closer to the design.",
-        "If you look at the `-style.scss-` file, you will notice I used a shorthand mixin `-type-` to create type styles and a function `-contrast-` to get a contrast color automatically based on the background.",
-        "style1",
-        "Still there are some layout issues left, let's look at them one-by-one."
+        "After add more styles, <a href='https://ganlanyuan.github.io/rocket-reen/basic-styles/' target='_blank'>the page</a> looks much closer to the design."
       ],
       "center layout": [
         "<img src='../assets/img/reen/intro.png' alt='' />",
@@ -64,7 +61,7 @@
       ],
       "add gallery": [
         "<img src='../assets/img/reen/preview-blocks.png' alt='' />",
-        "Notice that there are many `-gallery-` layouts and `-media list-` layouts in the design. We can use mixin `-gallery-` and `-media-list-` to make it.",
+        "Notice that there are many `-gallery-` layouts in the design. We can use mixin `-gallery-` to make it.",
         "style1",
         "Add related class names to the markup and we're done. View the <a href='https://ganlanyuan.github.io/rocket-reen/gallery-medialist/' target='_blank'>final page</a>.",
         "The demo code is available <a href='https://github.com/ganlanyuan/rocket-reen' target='_blank'>here</a>. You can check each step by the <a href='https://github.com/ganlanyuan/rocket-reen/commits/master' target='_blank'>commit history</a>. Further questions or issues regarding this tutorial please submit it <a href='https://github.com/ganlanyuan/rocket-reen/issues' target='_blank'>here</a>."
