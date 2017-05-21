@@ -1,29 +1,11 @@
 
-
 {% macro get(componentName) %}
 {% if componentName === "layoutsetting_style1" %}
-$ro-layout: (
-  container: 1024px,
-  gutter: 20px,
-);
-
-{% elif componentName === "container_demo1" %}
-.container1 { @include container( (
-  'container': 600px
-) ); }
-
-{% elif componentName === "container_demo2" %}
-.container2 {
-  @include container( (
-    'container': 800px,
-    'gutter': 2%,
-    'align': left
-  ) );
-}
+$global-gutter: 20px;
 
 {% elif componentName === "grid_demo1" %}
 .grid1 { @include grid( (
-  'layout': (3 7 4) 
+  'column': (3 7 4) 
 ) ); }
 // 1st div child: 3 columns;
 // 2nd div child: 7 columns;
@@ -31,21 +13,21 @@ $ro-layout: (
 
 {% elif componentName === "grid_demo2" %}
 .grid2 { @include grid( (
-  'layout': (3 7 4 : 1 0 0) 
+  'column': (3 7 4 : 1 0 0) 
 ) ); }
 // or (3:1, 7:0, 4:0)
 // orders: 1 0 0. The first div child will go last.
 
 {% elif componentName === "grid_demo3" %}
 .grid3 { @include grid( ( 
-  'layout': (3 7 4) (2 5) 
+  'column': (3 7 4) (2 5) 
 ) ); }
 // 1st row: (3 7 4)
 // 2nd row: (2 5)
 
 {% elif componentName === "grid_demo4" %}
 .grid4 { @include grid( (
-  'layout': (2 5),
+  'column': (2 5),
   'selector': 'section'
 ) ); }
 
@@ -60,13 +42,13 @@ $main: (
   1000px: (2 7 3 4 4),
 );
 .grid5 { @include grid( (
-  'layout': $main,
+  'column': $main,
   'breakpoint': $breakpoints
 ) ); }
 
 {% elif componentName === "liquid_demo1" %}
 .liquid-1 { @include liquid( (
-  'layout': ('auto' 200px) 
+  'column': ('auto' 200px) 
 ) ); }
 // 1st column: fluid;
 // 2nd column: 200px;
@@ -74,7 +56,7 @@ $main: (
 {% elif componentName === "liquid_demo2" %}
 .liquid-2 {
   @include liquid( (
-    'layout': ('auto' 200px : 2 1),
+    'column': ('auto' 200px : 2 1),
     'gutter': 10px
   ) );
 }
@@ -83,7 +65,7 @@ $main: (
 {% elif componentName === "liquid_demo3" %}
 .liquid-3 {
   @include liquid( (
-    'layout': (600px: ('auto':2, 200px:1)), 
+    'column': (600px: ('auto':2, 200px:1)), 
     'condition': 'min', 
     'media': 'screen' 
   ) );
@@ -91,7 +73,7 @@ $main: (
 
 {% elif componentName === "liquid_demo4" %}
 .liquid-4 { @include liquid( (
-  'layout': ('auto' 200px),
+  'column': ('auto' 200px),
   'selector': ('main' 'aside') 
 ) ); }
 // 1st column: fluid;
@@ -99,7 +81,7 @@ $main: (
 
 {% elif componentName === "holygrail_demo1" %}
 .holy-grail-1 { @include holy-grail( (
-  'layout': (150px 'auto' 200px) 
+  'column': (150px 'auto' 200px) 
 ) ); }
 // 1st column: 150px;
 // 2nd column: fluid;
@@ -108,7 +90,7 @@ $main: (
 {% elif componentName === "holygrail_demo2" %}
 .holy-grail-2 { 
   @include holy-grail( (
-  'layout': (150px 'auto' 200px : 0 2 1), 
+  'column': (150px 'auto' 200px : 0 2 1), 
   'gutter': 30px
   ) ); 
 }
@@ -117,7 +99,7 @@ $main: (
 {% elif componentName === "holygrail_demo3" %}
 .holy-grail-3 { 
   @include holy-grail( (
-  'layout': (600px: (150px:0, 'auto':2, 200px:1)), 
+  'column': (600px: (150px:0, 'auto':2, 200px:1)), 
   'gutter': 30px
   ) ); 
 }
@@ -125,19 +107,19 @@ $main: (
 {% elif componentName === "holygrail_demo4" %}
 .holy-grail-4 { 
   @include holy-grail( (
-  'layout': (150px, 'auto', 200px), 
+  'column': (150px, 'auto', 200px), 
   'selector': ('nav' 'main' 'aside')
   ) ); 
 }
 
 {% elif componentName === "gallery_demo1" %}
 .gallery-1 { @include gallery( (
-  'layout': 3
+  'column': 3
 ) ); }
 
 {% elif componentName === "gallery_demo2" %}
 .gallery-2 { @include gallery( (
-  'layout': 4,
+  'column': 4,
   'gutter': 2%,
   'direction': 'RTL'
 ) ); }
@@ -147,7 +129,7 @@ $main: (
 {% elif componentName === "gallery_demo3" %}
 .gallery-3 {
   @include gallery( (
-    'layout': ('default': 2, 600px: 3, 800px: 4) 
+    'column': ('default': 2, 600px: 3, 800px: 4) 
   ) ); 
 }
 // default: 2 items per row
@@ -156,18 +138,18 @@ $main: (
 
 {% elif componentName === "gallery_demo4" %}
 .gallery-4 { @include gallery( (
-  'layout': 3, 
+  'column': 3, 
   'selector': 'div'
 ) ); }
 
 {% elif componentName === "masonry_demo1" %}
 .masonry-1 { @include masonry( (
-  'layout': 3
+  'column': 3
 ) ); }
 
 {% elif componentName === "masonry_demo2" %}
 .masonry-2 { @include masonry( (
-  'layout': 4, 
+  'column': 4, 
   'gutter': 20px
 ) ); }
 
@@ -179,14 +161,14 @@ $masonry-3-layout: (
   1024px: 4
 );
 .masonry-3 { @include masonry( (
-  'layout': $masonry-3-layout, 
+  'column': $masonry-3-layout, 
   'selector': '.panel'
 ) ); }
 
 {% elif componentName === "metro_demo1" %}
 .metro-1 { 
   @include metro( (
-    'layout': (w5 w3 2 h2 w2 w4 of 5), 
+    'column': (w5 w3 2 h2 w2 w4 of 5), 
     'gutter': 10px
   ) ); 
   > li:nth-child(3) { float: right; };
@@ -198,20 +180,20 @@ $masonry-3-layout: (
 
 {% elif componentName === "diamond_demo1" %}
 .diamond-1 { @include diamond( (
-  'layout': 3,
+  'column': 3,
   'tight': true
 ) ); }
 
 {% elif componentName === "diamond_demo2" %}
 .diamond-2 { @include diamond( (
-  'layout': 20%
+  'column': 20%
 ) ); }
 // diamond width: 20%
 
 {% elif componentName === "diamond_demo3" %}
 .diamond-3 { @include diamond( (
   'shape': 'octagon', 
-  'layout': 200px
+  'column': 200px
 ) ); }
 // diamond width: 200px
 

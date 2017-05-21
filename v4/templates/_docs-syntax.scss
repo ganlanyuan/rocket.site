@@ -1,15 +1,7 @@
 //=> {% macro get(componentName) %}
-//=> {% if componentName === "container_syntax" %}
-@mixin container( (
-  'container': px | em | rem | %,
-  'gutter': px | em | rem | %,
-  'align': 'left' | 'right' | 'center'
-) )
-
-
-//=> {% elif componentName === "grid_syntax" %}
+//=> {% if componentName === "grid_syntax" %}
 @mixin grid( (
-  'layout': list | map, // (3 5 4) | (640px: ( (3 5) (1) ), 900px: (3 5 4))
+  'column': list | map, // (3 5 4) | (640px: ( (3 5) (1) ), 900px: (3 5 4))
   'gutter': px | em | rem | %, 
   'selector': string, 
   'breakpoint': map, // ('small': 640px, 'medium': 768px, 'large': 1024px)
@@ -21,7 +13,7 @@
 
 //=> {% elif componentName === "liquid_syntax" %}
 @mixin liquid( (
-  'layout': list | map, // ('auto' 200px) | (640px: ('auto' 200px), 900px: ('auto' 300px))
+  'column': list | map, // ('auto' 200px) | (640px: ('auto' 200px), 900px: ('auto' 300px))
   'gutter': px | em | rem | %, 
   'selector': string | list, // 'li' | ('main' 'aside') 
   'breakpoint': map, // ('small': 640px, 'medium': 768px, 'large': 1024px) 
@@ -32,7 +24,7 @@
 
 //=> {% elif componentName === "holygrail_syntax" %}
 @mixin holy-grail( (
-  'layout': list | map, // ('auto' 100px 250px) | (900px: (100px 'auto' 250px))
+  'column': list | map, // ('auto' 100px 250px) | (900px: (100px 'auto' 250px))
   'gutter': px | em | rem | %, 
   'selector': string | list, // 'li' | ('nav' 'main' 'aside')  
   'breakpoint': map, // ('small': 640px, 'medium': 768px, 'large': 1024px) 
@@ -43,7 +35,7 @@
 
 //=> {% elif componentName === "gallery_syntax" %}
 @mixin gallery( (
-  'layout': integer | map, // 3 | ('dafault': 2, 600px: 3, 900px: 4)
+  'column': integer | map, // 3 | ('dafault': 2, 600px: 3, 900px: 4)
   'gutter': px | em | rem | %, 
   'selector': string, // 'li'
   'breakpoint': map, // ('small': 640px, 'medium': 768px, 'large': 1024px) 
@@ -55,7 +47,7 @@
 
 //=> {% elif componentName === "masonry_syntax" %}
 @mixin masonry( (
-  'layout': integer | map, // 3 | ('dafault': 2, 600px: 3, 900px: 4)
+  'column': integer | map, // 3 | ('dafault': 2, 600px: 3, 900px: 4)
   'gutter': px | em | rem | %, 
   'selector': string, // 'li' 
   'breakpoint': map, // ('small': 640px, 'medium': 768px, 'large': 1024px) 
@@ -80,7 +72,7 @@
 
 //=> {% elif componentName === "metro_syntax" %}
 @mixin metro( (
-  'layout': list | map, // (w1 w3 h2 w4 of 5) | (600px: w6h1 w2h2 w4h2 of 6)
+  'column': list | map, // (w1 w3 h2 w4 of 5) | (600px: w6h1 w2h2 w4h2 of 6)
   'ratio': num, // (9/16) 
   'gutter': px | em | rem | %, 
   'selector': string, // 'div'
@@ -92,7 +84,7 @@
 
 //=> {% elif componentName === "diamond_syntax" %}
 @mixin diamond( ( 
-  'layout': integer | % | px | em | ... | map, // 3 | 25% | (600px:3, 800px:4) | (600px:33.33%, 800px:25%), interger => item count, % | px | em | ... => item width
+  'column': integer | % | px | em | ... | map, // 3 | 25% | (600px:3, 800px:4) | (600px:33.33%, 800px:25%), interger => item count, % | px | em | ... => item width
   'shape': 'diamond' | 'octagon',  
   'tight': boolean, 
   'keep': boolean

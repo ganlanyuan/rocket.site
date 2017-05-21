@@ -2,17 +2,8 @@
   "docs": {
     "layout": {
       "layout setting": [
-        "Default container for `-container-` and gutter for `-container-`, `-grid-`, `-gallery-`, `-liquid-`, `-holy-grail-`, `-metro-` and `-masonry-`.",
+        "Default gutter for `-grid-`, `-gallery-`, `-liquid-`, `-holy-grail-`, `-metro-` and `-masonry-`.",
         "style1"
-      ],
-      "container": [
-        "Create a container to constrain your content. The container can be pushed to the left, right edge or center aligned.",
-        "<em class='capability'>IE 7+, Firefox 4+, Chrome 19+, Safari 6+, Opera 15+</em>",
-        "syntax",
-        "Make a 600px width container:",
-        "demo1",
-        "Change gutter and alignment:",
-        "demo2"
       ],
       "grid": [
         "Create a responsive multi columns (and even multi rows) layout using `-grid-`.",
