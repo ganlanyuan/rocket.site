@@ -4,6 +4,14 @@ docs:
     layout setting:
     - Default gutter for `-grid-`, `-gallery-`, `-liquid-`, `-holy-grail-`, `-metro-` and `-masonry-`.
     - style1
+    container:
+    - Create a container to constrain your content. The container can be pushed to the left, right edge or center aligned.
+    - "<em class='capability'>IE 7+, Firefox 4+, Chrome 19+, Safari 6+, Opera 15+</em>"
+    - syntax
+    - 'Make a 600px width container:'
+    - demo1
+    - 'Change gutter and alignment:'
+    - demo2
     grid:
     - Create a responsive multi columns (and even multi rows) layout using `-grid-`.
     - "<em class='capability'>IE 8+, Firefox 28+, Chrome 21+, Safari 6.2+, Opera 15+</em>"
@@ -15,7 +23,7 @@ docs:
     - demo2
     - The child elements can be separated to multi rows using a nested list. `-( (row1 row1 row1) (row2 row2) (row3 row3 row3))-` indicate 3 rows, the first row include 3 columns, 2rd row 2 columns, 3rd row 3 columns.
     - demo3
-    - If the child elements are not `-div-`s, indicate them using `-child $selector-` format.
+    - If the child elements are not `-div-`s, indicate them using `-'selector' $selector-` format.
     - demo4
     - "`-grid-` works with breakpoints to make multi layouts for different devices."
     - demo5

@@ -1,63 +1,52 @@
 {% macro get(componentName) %}
-{% if componentName === "grid_syntax" %}
-@mixin grid( (
-  'column': list | map, // (3 5 4) | (640px: ( (3 5) (1) ), 900px: (3 5 4))
-  'gutter': px | em | rem | %, 
-  'selector': string, 
-  'breakpoint': map, // ('small': 640px, 'medium': 768px, 'large': 1024px)
-  'condition': 'min' | 'max',
-  'media': 'all' | 'aural' | 'braille' | 'handheld' | 'print' | 'projection' | 'screen' | 'tty' | 'tv' | 'embossed' | ...,
-  'direction': 'LTR' | 'RTL',
-  'keep': boolean
-  ) )
+{% if componentName === "container_syntax" %}
+@mixin container($container ('gutter' $gutter) $alignment)
+// $container: px | em | %
+// $gutter: px | em | %
+// $alignment: left | right | center
 
-{% elif componentName === "liquid_syntax" %}
-@mixin liquid( (
-  'column': list | map, // ('auto' 200px) | (640px: ('auto' 200px), 900px: ('auto' 300px))
-  'gutter': px | em | rem | %, 
-  'selector': string | list, // 'li' | ('main' 'aside') 
-  'breakpoint': map, // ('small': 640px, 'medium': 768px, 'large': 1024px) 
-  'condition': 'min' | 'max', 
-  'media': 'all' | 'aural' | 'braille' | 'handheld' | 'print' | 'projection' | 'screen' | 'tty' | 'tv' | 'embossed' | ..., 
-  'direction': 'LTR' | 'RTL'
-  ) )
+{% elif componentName === "grid_syntax" %}
+@mixin grid($column ('gutter' $gutter) ('selector' $selector) $breakpoints $condition $media-type $direction 'keep')
+// $column: list | map
+// $selector: string (child element selector, default "div")
+// $condition: 'min' | 'max'
+// $media-type: media types
+// $breakpoints: map, e.g. (small: 640px, medium: 768px, large: 1024px)
+// $direction: LTR | RTL
 
-{% elif componentName === "holygrail_syntax" %}
-@mixin holy-grail( (
-  'column': list | map, // ('auto' 100px 250px) | (900px: (100px 'auto' 250px))
-  'gutter': px | em | rem | %, 
-  'selector': string | list, // 'li' | ('nav' 'main' 'aside')  
-  'breakpoint': map, // ('small': 640px, 'medium': 768px, 'large': 1024px) 
-  'condition': 'min' | 'max', 
-  'media': 'all' | 'aural' | 'braille' | 'handheld' | 'print' | 'projection' | 'screen' | 'tty' | 'tv' | 'embossed' | ..., 
-  'direction': 'LTR' | 'RTL'
-  ) )
+{% elif componentName === "liquid2_syntax" %}
+@mixin liquid-2($layout ('gutter' $gutter) ('child' $child) $breakpoints $condition $media-type $direction)
+// $layout: list | map
+// $condition: 'min' | 'max'
+// $media-type: media types
+// $breakpoints: map, e.g. (small: 640px, medium: 768px, large: 1024px)
+// $direction: LTR | RTL
+
+{% elif componentName === "liquid3_syntax" %}
+@mixin liquid-3($layout ('gutter' $gutter) ('child' $child) $breakpoints $condition $media-type $direction)
+// $layout: list | map
+// $condition: 'min' | 'max'
+// $media-type: media types
+// $breakpoints: map, e.g. (small: 640px, medium: 768px, large: 1024px)
+// $direction: LTR | RTL
 
 {% elif componentName === "gallery_syntax" %}
-@mixin gallery( (
-  'column': integer | map, // 3 | ('dafault': 2, 600px: 3, 900px: 4)
-  'gutter': px | em | rem | %, 
-  'selector': string, // 'li'
-  'breakpoint': map, // ('small': 640px, 'medium': 768px, 'large': 1024px) 
-  'condition': 'min' | 'max', 
-  'media': 'all' | 'aural' | 'braille' | 'handheld' | 'print' | 'projection' | 'screen' | 'tty' | 'tv' | 'embossed' | ..., 
-  'direction': 'LTR' | 'RTL',
-  'keep': boolean
-  ) )
+@mixin gallery($layout ('gutter' $gutter) ('child' $child) $breakpoints $condition $media-type $direction 'keep');
+// $layout: number | map
+// $condition: 'min' | 'max'
+// $media-type: media types
+// $breakpoints: map, e.g. (small: 640px, medium: 768px, large: 1024px)
+// $direction: LTR | RTL
 
 {% elif componentName === "masonry_syntax" %}
-@mixin masonry( (
-  'column': integer | map, // 3 | ('dafault': 2, 600px: 3, 900px: 4)
-  'gutter': px | em | rem | %, 
-  'selector': string, // 'li' 
-  'breakpoint': map, // ('small': 640px, 'medium': 768px, 'large': 1024px) 
-  'condition': 'min' | 'max', 
-  'media': 'all' | 'aural' | 'braille' | 'handheld' | 'print' | 'projection' | 'screen' | 'tty' | 'tv' | 'embossed' | ...,
-  'keep': boolean
-  ) )
+@mixin masonry($layout ('gutter' $gutter) ('child' $child) $breakpoints $condition $media-type 'keep');
+// $layout: number | map
+// $condition: 'min' | 'max'
+// $media-type: media types
+// $breakpoints: map, e.g. (small: 640px, medium: 768px, large: 1024px)
 
 // *** fallback: IE9- *** //
-.lt-ie10 {
+.no-csscolumns {
   .masonry {
     text-align: center;
     > li {
@@ -71,129 +60,82 @@
 }
 
 {% elif componentName === "metro_syntax" %}
-@mixin metro( (
-  'column': list | map, // (w1 w3 h2 w4 of 5) | (600px: w6h1 w2h2 w4h2 of 6)
-  'ratio': num, // (9/16) 
-  'gutter': px | em | rem | %, 
-  'selector': string, // 'div'
-  'breakpoint': map, // ('small': 640px, 'medium': 768px, 'large': 1024px) 
-  'condition': 'min' | 'max', 
-  'media': 'all' | 'aural' | 'braille' | 'handheld' | 'print' | 'projection' | 'screen' | 'tty' | 'tv' | 'embossed' | ..., 
-  'keep': boolean
-  ) )
+@mixin metro($layout (ratio $ratio) ('gutter' $gutter) ('child' $child) $breakpoints $condition $media-type 'keep')
+// $layout: list | map
+// $condition: 'min' | 'max'
+// $media-type: media types
+// $breakpoints: map, e.g. (small: 640px, medium: 768px, large: 1024px)
 
 {% elif componentName === "diamond_syntax" %}
-@mixin diamond( ( 
-  'column': integer | % | px | em | ... | map, // 3 | 25% | (600px:3, 800px:4) | (600px:33.33%, 800px:25%), interger => item count, % | px | em | ... => item width
-  'shape': 'diamond' | 'octagon',  
-  'tight': boolean, 
-  'keep': boolean
-) )
+@mixin diamond(($count / $size) $shape 'tight' 'keep')
+// $shape: 'diamond' | 'octagon'
 
 {% elif componentName === "anglededges_syntax" %}
-@mixin angled-edges( (
-  'edge': 'top' | 'bottom' | 'both', 
-  'angle': deg,
-  'color': color,
-  'flip': boolean
-) );
+@mixin angled-edges($edges $angle $edge-color 'flip');
+// $edges: top | bottom | both
+// $edge-color: deg
+
+{% elif componentName === "stickyfooter_syntax" %}
+@mixin sticky-footer($selector);
 
 {% elif componentName === "justify_syntax" %}
-@mixin justify( (
-  'selector': string // 'div' (optional)
-) )
+@mixin justify(($selector));
 
 {% elif componentName === "center_syntax" %}
-@mixin center( (
-  'selector': string // 'div' (optional)
-) )
+@mixin center($selector)
 
-{% elif componentName === "chart_syntax" %}
-@mixin chart( (
-  'data': map, // (#0080FF: 8.9 10.5 19.3 21.45, #FF8000: 5 10 16 22, #666666: 10.7 12 12 18)
-  'style': 'bar' | 'column',
-  'bar-height': px | em | rem, 
-  'bar-gap': px | em | rem, // Required if style is 'bar' 
-  'steps': list, // (5 100) => (scale full-size)
-  'gutter': px | em | rem | %, 
-  'tick-line-color': color, // default: #e7e7e7
-  'hide': list, // ('units' 'labels' 'numbers') 
-  'animation': boolean, 
-  'duration': s,
-  'timing-function': string // 'ease'
-) )
+{% elif componentName === "charts_syntax" %}
+@mixin charts($data $chart-type ('bar-height' $bar-height) ('bar-gap' $bar-gap) ('steps' $steps) ('gutter' $gutter) ('animation' $animation-val) ('hide' $hide))
+// $data: map. (color: data, color: data, ...)
+// $chart-type: bar | column
+// $bar-gap: px | em. Required if mode is "bar".
+// $bar-height: px | em
+// $steps: list. (step count)
 
 {% elif componentName === "responsivetable_syntax" %}
 // rp-table() for shorthand
-@mixin responsive-table( (
-  'style': 'flip-scroll' | 'scroll' | 'toggle' | 'stack',
-  'breakpoint': integer | px | em | rem | %, 
-  'count': integer, // column count, for 'toggle' style
-  'data': list, // Required for 'stack' style. <th> content, e.g. ("First Name", "Last Name", "Job Title", "Favorite Color", "Wars or Trek?", "Porn Name", "Date of Birth", "Dream Vacation City", "GPA", "Arbitrary Data")
-  'border-color': color, // Required for 'stack' style
-  'th-width': % // for 'stack' style
-) ) { 
+@mixin responsive-table($mode ('data' $data) $border-color ('bp' $breakpoint) ('width' $th-width) ('count' $count)) { 
   @content;
 }
+// $mode: flip-scroll | scroll | toggle | stack
+// $data: list. (<th> content)
+// $count: num. (column count)
 
 {% elif componentName === "offcanvas_syntax" %}
-@mixin off-canvas( (
-  'style': 'slide-in' | 'slide-along' | 'slide-out' | 'rotate-in' | 'rotate-out' | 'rotate-in-reverse' | 'scale-down' | 'scale-up' | 'open-door' | 'push' | 'reveal' | 'drawer'
-  'page': string, // '.page'
-  'nav': string, // '.site-nav'
-  'submenu': boolean,
-  'nav-size': px | em | rem | %,
-  'direction': 'left' | 'right' | 'top' | 'bottom',
-  'breakpoint': map, // ('small': 640px, 'medium': 768px, 'large': 1024px)
-  'overlay-color': color,
-  'duration': s,
-  'tops': map // Required if style is 'drawer'. The top positions of the nav. e.g. (500px: 20px, 768px: 30px, 1025: 40px)
-) )
-// For styles: slide-in, rotate-in, rotate-out, rotate-in-reverse, push and drawer, nav can be put inside ".page".
+@mixin off-canvas($mode $nav 'submenu' $nav-width $direction ($map $breakpoints) $overlay-background-color $duration)
+// $mode: slide-in | slide-along | slide-out | rotate-in | rotate-out | rotate-in-reverse | scale-down | scale-up | open-door | push | reveal | drawer
+
+// For modes: slide-in, rotate-in, rotate-out, rotate-in-reverse, push and drawer, put nav inside ".page".
+// For modes: slide-along, slide-out, scale-down, scale-up, open-door and reveal, put nav outside ".page", after the checkbox.
 
 {% elif componentName === "validation_syntax" %}
-@mixin validation( (
-  'style': 'normal' | 'fade-in' | 'slide-in', 
-  'direction': 'left' | 'right' | 'top' | 'bottom',
-  'shake': boolean,
-  'z-index': integer,
-  'speed': s,
-  'duration': s,
-  'default': boolean
-) )
+@mixin validation($style $direction $shake $speed $duration 'default')
+// $style: 'normal' | 'fade-in' | 'slide-in'
+// $direction: left | right | top | bottom
 
 {% elif componentName === "button_syntax" %}
-@mixin button( (
-  'style': 'highlight' | 'simple' | 'slide' | 'ripple' | 'veil' | 'push' | 'cut' | 'bubble' | 'line-drawing',
-  'color': color | list, // (#2B8ACF #52cfdb)
-  'selector': string, // switch button styles by adding this selector
-  'direction': 'left' | 'right' | 'top' | 'bottom' | 'horizontal' | 'vertical',
-  'duration': s, 
-  'timing-function': string // ease
-) )
+@mixin button($padding ($border-radius | 'round') ($background-color $active-color) $style $active-selector $direction $duration $timing-function)
+// $padding: string. e.g. "5px 10px"
+// style: 'highlight' | 'simple' | 'slide' | 'ripple' | 'veil' | 'push' | 'cut' | 'bubble' | 'line-drawing'
+// direction: left, right, top, bottom, 'horizontal', 'vertical'
+// active-selector: class | id | property | pseudo. You could change the button status by adding this selector.
 
 {% elif componentName === "parallelogram_syntax" %}
-@mixin parallelogram( (
-  'color': color,
-  'angle': deg
-) )
+@mixin parallelogram($background $angle);
+// $background: color
+// $angle: deg
 
-{% elif componentName === "dropshadow_syntax" %}
-@mixin drop-shadow( (
-  'style': 'lifted' | 'raised' | 'perspective' | 'curve', 
-  'direction': 'left' | 'right' | 'top' | 'bottom' | 'horizontal' | 'vertical',
-  'color': color, 
-  'shadow-size': px | em | rem
-) )
+{% elif componentName === "dropshadows_syntax" %}
+@mixin drop-shadows($style $direction $color $shadow-size);
+// $style: 'lifted' | 'raised' | 'perspective' | 'curve'
+// $direction: left | right | top | bottom | 'horizontal' | 'vertical'
 
 {% elif componentName === "switch_syntax" %}
-@mixin switch( (
-  'style': 'toggle' | 'slider', 
-  'color': color | list, 
-  'size': px | em | rem, 
-  'text' list, // ('on' 'off')
-  'border-radius': px | em | rem | %
-) )
+@mixin switch($style $size $active-color ('text' $text) ('radius' | 'round'))
+// $style: 'toggle' | 'slider'
+// $size: px | em
+// $active-color: color
+// $text: list. e.g. ('on' 'off') 
 
 {% elif componentName === "pushtoggle_syntax" %}
 @mixin push-toggle() {
@@ -217,160 +159,141 @@
   @content;
 }
 
-{% elif componentName === "tab_syntax" %}
-@mixin tab( (
-  'style': 'normal' | 'carousel' | 'customize',
-  'count': integer 
-) )
+{% elif componentName === "tabs_syntax" %}
+@mixin tabs($count $style)
+// $count: tab count
+// $style: 'normal' | 'carousel' | 'customize'
 
-@mixin tab-active((
-  'count': integer
-))
+@mixin tabs-active($count)
+// $count: tab count
 
-@mixin tab-panel-active((
-  'count': integer
-))
+@mixin tabs-panel-active($count)
+// $count: tab count
 
 {% elif componentName === "accordion_syntax" %}
-@mixin accordion( (
-  'selector': string, // 'div' 
-  'max-height': px | em | rem, 
-  'duration': s
-) )
+@mixin accordion($selector $max-height $transition-duration)
 
 {% elif componentName === "dropdown_syntax" %}
-@mixin dropdown( (
-  'style': 'display' | 'scale' | 'rotate',
-  'selector': string, // 'ul'
-  'activate': 'hover' | 'click', 
-  'direction': 'left' | 'right',
-  'duration': s, 
-  'default': boolean
-) )
+@mixin dropdown($selector $show $style $direction $duration 'default')
+// $selector: string. Dropdown content selector.
+// $show: 'hover' | 'click'
+// $style: 'display' | 'scale' | 'rotate'
+// default: use default styles
 
 {% elif componentName === "tooltip_syntax" %}
-@mixin tooltip( (
-  'direction': 'left' | 'right' | 'top' | 'bottom',
-  'color': color, 
-  'content': string, // optional
-  'border-radius': px | em | rem | %
-) )
+@mixin tooltip($position $color ('width' $width) ('height' $height) 'radius')
+// $position: left | right | top | bottom
+// $width(optional): px | em
+// $height(optional): px | em
+// radius (0.22em), adjust it using "$ro-tooltip-radius: your value;")
+
+{% elif componentName === "medialist_syntax" %}
+@mixin media-list($role $gutter $direction)
 
 {% elif componentName === "flexmedia_syntax" %}
-@mixin flex-media( (
-  'ratio': float | %, // 0.56 | 56%
-  'selector': string // 'iframe'
-) )
+@mixin flex-media($ratio $child)
+
+{% elif componentName === "type_syntax" %}
+@mixin type($font-size $font-weight $font-style $line-height $font-family $text-align $text-transform)
+// $font-weight: thin, hairline, 'extra light', 'ultra light', lighter, light, normal, medium, 'semi bold', 'demi bold', bold, bolder, 'extra bold', black, heavy, 100, 200, 300, 400, 500, 600, 700, 800, 900, weight-normal, weight-inherit
+// $font-style: italic, oblique, style-normal, style-inherit
+// $text-align: left, right, center, justify, align-inherit
+// $text-transform: capitalize, uppercase, lowercase, none, full-width, transform-inherit
+ 
+// Tips: 
+// to set 'font-weight', 'font-style', 'text-align' or 'text-transform' values to 'inherit' or 'normal', 
+// you need add prefix 'weight-', 'style-' or 'transform-'.
 
 {% elif componentName === "fluidtype_syntax" %}
-@mixin fluid-type( (
-  'property': 'font-size' | 'margin' | 'padding', 
-  'breakpoint': map // (320px: 18px, 1024px: 24px)
-) )
+@mixin fluid-type($properties, $data);
+// $properties: font-size | margin | padding
+// $data: map
+
+{% elif componentName === "responsivetype_syntax" %}
+@mixin responsive-type($data, $breakpoints) // or rp-type();
+// $data: map
+// $breakpoints (global breakpoints, optional): map
 
 {% elif componentName === "hidetext_syntax" %}
 @mixin hide-text();
 %hide-text {};
 
+{% elif componentName === "opacity_syntax" %}
+@mixin opacity($opacity)
+
+{% elif componentName === "iergba_syntax" %}
+@mixin ie-rgba($rgba)
+// $rgba: rgba color
+
 {% elif componentName === "robreakpoint_syntax" %}
-@mixin ro-breakpoint( (
-  'breakpoint': integer | list, // 600 | (600 900)
-  'condition': 'min' | 'max',
-  'media': 'all' | 'aural' | 'braille' | 'handheld' | 'print' | 'projection' | 'screen' | 'tty' | 'tv' | 'embossed' | ..., 
-  'feature': 'width' | 'height'
-) )
+@mixin ro-breakpoint($condition $media-type $media-feature $breakpoints)
 
 {% elif componentName === "atleast_syntax" %}
-@mixin at-least( (
-  'selector': string, // 'li' 
-  'count': integer
-) ) {
+@mixin at-least($selector $count) {
   @content;
 }
 
 {% elif componentName === "atmost_syntax" %}
-@mixin at-most( (
-  'selector': string, // 'li' 
-  'count': integer
-) ) {
+@mixin at-most($selector $count) {
   @content;
 }
 
 {% elif componentName === "equalto_syntax" %}
-@mixin equal-to( (
-  'selector': string, // 'li' 
-  'count': integer
-) ) {
+@mixin equal-to($selector $count) {
   @content;
 }
 
 {% elif componentName === "between_syntax" %}
-@mixin between( (
-  'selector': string, // 'li' 
-  'count': list // (3 6)
-) ) {
+@mixin between($selector $count1 $count2) {
   @content;
 }
 
+{% elif componentName === "visible_syntax" %}
+@mixin visible($media-type $breakpoints)
+
+{% elif componentName === "hidden_syntax" %}
+@mixin hidden($media-type $breakpoints)
+
 {% elif componentName === "contrast_syntax" %}
-@function contrast( (
-  'color': color,
-  'light': color, 
-  'dark': color
-) )
+@function contrast($color ('light' $light) ('dark' $dark))
 
 {% elif componentName === "adjacent_syntax" %}
-@function adjacent( (
-  'color': color, 
-  'count': integer, // 30 
-  'saturation': %,
-  'lightness': %,
-  'scale': integer // 30
-) )
+@function adjacent($color $order ('saturation' $saturation) ('lightness' $lightness) ('dist' $dist))
+// $order: integer
+// $saturation: percent
+// $lightness: percent
+// $dist(distribution): number
 
 {% elif componentName === "complementary_syntax" %}
-@function complementary( (
-  'color': color, 
-  'saturation': %,
-  'lightness': %,
-  'scale': integer // 30
-) )
+@function complementary($color ('saturation' $saturation) ('lightness' $lightness) ('dist' $dist))
+// $order: integer
+// $saturation: percent
+// $lightness: percent
+// $dist(distribution): number
 
 {% elif componentName === "splitcomplementary_syntax" %}
-@function split-complementary( (
-  'color': color, 
-  'count': integer, // 30 
-  'saturation': %,
-  'lightness': %,
-  'scale': integer // 30
-) )
+@function split-complementary($color $order ('saturation' $saturation) ('lightness' $lightness) ('dist' $dist))
 
 {% elif componentName === "triad_syntax" %}
-@function triad( (
-  'color': color, 
-  'count': integer, // 30 
-  'saturation': %,
-  'lightness': %,
-  'scale': integer // 30
-) )
+@function triad($color $order ('saturation' $saturation) ('lightness' $lightness) ('dist' $dist))
+// $order: integer
+// $saturation: percent
+// $lightness: percent
+// $dist(distribution): number
 
 {% elif componentName === "rectangle_syntax" %}
-@function rectangle( (
-  'color': color, 
-  'count': integer, // 30 
-  'saturation': %,
-  'lightness': %,
-  'scale': integer // 30
-) )
+@function rectangle($color $order ('saturation' $saturation) ('lightness' $lightness) ('dist' $dist))
+// $order: integer
+// $saturation: percent
+// $lightness: percent
+// $dist(distribution): number
 
 {% elif componentName === "square_syntax" %}
-@function square( (
-  'color': color, 
-  'count': integer, // 30 
-  'saturation': %,
-  'lightness': %,
-  'scale': integer // 30
-) )
+@function square($color $order ('saturation' $saturation) ('lightness' $lightness) ('dist' $dist))
+// $order: integer
+// $saturation: percent
+// $lightness: percent
+// $dist(distribution): number
 
 {% endif %}
 {% endmacro %}
