@@ -65,7 +65,7 @@
         "demo2",
         "Use breakpoints to make it works on multi devices.",
         "demo3",
-        "If the child elements are not `-li-`s, indicate them using `-child $selector-` format in the parameter.",
+        "If the child elements are not `-li-`s, indicate them using `-selector $selector-` format in the parameter.",
         "demo4"
       ],
       "masonry": [
@@ -75,7 +75,7 @@
         "demo1",
         "Change gutter.",
         "demo2",
-        "Works with breakpoints. \nUse `-'default'-` to indicate default setting. If child elements are not `-li-`s, indicate them with `-child $selector-` format.",
+        "Works with breakpoints. \nUse `-'default'-` to indicate default setting. If child elements are not `-li-`s, indicate them with `-selector $selector-` format.",
         "demo3"
       ],
       "metro": [
@@ -101,7 +101,7 @@
         "Use octagon shape.",
         "demo3"
       ],
-      "angled-edges": [
+      "angled-edge": [
         "Make angled edges layout.",
         "<em class='capability'>IE 8+, Firefox 3.6+, Chrome 15+, Safari 6+, Opera 10.6+</em>",
         "syntax",
@@ -154,7 +154,7 @@
         "demo1"
       ],
       "validation": [
-        "Html5 form validation using <a href='https://github.com/ryanseddon/H5F' target='_blank'>H5F</a>. H5F is included in `-kit.js-` (with a little bit modification), so you don't need to add it again.",
+        "Html5 form validation using <a href='https://github.com/ryanseddon/H5F' target='_blank'>H5F</a>.",
         "Set customized alerts information through `-&lt;div data-info=\"\"&gt;&lt;/div&gt;-`.",
         "<em class='capability'>IE 8+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 10.6+</em>",
         "syntax",

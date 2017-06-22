@@ -60,13 +60,13 @@
         <nav class="site-nav">
           <ul>
             <li>
-              <a href="guide.html">Guide</a>
+              <a href="../v3/guide.html">Guide</a>
             </li>
             <li class="active">
-              <a href="docs.html">Docs</a>
+              <a href="../v4/docs.html">Docs</a>
             </li>
             <li>
-              <a href="tutorial.html">Tutorial</a>
+              <a href="../v3/tutorial.html">Tutorial</a>
             </li>
           </ul>
         </nav>
@@ -108,7 +108,7 @@
               <a href="#diamond">Diamond</a>
             </li>
             <li>
-              <a href="#angled-edges">Angled-edges</a>
+              <a href="#angled-edge">Angled-edge</a>
             </li>
             <li>
               <a href="#justify">Justify</a>
@@ -256,7 +256,7 @@
                 </option>
               <option value="diamond">
                 </option>
-              <option value="angled-edges">
+              <option value="angled-edge">
                 </option>
               <option value="justify">
                 </option>
@@ -477,12 +477,12 @@
             </header>
             <div>
               <pre class="language-scss">
-<code>@mixin grid($column ('gutter' $gutter) ('selector' $selector) $breakpoints $condition $media-type $direction 'keep')
+<code>@mixin grid($column ('gutter' $gutter) ('selector' $selector) $breakpoint $condition $media $direction 'keep')
 // $column: list | map
 // $selector: string (child element selector, default "div")
 // $condition: 'min' | 'max'
-// $media-type: media types
-// $breakpoints: map, e.g. (small: 640px, medium: 768px, large: 1024px)
+// $media: media types
+// $breakpoint: map (e.g. small: 640px, medium: 768px, large: 1024px)
 // $direction: LTR | RTL</code>
 </pre>
             </div>
@@ -801,7 +801,7 @@ $main: (
   medium: (2 7 3: 1 0 1) (1 1: 1 0),
   1000px: (2 7 3 4 4)
 );
-// .grid5 { @include grid( $main $breakpoints ); }</code>
+.grid5 { @include grid( $main $breakpoints ); }</code>
 </pre><button class="btn copy-button" data-clipboard-target="#grid-demo5-scss">Copy Code</button>
                   </div>
                 </li>
@@ -854,7 +854,13 @@ $main: (
             </header>
             <div>
               <pre class="language-scss">
-<code></code>
+<code>@mixin liquid($column ('gutter' $gutter) ('selector' $selector) $breakpoint $condition $media $direction)
+// $column: list | map
+// $selector: string (child element selector, default "div")
+// $condition: 'min' | 'max'
+// $media: media types
+// $breakpoint: map (e.g. small: 640px, medium: 768px, large: 1024px)
+// $direction: 'LTR' | 'RTL'</code>
 </pre>
             </div>
           </div>
@@ -890,13 +896,9 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="liquid-demo1-scss">// .liquid-1 { @include liquid( (
-//   'column': ('auto' 200px) 
-// ) ); }
-// // 1st column: fluid;
-// // 2nd column: 200px;
-
-//</code>
+<code class="language-scss" id="liquid-demo1-scss">.liquid-1 { @include liquid( ('auto' 200px) ); }
+// 1st column: fluid;
+// 2nd column: 200px;</code>
 </pre><button class="btn copy-button" data-clipboard-target="#liquid-demo1-scss">Copy Code</button>
                   </div>
                 </li>
@@ -949,15 +951,10 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="liquid-demo2-scss">// .liquid-2 {
-//   @include liquid( (
-//     'column': ('auto' 200px : 2 1),
-//     'gutter': 10px
-//   ) );
-// }
-// // order: 2 1;
-
-//</code>
+<code class="language-scss" id="liquid-demo2-scss">.liquid-2 {
+  @include liquid(('auto' 200px : 2 1) 'gutter' 10px);
+}
+// order: 2 1;</code>
 </pre><button class="btn copy-button" data-clipboard-target="#liquid-demo2-scss">Copy Code</button>
                   </div>
                 </li>
@@ -1010,15 +1007,9 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="liquid-demo3-scss">// .liquid-3 {
-//   @include liquid( (
-//     'column': (600px: ('auto':2, 200px:1)), 
-//     'condition': 'min', 
-//     'media': 'screen' 
-//   ) );
-// }
-
-//</code>
+<code class="language-scss" id="liquid-demo3-scss">.liquid-3 {
+  @include liquid((600px: ('auto':2, 200px:1)) 'min' 'screen');
+}</code>
 </pre><button class="btn copy-button" data-clipboard-target="#liquid-demo3-scss">Copy Code</button>
                   </div>
                 </li>
@@ -1067,14 +1058,9 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="liquid-demo4-scss">// .liquid-4 { @include liquid( (
-//   'column': ('auto' 200px),
-//   'selector': ('main' 'aside') 
-// ) ); }
-// // 1st column: fluid;
-// // 2nd column: 200px;
-
-//</code>
+<code class="language-scss" id="liquid-demo4-scss">.liquid-4 { @include liquid(('auto' 200px) 'selector' ('main' 'aside')); }
+// 1st column: fluid;
+// 2nd column: 200px;</code>
 </pre><button class="btn copy-button" data-clipboard-target="#liquid-demo4-scss">Copy Code</button>
                   </div>
                 </li>
@@ -1108,7 +1094,13 @@ $main: (
             </header>
             <div>
               <pre class="language-scss">
-<code></code>
+<code>@mixin holy-grail($column ('gutter' $gutter) ('selector' $selector) $breakpoint $condition $media $direction)
+// $column: list | map
+// $selector: string (child element selector, default "div")
+// $condition: 'min' | 'max'
+// $media: media types
+// $breakpoint: map (e.g. small: 640px, medium: 768px, large: 1024px)
+// $direction: LTR | RTL</code>
 </pre>
             </div>
           </div>
@@ -1147,14 +1139,10 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="holygrail-demo1-scss">// .holy-grail-1 { @include holy-grail( (
-//   'column': (150px 'auto' 200px) 
-// ) ); }
-// // 1st column: 150px;
-// // 2nd column: fluid;
-// // 3rd column: 200px;
-
-//</code>
+<code class="language-scss" id="holygrail-demo1-scss">.holy-grail-1 { @include holy-grail((150px 'auto' 200px)); }
+// 1st column: 150px;
+// 2nd column: fluid;
+// 3rd column: 200px;</code>
 </pre><button class="btn copy-button" data-clipboard-target="#holygrail-demo1-scss">Copy Code</button>
                   </div>
                 </li>
@@ -1215,15 +1203,10 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="holygrail-demo2-scss">// .holy-grail-2 { 
-//   @include holy-grail( (
-//   'column': (150px 'auto' 200px : 0 2 1), 
-//   'gutter': 30px
-//   ) ); 
-// }
-// // order: 0 2 1;
-
-//</code>
+<code class="language-scss" id="holygrail-demo2-scss">.holy-grail-2 { 
+  @include holy-grail((150px 'auto' 200px : 0 2 1) 'gutter' 30px);
+}
+// order: 0 2 1;</code>
 </pre><button class="btn copy-button" data-clipboard-target="#holygrail-demo2-scss">Copy Code</button>
                   </div>
                 </li>
@@ -1284,14 +1267,9 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="holygrail-demo3-scss">// .holy-grail-3 { 
-//   @include holy-grail( (
-//   'column': (600px: (150px:0, 'auto':2, 200px:1)), 
-//   'gutter': 30px
-//   ) ); 
-// }
-
-//</code>
+<code class="language-scss" id="holygrail-demo3-scss">.holy-grail-3 { 
+  @include holy-grail((600px: (150px:0, 'auto':2, 200px:1)) 'gutter' 30px);
+}</code>
 </pre><button class="btn copy-button" data-clipboard-target="#holygrail-demo3-scss">Copy Code</button>
                   </div>
                 </li>
@@ -1346,14 +1324,9 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="holygrail-demo4-scss">// .holy-grail-4 { 
-//   @include holy-grail( (
-//   'column': (150px, 'auto', 200px), 
-//   'selector': ('nav' 'main' 'aside')
-//   ) ); 
-// }
-
-//</code>
+<code class="language-scss" id="holygrail-demo4-scss">.holy-grail-4 { 
+  @include holy-grail((150px, 'auto', 200px) 'selector' ('nav' 'main' 'aside'));
+}</code>
 </pre><button class="btn copy-button" data-clipboard-target="#holygrail-demo4-scss">Copy Code</button>
                   </div>
                 </li>
@@ -1396,11 +1369,12 @@ $main: (
             </header>
             <div>
               <pre class="language-scss">
-<code>@mixin gallery($layout ('gutter' $gutter) ('child' $child) $breakpoints $condition $media-type $direction 'keep');
-// $layout: number | map
+<code>@mixin gallery($column ('gutter' $gutter) ('selector' $selector) $breakpoint $condition $media $direction 'center-align' 'keep');
+// $column: number | map
+// $selector: string (child element selector, default "li")
 // $condition: 'min' | 'max'
-// $media-type: media types
-// $breakpoints: map, e.g. (small: 640px, medium: 768px, large: 1024px)
+// $media: media types
+// $breakpoint: map (e.g. small: 640px, medium: 768px, large: 1024px)
 // $direction: LTR | RTL</code>
 </pre>
             </div>
@@ -1433,11 +1407,7 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="gallery-demo1-scss">// .gallery-1 { @include gallery( (
-//   'column': 3
-// ) ); }
-
-//</code>
+<code class="language-scss" id="gallery-demo1-scss">.gallery-1 { @include gallery(3); }</code>
 </pre><button class="btn copy-button" data-clipboard-target="#gallery-demo1-scss">Copy Code</button>
                   </div>
                 </li>
@@ -1494,15 +1464,9 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="gallery-demo2-scss">// .gallery-2 { @include gallery( (
-//   'column': 4,
-//   'gutter': 2%,
-//   'direction': 'RTL'
-// ) ); }
-// // gutter: 2%;
-// // direction: right-to-left
-
-//</code>
+<code class="language-scss" id="gallery-demo2-scss">.gallery-2 { @include gallery(4 'gutter' 2% 'RTL'); }
+// gutter: 2%;
+// direction: right-to-left</code>
 </pre><button class="btn copy-button" data-clipboard-target="#gallery-demo2-scss">Copy Code</button>
                   </div>
                 </li>
@@ -1569,16 +1533,12 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="gallery-demo3-scss">// .gallery-3 {
-//   @include gallery( (
-//     'column': ('default': 2, 600px: 3, 800px: 4) 
-//   ) ); 
-// }
-// // default: 2 items per row
-// // 600px and up: 3 items per row
-// // 800px and up: 4 items per row
-
-//</code>
+<code class="language-scss" id="gallery-demo3-scss">.gallery-3 {
+  @include gallery(('default': 2, 600px: 3, 800px: 4));
+}
+// default: 2 items per row
+// 600px and up: 3 items per row
+// 800px and up: 4 items per row</code>
 </pre><button class="btn copy-button" data-clipboard-target="#gallery-demo3-scss">Copy Code</button>
                   </div>
                 </li>
@@ -1605,7 +1565,7 @@ $main: (
             </div>
           </div>
           <p>
-            If the child elements are not <code class="language-html">li</code>s, indicate them using <code class="language-html">child $selector</code> format in the parameter.
+            If the child elements are not <code class="language-html">li</code>s, indicate them using <code class="language-html">selector $selector</code> format in the parameter.
           </p>
           <div class="demo-container" data-show="code">
             <div class="toggle-container">
@@ -1635,12 +1595,7 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="gallery-demo4-scss">// .gallery-4 { @include gallery( (
-//   'column': 3, 
-//   'selector': 'div'
-// ) ); }
-
-//</code>
+<code class="language-scss" id="gallery-demo4-scss">.gallery-4 { @include gallery(3 'selector' 'div'); }</code>
 </pre><button class="btn copy-button" data-clipboard-target="#gallery-demo4-scss">Copy Code</button>
                   </div>
                 </li>
@@ -1683,11 +1638,12 @@ $main: (
             </header>
             <div>
               <pre class="language-scss">
-<code>@mixin masonry($layout ('gutter' $gutter) ('child' $child) $breakpoints $condition $media-type 'keep');
-// $layout: number | map
+<code>@mixin masonry($column ('gutter' $gutter) ('selector' $selector) $breakpoint $condition $media 'keep');
+// $column: number | map
+// $selector: string (child element selector, default "li")
 // $condition: 'min' | 'max'
-// $media-type: media types
-// $breakpoints: map, e.g. (small: 640px, medium: 768px, large: 1024px)
+// $media: media types
+// $breakpoint: map (e.g. small: 640px, medium: 768px, large: 1024px)
 
 // *** fallback: IE9- *** //
 .no-csscolumns {
@@ -1734,11 +1690,7 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="masonry-demo1-scss">// .masonry-1 { @include masonry( (
-//   'column': 3
-// ) ); }
-
-//</code>
+<code class="language-scss" id="masonry-demo1-scss">.masonry-1 { @include masonry(3); }</code>
 </pre><button class="btn copy-button" data-clipboard-target="#masonry-demo1-scss">Copy Code</button>
                   </div>
                 </li>
@@ -1829,12 +1781,7 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="masonry-demo2-scss">// .masonry-2 { @include masonry( (
-//   'column': 4, 
-//   'gutter': 20px
-// ) ); }
-
-//</code>
+<code class="language-scss" id="masonry-demo2-scss">.masonry-2 { @include masonry(4 'gutter' 20px); }</code>
 </pre><button class="btn copy-button" data-clipboard-target="#masonry-demo2-scss">Copy Code</button>
                   </div>
                 </li>
@@ -1895,7 +1842,7 @@ $main: (
           </div>
           <p>
             Works with breakpoints.<br>
-            Use <code class="language-html">'default'</code> to indicate default setting. If child elements are not <code class="language-html">li</code>s, indicate them with <code class="language-html">child $selector</code> format.
+            Use <code class="language-html">'default'</code> to indicate default setting. If child elements are not <code class="language-html">li</code>s, indicate them with <code class="language-html">selector $selector</code> format.
           </p>
           <div class="demo-container" data-show="code">
             <div class="toggle-container">
@@ -1926,18 +1873,13 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="masonry-demo3-scss">// $masonry-3-layout: (
-//   'default': 1, 
-//   600px: 2, 
-//   768px: 3, 
-//   1024px: 4
-// );
-// .masonry-3 { @include masonry( (
-//   'column': $masonry-3-layout, 
-//   'selector': '.panel'
-// ) ); }
-
-//</code>
+<code class="language-scss" id="masonry-demo3-scss">$masonry-3-layout: (
+  'default': 1, 
+  600px: 2, 
+  768px: 3, 
+  1024px: 4
+);
+.masonry-3 { @include masonry($masonry-3-layout 'selector' '.panel'); }</code>
 </pre><button class="btn copy-button" data-clipboard-target="#masonry-demo3-scss">Copy Code</button>
                   </div>
                 </li>
@@ -2013,11 +1955,12 @@ $main: (
             </header>
             <div>
               <pre class="language-scss">
-<code>@mixin metro($layout (ratio $ratio) ('gutter' $gutter) ('child' $child) $breakpoints $condition $media-type 'keep')
-// $layout: list | map
+<code>@mixin metro($column (ratio $ratio) ('gutter' $gutter) ('selector' $selector) $breakpoint $condition $media 'keep')
+// $column: list | map
+// $selector: string (child element selector, default "li")
 // $condition: 'min' | 'max'
-// $media-type: media types
-// $breakpoints: map, e.g. (small: 640px, medium: 768px, large: 1024px)</code>
+// $media: media types
+// $breakpoint: map (e.g. small: 640px, medium: 768px, large: 1024px)</code>
 </pre>
             </div>
           </div>
@@ -2075,19 +2018,14 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="metro-demo1-scss">// .metro-1 { 
-//   @include metro( (
-//     'column': (w5 w3 2 h2 w2 w4 of 5), 
-//     'gutter': 10px
-//   ) ); 
-//   &gt; li:nth-child(3) { float: right; };
-// }
-// // w5: 5 units width x 1 units height
-// // 2: 2 units width x 2 units height
-// // h2: 1 units width x 2 units height
-// // "of 5": totaly 5 units width;
-
-//</code>
+<code class="language-scss" id="metro-demo1-scss">.metro-1 { 
+  @include metro((w5 w3 2 h2 w2 w4 of 5) 'gutter' 10px);
+  &gt; li:nth-child(3) { float: right; };
+}
+// w5: 5 units width x 1 units height
+// 2: 2 units width x 2 units height
+// h2: 1 units width x 2 units height
+// "of 5": totaly 5 units width;</code>
 </pre><button class="btn copy-button" data-clipboard-target="#metro-demo1-scss">Copy Code</button>
                   </div>
                 </li>
@@ -2145,7 +2083,8 @@ $main: (
             </header>
             <div>
               <pre class="language-scss">
-<code>@mixin diamond(($count / $size) $shape 'tight' 'keep')
+<code>@mixin diamond($column $shape 'tight' 'keep')
+// $column: px | % | Integer (px, %: size; Integer: columns)
 // $shape: 'diamond' | 'octagon'</code>
 </pre>
             </div>
@@ -2214,12 +2153,7 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="diamond-demo1-scss">// .diamond-1 { @include diamond( (
-//   'column': 3,
-//   'tight': true
-// ) ); }
-
-//</code>
+<code class="language-scss" id="diamond-demo1-scss">.diamond-1 { @include diamond(3 'tight'); }</code>
 </pre><button class="btn copy-button" data-clipboard-target="#diamond-demo1-scss">Copy Code</button>
                   </div>
                 </li>
@@ -2292,12 +2226,8 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="diamond-demo2-scss">// .diamond-2 { @include diamond( (
-//   'column': 20%
-// ) ); }
-// // diamond width: 20%
-
-//</code>
+<code class="language-scss" id="diamond-demo2-scss">.diamond-2 { @include diamond(20%); }
+// diamond width: 20%</code>
 </pre><button class="btn copy-button" data-clipboard-target="#diamond-demo2-scss">Copy Code</button>
                   </div>
                 </li>
@@ -2342,13 +2272,8 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="diamond-demo3-scss">// .diamond-3 { @include diamond( (
-//   'shape': 'octagon', 
-//   'column': 200px
-// ) ); }
-// // diamond width: 200px
-
-//</code>
+<code class="language-scss" id="diamond-demo3-scss">.diamond-3 { @include diamond('octagon' 200px); }
+// diamond width: 200px</code>
 </pre><button class="btn copy-button" data-clipboard-target="#diamond-demo3-scss">Copy Code</button>
                   </div>
                 </li>
@@ -2365,9 +2290,9 @@ $main: (
             </div>
           </div>
         </section>
-        <section id="angled-edges">
+        <section id="angled-edge">
           <h4>
-            Angled-edges
+            Angled-edge
           </h4>
           <p>
             Make angled edges layout.
@@ -2381,9 +2306,9 @@ $main: (
             </header>
             <div>
               <pre class="language-scss">
-<code>@mixin angled-edges($edges $angle $edge-color 'flip');
-// $edges: top | bottom | both
-// $edge-color: deg</code>
+<code>@mixin angled-edge($edge $angle $color 'flip');
+// $edge: top | bottom | both
+// $angle: deg</code>
 </pre>
             </div>
           </div>
@@ -2399,18 +2324,18 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-markup" id="anglededges-demo1-markup">&lt;div class="angled-edges-sibling"&gt;
+<code class="language-markup" id="anglededge-demo1-markup">&lt;div class="angled-edge-sibling"&gt;
   &lt;p&gt;Quis ab placeat totam beatae dolorum, harum omnis tempora dolore exercitationem quia, soluta qui deleniti numquam.&lt;/p&gt;
 &lt;/div&gt;
-&lt;div class="angled-edges-1"&gt;
+&lt;div class="angled-edge-1"&gt;
   &lt;p&gt;Ipsam ducimus velit iure voluptatum, voluptate perferendis, asperiores, perspiciatis blanditiis autem exercitationem repellendus, rem ea reprehenderit.&lt;/p&gt;
   &lt;p&gt;Enim itaque pariatur nulla, iste unde similique nemo obcaecati odio omnis! Animi earum praesentium et maxime.&lt;/p&gt;
   &lt;p&gt;Obcaecati rerum consequatur quae itaque ratione, dolor, similique sit, earum distinctio enim consectetur eius quam nisi.&lt;/p&gt;
 &lt;/div&gt;
-&lt;div class="angled-edges-sibling"&gt;
+&lt;div class="angled-edge-sibling"&gt;
   &lt;p&gt;Libero eum accusamus molestiae cum recusandae. Omnis doloremque eos amet, saepe minima fugiat inventore? Non, quaerat.&lt;/p&gt;
 &lt;/div&gt;</code>
-</pre><button class="btn copy-button" data-clipboard-target="#anglededges-demo1-markup">Copy Code</button>
+</pre><button class="btn copy-button" data-clipboard-target="#anglededge-demo1-markup">Copy Code</button>
                   </div>
                 </li>
                 <li>
@@ -2419,29 +2344,22 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="anglededges-demo1-scss">// .angled-edges-1 {
-//   @include angled-edges( (
-//     'edge': 'both', 
-//     'color': #fff,
-//     'angle': -5deg, 
-//     'flip': true
-//   ) );
-//   background-color: #58CAFF;
-// }
-
-//</code>
-</pre><button class="btn copy-button" data-clipboard-target="#anglededges-demo1-scss">Copy Code</button>
+<code class="language-scss" id="anglededge-demo1-scss">.angled-edge-1 {
+  @include angled-edge('both' #fff -5deg 'flip');
+  background-color: #58CAFF;
+}</code>
+</pre><button class="btn copy-button" data-clipboard-target="#anglededge-demo1-scss">Copy Code</button>
                   </div>
                 </li>
               </ul>
             </div>
             <div class="preview-wrapper">
-              <div class="angled-edges-sibling">
+              <div class="angled-edge-sibling">
                 <p>
                   Quis ab placeat totam beatae dolorum, harum omnis tempora dolore exercitationem quia, soluta qui deleniti numquam.
                 </p>
               </div>
-              <div class="angled-edges-1">
+              <div class="angled-edge-1">
                 <p>
                   Ipsam ducimus velit iure voluptatum, voluptate perferendis, asperiores, perspiciatis blanditiis autem exercitationem repellendus, rem ea reprehenderit.
                 </p>
@@ -2452,7 +2370,7 @@ $main: (
                   Obcaecati rerum consequatur quae itaque ratione, dolor, similique sit, earum distinctio enim consectetur eius quam nisi.
                 </p>
               </div>
-              <div class="angled-edges-sibling">
+              <div class="angled-edge-sibling">
                 <p>
                   Libero eum accusamus molestiae cum recusandae. Omnis doloremque eos amet, saepe minima fugiat inventore? Non, quaerat.
                 </p>
@@ -2476,7 +2394,7 @@ $main: (
             </header>
             <div>
               <pre class="language-scss">
-<code>@mixin justify(($selector));</code>
+<code>@mixin justify($selector);</code>
 </pre>
             </div>
           </div>
@@ -2508,11 +2426,7 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="justify-demo1-scss">// .justify-1 { @include justify( (
-//   'selector': 'li'
-// ) ); }
-
-//</code>
+<code class="language-scss" id="justify-demo1-scss">.justify-1 { @include justify('li'); }</code>
 </pre><button class="btn copy-button" data-clipboard-target="#justify-demo1-scss">Copy Code</button>
                   </div>
                 </li>
@@ -2578,17 +2492,15 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="center-demo1-scss">// .center-1 {
-//   @include center();
-//   position: absolute;
-//   left: 0;
-//   top: 0;
-//   width: 100%;
-//   height: 100%;
-//   &gt; div { display: inline-block; padding: 10px; background-color: #FBA158; }
-// }
-
-//</code>
+<code class="language-scss" id="center-demo1-scss">.center-1 {
+  @include center();
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  &gt; div { display: inline-block; padding: 10px; background-color: #FBA158; }
+}</code>
 </pre><button class="btn copy-button" data-clipboard-target="#center-demo1-scss">Copy Code</button>
                   </div>
                 </li>
@@ -2622,7 +2534,14 @@ $main: (
             </header>
             <div>
               <pre class="language-scss">
-<code></code>
+<code>@mixin chart($data $style ('bar-height' $bar-height) ('bar-gap' $bar-gap) ('steps' $steps) ('gutter' $gutter) ('animation' $animation-val) ('hide' $hide))
+// $data: map. (color: data, color: data, ...)
+// $style: 'bar' | 'column'
+// $bar-gap: px | em. Required if mode is "bar".
+// $bar-height: px | em
+// $steps: list (step count)
+// $animation-val: list (duration timing-function)
+// $hide: list ('units' 'labels' 'numbers')</code>
 </pre>
             </div>
           </div>
@@ -2780,32 +2699,21 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="chart-demo1-scss">// $chart-data1: (
-//   #5AB5E1: 8.9 10.5 19.3 21.45,
-// );
-// .chart-1 { @include chart( (
-//   'data': $chart-data1, 
-//   'style': 'bar', 
-//   'steps': (2 22)
-//   ) ); }
+<code class="language-scss" id="chart-demo1-scss">$chart-data1: (
+  #5AB5E1: 8.9 10.5 19.3 21.45,
+);
+.chart-1 { @include chart($chart-data1 'bar' 'steps' (2 22)); }
  
-// $chart-data2: (
-//   #E44B22: 8.9 10.5 19.3 21.45,
-//   #E48A22: 5 10 16 22,
-//   #22A1E4: 10.7 12 12 18,
-// );
-// .chart-2 { @include chart( (
-//   'data': $chart-data2, 
-//   'style': 'column', 
-//   'steps': (2 24), 
-//   'hide': ('numbers')
-// ) ); }
+$chart-data2: (
+  #E44B22: 8.9 10.5 19.3 21.45,
+  #E48A22: 5 10 16 22,
+  #22A1E4: 10.7 12 12 18,
+);
+.chart-2 { @include chart($chart-data2 'column' 'steps' (2 24) 'hide' ('numbers')); }
 
-// [class*="chart-"] {
-//   margin-bottom: 2em;
-// }
+[class*="chart-"] { margin-bottom: 2em; }
 
-//</code>
+// =&gt;</code>
 </pre><button class="btn copy-button" data-clipboard-target="#chart-demo1-scss">Copy Code</button>
                   </div>
                 </li>
@@ -2964,12 +2872,15 @@ $main: (
             <div>
               <pre class="language-scss">
 <code>// rp-table() for shorthand
-@mixin responsive-table($mode ('data' $data) $border-color ('bp' $breakpoint) ('width' $th-width) ('count' $count)) { 
+@mixin responsive-table($style ('data' $data) $border-color ('breakpoint' $breakpoint) ('th-width' $th-width) ('count' $count)) { 
   @content;
 }
-// $mode: flip-scroll | scroll | toggle | stack
-// $data: list. (&lt;th&gt; content)
-// $count: num. (column count)</code>
+// $style: 'flip-scroll' | 'scroll' | 'toggle' | 'stack'
+// $data: list (&lt;th&gt; content, required for 'stack')
+// $border-color: color (required for 'stack')
+// $breakpoint: px | em | integer
+// $th-width: % | px (optional, for 'stack')
+// $count: integer (column count, required for 'toggle')</code>
 </pre>
             </div>
           </div>
@@ -3075,36 +2986,31 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="responsivetable-demo_flipscroll-scss">// table {
-//   text-align: left;
-//   width: 100%;
-//   font-size: 13px;
-//   border-collapse: collapse;
-//   border-spacing: 0;
-// }
-// th, td {
-//   padding: 10px 6px;
-//   border: 1px solid #dbdbdb;
-// }
-// th {
-//   background-color: #f5f5f5;
-// }
+<code class="language-scss" id="responsivetable-demo_flipscroll-scss">table {
+  text-align: left;
+  width: 100%;
+  font-size: 13px;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+th, td {
+  padding: 10px 6px;
+  border: 1px solid #dbdbdb;
+}
+th {
+  background-color: #f5f5f5;
+}
 
-// .responsive-table-1 { 
-//   // Requirements: $breakpoint
-//   @include rp-table( (
-//     'style': 'flip-scroll', 
-//     'breakpoint': 1400px
-//   ) ) {
-//     border: 1px solid #dbdbdb;
-//     th, td { 
-//       border-width: 0 1px 1px 0;
-//       &amp;:last-child { border-bottom-width: 0; }
-//     }
-//   }
-// }
- 
-//</code>
+.responsive-table-1 { 
+  // Requirements: $breakpoint
+  @include rp-table('flip-scroll' 'breakpoint' 1400px) {
+    border: 1px solid #dbdbdb;
+    th, td { 
+      border-width: 0 1px 1px 0;
+      &amp;:last-child { border-bottom-width: 0; }
+    }
+  }
+}</code>
 </pre><button class="btn copy-button" data-clipboard-target="#responsivetable-demo_flipscroll-scss">Copy Code</button>
                   </div>
                 </li>
@@ -3387,24 +3293,19 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="responsivetable-demo_scroll-scss">// .responsive-table-2 { 
-//   // Requirements: $breakpoint
-//   @include rp-table( (
-//     'style': 'scroll',
-//     'breakpoint': 1400px
-//   ) ) {
-//     .table {
-//       border-right-width: 1px;
-//       th:last-child, td:last-child { border-right-width: 0; }
-//       .lt-ie10 &amp; { 
-//         border-right-width: 0; 
-//         th:last-child, td:last-child { border-right-width: 1px; }
-//       }
-//     }
-//   } 
-// }
- 
-//</code>
+<code class="language-scss" id="responsivetable-demo_scroll-scss">.responsive-table-2 { 
+  // Requirements: $breakpoint
+  @include rp-table('scroll' 'breakpoint' 1400px) {
+    .table {
+      border-right-width: 1px;
+      th:last-child, td:last-child { border-right-width: 0; }
+      .lt-ie10 &amp; { 
+        border-right-width: 0; 
+        th:last-child, td:last-child { border-right-width: 1px; }
+      }
+    }
+  } 
+}</code>
 </pre><button class="btn copy-button" data-clipboard-target="#responsivetable-demo_scroll-scss">Copy Code</button>
                   </div>
                 </li>
@@ -3619,16 +3520,10 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="responsivetable-demo_toggle-scss">// .responsive-table-3 {
-//   // Requirements: $breakpoint, $count
-//   @include rp-table( (
-//     'style': 'toggle', 
-//     'breakpoint': 1400px, 
-//     'count': 10
-//   ) );
-// }
- 
-//</code>
+<code class="language-scss" id="responsivetable-demo_toggle-scss">.responsive-table-3 {
+  // Requirements: $breakpoint, $count
+  @include rp-table('toggle' 'breakpoint' 1400px 'count' 10);
+}</code>
 </pre><button class="btn copy-button" data-clipboard-target="#responsivetable-demo_toggle-scss">Copy Code</button>
                   </div>
                 </li>
@@ -3811,34 +3706,27 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="responsivetable-demo_stack-scss">// $responsive-table-4-data: (
-//   'First Name', 
-//   'Last Name', 
-//   'Job Title', 
-//   'Favorite Color', 
-//   'Wars or Trek?', 
-//   'Porn Name', 
-//   'Date of Birth', 
-//   'Dream Vacation City', 
-//   'GPA', 
-//   'Arbitrary Data'
-// );
-// .responsive-table-4 {
-//   // Requirements: $data, $border-color, $th-width
-//   @include rp-table( (
-//     'style': 'stack', 
-//     'breakpoint': 1400px, 
-//     'border-color': #dbdbdb, 
-//     'data': $responsive-table-4-data
-//   ) ) {
-//     tr:nth-of-type(2n) { background-color: #f5f5f5; }
-//     td:before { margin-right: 7px; }
-//     border-bottom: 1px solid #dbdbdb;
-//     th, td { border-bottom: 0; }
-//   }
-// }
-
-//</code>
+<code class="language-scss" id="responsivetable-demo_stack-scss">$responsive-table-4-data: (
+  'First Name', 
+  'Last Name', 
+  'Job Title', 
+  'Favorite Color', 
+  'Wars or Trek?', 
+  'Porn Name', 
+  'Date of Birth', 
+  'Dream Vacation City', 
+  'GPA', 
+  'Arbitrary Data'
+);
+.responsive-table-4 {
+  // Requirements: $data, $border-color, $th-width
+  @include rp-table('stack' 'breakpoint' 1400px #dbdbdb 'data' $responsive-table-4-data) {
+    tr:nth-of-type(2n) { background-color: #f5f5f5; }
+    td:before { margin-right: 7px; }
+    border-bottom: 1px solid #dbdbdb;
+    th, td { border-bottom: 0; }
+  }
+}</code>
 </pre><button class="btn copy-button" data-clipboard-target="#responsivetable-demo_stack-scss">Copy Code</button>
                   </div>
                 </li>
@@ -3966,11 +3854,10 @@ $main: (
             </header>
             <div>
               <pre class="language-scss">
-<code>@mixin off-canvas($mode $nav 'submenu' $nav-width $direction ($map $breakpoints) $overlay-background-color $duration)
-// $mode: slide-in | slide-along | slide-out | rotate-in | rotate-out | rotate-in-reverse | scale-down | scale-up | open-door | push | reveal | drawer
-
-// For modes: slide-in, rotate-in, rotate-out, rotate-in-reverse, push and drawer, put nav inside ".page".
-// For modes: slide-along, slide-out, scale-down, scale-up, open-door and reveal, put nav outside ".page", after the checkbox.</code>
+<code>@mixin off-canvas($style ('page' $page) ('nav' $nav) 'submenu' 'inside' $nav-size $direction $tops ('breakpoint' $breakpoint) $overlay-background-color $duration)
+// $style: 'slide-in' | 'slide-along' | 'slide-out' | 'rotate-in' | 'rotate-out' | 'rotate-in-reverse' | 'scale-down' | 'scale-up' | 'open-door' | 'push' | 'reveal' | 'drawer'
+// $tops: map (Required if style is 'drawer'. The top positions of the nav. e.g. (500px: 20px, 768px: 30px, 1025: 40px))
+// For styles: 'slide-in', 'rotate-in', 'rotate-out', 'rotate-in-reverse', 'push' and 'drawer', 'nav' can be put inside 'page'.</code>
 </pre>
             </div>
           </div>
@@ -4029,39 +3916,32 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="offcanvas-demo1-scss">// // normal
-// @include off-canvas( (
-//   'style': 'slide-in', 
-//   'page': '.off-canvas-1', 
-//   'nav': '.off-canvas-nav-1', 
-//   'submenu': true
-// ) );
+<code class="language-scss" id="offcanvas-demo1-scss">// normal
+@include off-canvas('slide-in' 'page' '.off-canvas-1' 'nav' '.off-canvas-nav-1' 'submenu');
  
-// .off-canvas-nav-1 {
-//   background-color: #000;
-//   a, label { 
-//     color: #fff;
-//     display: block;
-//     padding: 0.5em 1em; 
-//   }
-//   label { background-color: rgba(255, 255, 255, 0.2); }
-//   [data-submenu] {
-//     background-color: #FF8000;
-//   }
-// }
-// .checkbox-hidden {
-//   position: absolute;
-//   left: -9000px;
-// }
-// .off-canvas-1 .menu {
-//   display: inline-block;
-//   padding: 6px 10px;
-//   border-radius: 3px;
-//   border: 1px solid #ccc;
-//   margin-bottom: 10px;
-// }
-
-//</code>
+.off-canvas-nav-1 {
+  background-color: #000;
+  a, label { 
+    color: #fff;
+    display: block;
+    padding: 0.5em 1em; 
+  }
+  label { background-color: rgba(255, 255, 255, 0.2); }
+  [data-submenu] {
+    background-color: #FF8000;
+  }
+}
+.checkbox-hidden {
+  position: absolute;
+  left: -9000px;
+}
+.off-canvas-1 .menu {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}</code>
 </pre><button class="btn copy-button" data-clipboard-target="#offcanvas-demo1-scss">Copy Code</button>
                   </div>
                 </li>
@@ -4122,7 +4002,7 @@ $main: (
             Validation
           </h4>
           <p>
-            Html5 form validation using <a href='https://github.com/ryanseddon/H5F' target='_blank'>H5F</a>. H5F is included in <code class="language-html">kit.js</code> (with a little bit modification), so you don't need to add it again.
+            Html5 form validation using <a href='https://github.com/ryanseddon/H5F' target='_blank'>H5F</a>.
           </p>
           <p>
             Set customized alerts information through <code class="language-html">&lt;div data-info=""&gt;&lt;/div&gt;</code>.
@@ -4136,9 +4016,13 @@ $main: (
             </header>
             <div>
               <pre class="language-scss">
-<code>@mixin validation($style $direction $shake $speed $duration 'default')
+<code>@mixin validation($style $direction 'shake' ('speed' $speed) ('duration' $duration) 'default')
 // $style: 'normal' | 'fade-in' | 'slide-in'
-// $direction: left | right | top | bottom</code>
+// $direction: left | right | top | bottom
+// 'shake': shake the form element if user input is not correct
+// $speed: s (animation speed)
+// $duration: s (the time before the alert panel disappear, for 'slide-in' style)
+// 'default': use default black/white theme</code>
 </pre>
             </div>
           </div>
@@ -4193,13 +4077,7 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="validation-demo1-scss">// .validation-1 { @include validation( (
-//   'style': 'slide-in', 
-//   'direction': 'right', 
-//   'default': true
-// ) ); }
-
-//</code>
+<code class="language-scss" id="validation-demo1-scss">.validation-1 { @include validation('slide-in' 'right' 'default'); }</code>
 </pre><button class="btn copy-button" data-clipboard-target="#validation-demo1-scss">Copy Code</button>
                   </div>
                 </li>
@@ -4264,11 +4142,10 @@ $main: (
             </header>
             <div>
               <pre class="language-scss">
-<code>@mixin button($padding ($border-radius | 'round') ($background-color $active-color) $style $active-selector $direction $duration $timing-function)
-// $padding: string. e.g. "5px 10px"
-// style: 'highlight' | 'simple' | 'slide' | 'ripple' | 'veil' | 'push' | 'cut' | 'bubble' | 'line-drawing'
-// direction: left, right, top, bottom, 'horizontal', 'vertical'
-// active-selector: class | id | property | pseudo. You could change the button status by adding this selector.</code>
+<code>@mixin button($style $background-color $active-color $selector $direction $duration $timing-function)
+// $style: 'highlight' | 'simple' | 'slide' | 'ripple' | 'veil' | 'push' | 'cut' | 'bubble' | 'line-drawing'
+// $direction: left, right, top, bottom, 'horizontal', 'vertical'
+// $selector: . | # | [] | :: (You could change the button status by adding this selector)</code>
 </pre>
             </div>
           </div>
@@ -4304,29 +4181,20 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="button-demo1-scss">// .button-simple { @include button( (
-//   'style': 'simple'
-// ) ); }
-// .button-push { @include button( (
-//   'style': 'push'
-// ) ); }
-// .button-bubble { @include button( (
-//   'style': 'bubble', 
-//   'color': #2B8ACF, 
-//   'selector': ':hover'
-// ) ); }
-// .button-line-drawing { @include button( (
-//   'style': 'line-drawing', 
-//   'selector': ':hover'
-// ) ); }
+<code class="language-scss" id="button-demo1-scss">.button-simple { @include button('simple' #2B8ACF); }
+.button-push { @include button('push'); }
+.button-bubble { @include button('bubble' #2B8ACF ':hover'); }
+.button-line-drawing { @include button('line-drawing' ':hover' #2B8ACF); }
 
-// [class*="button-"] {
-//   vertical-align: middle;
-//   margin: 10px;
-// }
-
-
-//</code>
+[class*="button-"] {
+  display: inline-block;
+  margin: 20px 10px;
+  padding: 0 1.2em;
+  line-height: 2.6;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+}</code>
 </pre><button class="btn copy-button" data-clipboard-target="#button-demo1-scss">Copy Code</button>
                   </div>
                 </li>
@@ -4354,8 +4222,8 @@ $main: (
             </header>
             <div>
               <pre class="language-scss">
-<code>@mixin parallelogram($background $angle);
-// $background: color
+<code>@mixin parallelogram($background-color $angle);
+// $background-color: color
 // $angle: deg</code>
 </pre>
             </div>
@@ -4382,19 +4250,14 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="parallelogram-demo1-scss">// .parallelogram-1 { 
-//   @include parallelogram( (
-//     'color': #0C81E7,
-//     'angle': -30deg
-//   ) ); 
+<code class="language-scss" id="parallelogram-demo1-scss">.parallelogram-1 { 
+  @include parallelogram(#0C81E7 -30deg);
 
-//   display: inline-block;
-//   margin-left: 30px;
-//   padding: 20px;
-//   color: #fff;
-// }
-
-//</code>
+  display: inline-block;
+  margin-left: 30px;
+  padding: 20px;
+  color: #fff;
+}</code>
 </pre><button class="btn copy-button" data-clipboard-target="#parallelogram-demo1-scss">Copy Code</button>
                   </div>
                 </li>
@@ -4424,7 +4287,9 @@ $main: (
             </header>
             <div>
               <pre class="language-scss">
-<code></code>
+<code>@mixin drop-shadow($style $direction $color $shadow-size);
+// $style: 'lifted' | 'raised' | 'perspective' | 'curve'
+// $direction: 'left' | 'right' | 'top' | 'bottom' | 'horizontal' | 'vertical'</code>
 </pre>
             </div>
           </div>
@@ -4440,7 +4305,10 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-markup" id="dropshadow-demo1-markup"></code>
+<code class="language-markup" id="dropshadow-demo1-markup">&lt;div class="drop-shadow-1"&gt;style: lifted&lt;/div&gt;
+&lt;div class="drop-shadow-2"&gt;style: raised&lt;/div&gt;
+&lt;div class="drop-shadow-3"&gt;style: perspective&lt;/div&gt;
+&lt;div class="drop-shadow-4"&gt;style: curve&lt;/div&gt;</code>
 </pre><button class="btn copy-button" data-clipboard-target="#dropshadow-demo1-markup">Copy Code</button>
                   </div>
                 </li>
@@ -4450,13 +4318,37 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="dropshadow-demo1-scss"></code>
+<code class="language-scss" id="dropshadow-demo1-scss">.drop-shadow-1 { @include drop-shadow('lifted' 'bottom' 15px); }
+.drop-shadow-2 { @include drop-shadow('raised' 'bottom' 15px); }
+.drop-shadow-3 { @include drop-shadow('perspective' 'bottom' 15px); }
+.drop-shadow-4 { @include drop-shadow('curve' 'bottom' 15px); }
+[class*="drop-shadow-"] {
+  display: inline-block;
+  width: 8em;
+  text-align: center;
+  padding: 20px;
+  margin: 20px 50px;
+  background-color: #f7f7f7;
+}</code>
 </pre><button class="btn copy-button" data-clipboard-target="#dropshadow-demo1-scss">Copy Code</button>
                   </div>
                 </li>
               </ul>
             </div>
-            <div class="preview-wrapper"></div>
+            <div class="preview-wrapper">
+              <div class="drop-shadow-1">
+                style: lifted
+              </div>
+              <div class="drop-shadow-2">
+                style: raised
+              </div>
+              <div class="drop-shadow-3">
+                style: perspective
+              </div>
+              <div class="drop-shadow-4">
+                style: curve
+              </div>
+            </div>
           </div>
         </section>
         <section id="switch">
@@ -4475,11 +4367,12 @@ $main: (
             </header>
             <div>
               <pre class="language-scss">
-<code>@mixin switch($style $size $active-color ('text' $text) ('radius' | 'round'))
+<code>@mixin switch($style $size $color ('text' $text) ('border-radius' $border-radius))
 // $style: 'toggle' | 'slider'
-// $size: px | em
-// $active-color: color
-// $text: list. e.g. ('on' 'off')</code>
+// $size: list | px | em (width height)
+// $color: list | color ($default-color $active-color)
+// $text: list (e.g. ('on' 'off'))
+// $border-radius: px | em ...</code>
 </pre>
             </div>
           </div>
@@ -4513,23 +4406,9 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="switch-demo1-scss">// .switch-1 { 
-//   @include switch( (
-//     'text': ("on" "off"),
-//     'size': 36px,
-//     'color': blue
-//   ) ); 
-//   margin-bottom: 10px;
-// }
-// .switch-2 { 
-//   @include switch( (
-//     'style': 'slider',
-//     'size': 20px,
-//     'color': red
-//   ) ); 
-// }
-
-//</code>
+<code class="language-scss" id="switch-demo1-scss">.switch-1 { @include switch('text' ("on" "off") 36px #dbdbdb blue 'border-radius' 0.2em); }
+.switch-2 { @include switch('slider' 30px #dbdbdb red 'border-radius' 50%); }
+[class*="switch-"] { margin: 20px; }</code>
 </pre><button class="btn copy-button" data-clipboard-target="#switch-demo1-scss">Copy Code</button>
                   </div>
                 </li>
@@ -4597,7 +4476,21 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="pushtoggle-demo1-scss"></code>
+<code class="language-scss" id="pushtoggle-demo1-scss">.push-toggle-1 { 
+  // default style
+  label {
+    margin-right: -1px;
+    padding: 0.6em 1.5em;
+    background-image: linear-gradient(to bottom, #fff, #e1e1e1);
+    border: 1px solid #ccc;
+  }
+ 
+  // active style
+  @include push-toggle(){
+    background-image: linear-gradient(to bottom, #ebebeb, #fff);
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1) inset;
+  }
+}</code>
 </pre><button class="btn copy-button" data-clipboard-target="#pushtoggle-demo1-scss">Copy Code</button>
                   </div>
                 </li>
@@ -4672,32 +4565,29 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="checkbox-demo1-scss">// .checkbox-1 {
-//   margin-top: 10px;
+<code class="language-scss" id="checkbox-demo1-scss">.checkbox-1 {
+  margin-top: 10px;
 
-//   @include checkbox() {
-//     padding: 4px 0 4px 26px;
-//     &amp;:before {
-//       content: '';
-//       display: inline-block;
-//       width: 8px;
-//       height: 8px;
-//       border-radius: 50%;
-//       background-color: #fff;
-//       box-shadow: 0 0 0 5px #fff, 0 0 0 6px #0080FF;
-//       transform: translateX(-16px) translateY(-2px);
-//     }
-//   };
+  @include checkbox() {
+    padding: 4px 0 4px 26px;
+    &amp;:before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #fff;
+      box-shadow: 0 0 0 5px #fff, 0 0 0 6px #0080FF;
+      transform: translateX(-16px) translateY(-2px);
+    }
+  };
   
-//   @include checkbox-active() {
-//     &amp;:before {
-//       background-color: #0080FF;
-//     }
-//   };
-// }
-
-
-//</code>
+  @include checkbox-active() {
+    &amp;:before {
+      background-color: #0080FF;
+    }
+  };
+}</code>
 </pre><button class="btn copy-button" data-clipboard-target="#checkbox-demo1-scss">Copy Code</button>
                   </div>
                 </li>
@@ -4766,22 +4656,20 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="inputfile-demo1-scss">// .input-file-1 {
-//   @include input-file() {
-//     margin: 10px 0;
-//     padding: 10px;
-//     color: #fff;
-//     background-color: #1D85E9;
-//     border-radius: 5px;
-//     box-shadow: 0 4px 0px #145796;
-//     transition: background-color 0.25s;
-//     &amp;:hover {
-//       background-color: #1F91FF;
-//     }
-//   }
-// }
-
-//</code>
+<code class="language-scss" id="inputfile-demo1-scss">.input-file-1 {
+  @include input-file() {
+    margin: 10px 0;
+    padding: 10px;
+    color: #fff;
+    background-color: #1D85E9;
+    border-radius: 5px;
+    box-shadow: 0 4px 0px #145796;
+    transition: background-color 0.25s;
+    &amp;:hover {
+      background-color: #1F91FF;
+    }
+  }
+}</code>
 </pre><button class="btn copy-button" data-clipboard-target="#inputfile-demo1-scss">Copy Code</button>
                   </div>
                 </li>
@@ -4817,7 +4705,15 @@ $main: (
             </header>
             <div>
               <pre class="language-scss">
-<code></code>
+<code>@mixin tab($style $count)
+// $style: 'normal' | 'carousel' | 'customize'
+// $count: tab count
+
+@mixin tab-active($count)
+// $count: tab count
+
+@mixin tab-panel-active($count)
+// $count: tab count</code>
 </pre>
             </div>
           </div>
@@ -4867,24 +4763,15 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="tab-demo1-scss">// .tab-1 { 
-//   @include tab( (
-//     'style': 'carousel',
-//     'count': 3
-//   ) ); 
-//   @include tab-active( (
-//     'count': 3
-//   ) ) {
-//     color: #1899FF;
-//   } 
-//   @include tab-panel-active( (
-//     'count': 3
-//   )) {
-//     border: 1px solid #1899FF;
-//   } 
-// }
-
-//</code>
+<code class="language-scss" id="tab-demo1-scss">.tab-1 { 
+  @include tab('carousel' 3);
+  @include tab-active(3) {
+    color: #1899FF;
+  } 
+  @include tab-panel-active(3) {
+    border: 1px solid #1899FF;
+  } 
+}</code>
 </pre><button class="btn copy-button" data-clipboard-target="#tab-demo1-scss">Copy Code</button>
                   </div>
                 </li>
@@ -4933,7 +4820,7 @@ $main: (
             </header>
             <div>
               <pre class="language-scss">
-<code>@mixin accordion($selector $max-height $transition-duration)</code>
+<code>@mixin accordion($selector $max-height $duration)</code>
 </pre>
             </div>
           </div>
@@ -4972,15 +4859,10 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="accordion-demo1-scss">// .accordion-1 {
-//   @include accordion( (
-//     'selector': 'div',
-//     'max-height': 200px
-//   ) );
-//   &gt; label { display: block; padding: 10px; background-color: #f5f5f5; }
-// }
-
-//</code>
+<code class="language-scss" id="accordion-demo1-scss">.accordion-1 {
+  @include accordion('div' 200px);
+  &gt; label { display: block; padding: 10px; background-color: #f5f5f5; }
+}</code>
 </pre><button class="btn copy-button" data-clipboard-target="#accordion-demo1-scss">Copy Code</button>
                   </div>
                 </li>
@@ -5022,11 +4904,11 @@ $main: (
             </header>
             <div>
               <pre class="language-scss">
-<code>@mixin dropdown($selector $show $style $direction $duration 'default')
-// $selector: string. Dropdown content selector.
-// $show: 'hover' | 'click'
+<code>@mixin dropdown($style $selector $activate $direction $duration 'default')
 // $style: 'display' | 'scale' | 'rotate'
-// default: use default styles</code>
+// $selector: string (Dropdown content selector)
+// $activate: 'hover' | 'click'
+// 'default': use default styles</code>
 </pre>
             </div>
           </div>
@@ -5062,18 +4944,12 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="dropdown-demo1-scss">// .dropdown-1 {
-//   @include dropdown( (
-//     'direction': 'right', 
-//     'activate': 'click', 
-//     'default': true
-//   ) );
-//   display: inline-block;
-//   min-height: 140px;
-//   margin-top: 20px;
-// }
-
-//</code>
+<code class="language-scss" id="dropdown-demo1-scss">.dropdown-1 {
+  @include dropdown('right' 'click' 'default');
+  display: inline-block;
+  min-height: 140px;
+  margin-top: 20px;
+}</code>
 </pre><button class="btn copy-button" data-clipboard-target="#dropdown-demo1-scss">Copy Code</button>
                   </div>
                 </li>
@@ -5114,11 +4990,10 @@ $main: (
             </header>
             <div>
               <pre class="language-scss">
-<code>@mixin tooltip($position $color ('width' $width) ('height' $height) 'radius')
-// $position: left | right | top | bottom
-// $width(optional): px | em
-// $height(optional): px | em
-// radius (0.22em), adjust it using "$ro-tooltip-radius: your value;")</code>
+<code>@mixin tooltip($direction $color ('content' $content) $border-radius)
+// $direction: left | right | top | bottom
+// $color: color (tooltip panel background color)
+// $content: String (tooltip panel content, default: attr(data-tooltip))</code>
 </pre>
             </div>
           </div>
@@ -5144,21 +5019,8 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="tooltip-demo1-scss">// .tooltip-1 {
-//   @include tooltip( (
-//     'direction': 'right',
-//     'color': #b02df3
-//   ) ); 
-// }
-// .tooltip-2 {
-//   @include tooltip( (
-//     'direction': 'bottom',
-//     'color': #b02df3,
-//     'border-radius': 3px
-//   ) ); 
-// }
-
-//</code>
+<code class="language-scss" id="tooltip-demo1-scss">.tooltip-1 { @include tooltip('right' #b02df3); }
+.tooltip-2 { @include tooltip('bottom' #b02df3 3px); }</code>
 </pre><button class="btn copy-button" data-clipboard-target="#tooltip-demo1-scss">Copy Code</button>
                   </div>
                 </li>
@@ -5187,7 +5049,7 @@ $main: (
             </header>
             <div>
               <pre class="language-scss">
-<code>@mixin flex-media($ratio $child)</code>
+<code>@mixin flex-media($selector $ratio)</code>
 </pre>
             </div>
           </div>
@@ -5218,15 +5080,8 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="flexmedia-demo1-scss">// .flex-media-1 { @include flex-media( (
-//   'ratio': (315/560)
-// ) ); }
-// .flex-media-2 { @include flex-media( (
-//   'ratio': 1, 
-//   'selector': 'svg'
-// ) ); }
-
-//</code>
+<code class="language-scss" id="flexmedia-demo1-scss">.flex-media-1 { @include flex-media( (315/560) ); }
+.flex-media-2 { @include flex-media('svg' 1); }</code>
 </pre><button class="btn copy-button" data-clipboard-target="#flexmedia-demo1-scss">Copy Code</button>
                   </div>
                 </li>
@@ -5269,9 +5124,9 @@ $main: (
             </header>
             <div>
               <pre class="language-scss">
-<code>@mixin fluid-type($properties, $data);
-// $properties: font-size | margin | padding
-// $data: map</code>
+<code>@mixin fluid-type($property $breakpoint);
+// $property: list | string (font-size | margin | padding)
+// $breakpoint: map</code>
 </pre>
             </div>
           </div>
@@ -5297,12 +5152,7 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="fluidtype-demo1-scss">// .fluid-type-1 { @include fluid-type( (
-//   'property': 'font-size', 
-//   'breakpoint': (320px: 16px, 1024px: 40px)
-// ) ); }
-
-//</code>
+<code class="language-scss" id="fluidtype-demo1-scss">.fluid-type-1 { @include fluid-type('font-size' (320px: 16px, 1300px: 60px)); }</code>
 </pre><button class="btn copy-button" data-clipboard-target="#fluidtype-demo1-scss">Copy Code</button>
                   </div>
                 </li>
@@ -5358,14 +5208,12 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="hidetext-demo1-scss">// .hide-text-1 {
-//   @extend %hide-text;
-//   width: 100px;
-//   height: 60px;
-//   background: #ccc url('http://placehold.it/100x60/DD279E/ffffff?text=Brand') 0 0 no-repeat;
-// }
-
-//</code>
+<code class="language-scss" id="hidetext-demo1-scss">.hide-text-1 {
+  @extend %hide-text;
+  width: 100px;
+  height: 60px;
+  background: #ccc url('http://placehold.it/100x60/DD279E/ffffff?text=Brand') 0 0 no-repeat;
+}</code>
 </pre><button class="btn copy-button" data-clipboard-target="#hidetext-demo1-scss">Copy Code</button>
                   </div>
                 </li>
@@ -5395,7 +5243,10 @@ $main: (
             </header>
             <div>
               <pre class="language-scss">
-<code>@mixin ro-breakpoint($condition $media-type $media-feature $breakpoints)</code>
+<code>@mixin ro-breakpoint($media $condition $feature $breakpoint)
+// $media: ('all' 'aural' 'braille' 'handheld' 'print' 'projection' 'screen' 'tty' 'tv' 'embossed')
+// $condition: 'min' | 'max'
+// $feature: 'width' | 'height'</code>
 </pre>
             </div>
           </div>
@@ -5405,29 +5256,14 @@ $main: (
             </header>
             <div>
               <pre class="language-scss">
-<code>// @include bp( (
-//   'breakpoint': 640,
-//   'condition': 'min'
-// ) ) {};
-// // @media (min-width: 40em) {};
-// @include bp( (
-//   'breakpoint': 640,
-//   'condition': 'min',
-//   'feature': 'height'
-// ) ) {};
-// // @media (min-height: 40em) {};
-// @include bp( (
-//   'breakpoint': 640,
-//   'condition': 'max',
-//   'media': 'screen'
-// ) ) {};
-// // @media screen and (max-width: 39.9375em) {};
-// @include bp( (
-//   'breakpoint': (400 767 1000 1200 1500)
-// ) ) {};
-// // @media (min-width: 25em) and (max-width: 47.875em), (min-width: 62.5em) and (max-width: 74.9375em), (min-width: 93.75em){}
-
-//</code>
+<code>@include bp(640 'min') {};
+// @media (min-width: 40em) {};
+@include bp(640 'min' 'height') {};
+// @media (min-height: 40em) {};
+@include bp(640 'max' 'screen') {};
+// @media screen and (max-width: 39.9375em) {};
+@include bp(400 767 1000 1200 1500) {};
+// @media (min-width: 25em) and (max-width: 47.875em), (min-width: 62.5em) and (max-width: 74.9375em), (min-width: 93.75em){}</code>
 </pre>
             </div>
           </div>
@@ -5483,15 +5319,10 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="atleast-demo1-scss">// .at-least-1 {
-//   li { display: inline-block; width: 100px; }
-//   @include at-least( (
-//     'selector': 'li',
-//     'count': 4
-//   ) ) { background-color: #25e425; }
-// }
-
-//</code>
+<code class="language-scss" id="atleast-demo1-scss">.at-least-1 {
+  li { display: inline-block; width: 100px; }
+  @include at-least('li' 4) { background-color: #25e425; }
+}</code>
 </pre><button class="btn copy-button" data-clipboard-target="#atleast-demo1-scss">Copy Code</button>
                   </div>
                 </li>
@@ -5564,15 +5395,10 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="atmost-demo1-scss">// .at-most-1 {
-//   li { display: inline-block; width: 100px; }
-//   @include at-most( (
-//     'selector': 'li',
-//     'count': 4
-//   ) ) { background-color: #25e425; }
-// }
-
-//</code>
+<code class="language-scss" id="atmost-demo1-scss">.at-most-1 {
+  li { display: inline-block; width: 100px; }
+  @include at-most('li' 4) { background-color: #25e425; }
+}</code>
 </pre><button class="btn copy-button" data-clipboard-target="#atmost-demo1-scss">Copy Code</button>
                   </div>
                 </li>
@@ -5652,15 +5478,10 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="equalto-demo1-scss">// .equal-to-1 {
-//   li { display: inline-block; width: 100px; }
-//   @include equal-to( (
-//     'selector': 'li',
-//     'count': 4
-//   ) ) { background-color: #25e425; }
-// }
-
-//</code>
+<code class="language-scss" id="equalto-demo1-scss">.equal-to-1 {
+  li { display: inline-block; width: 100px; }
+  @include equal-to('li' 4) { background-color: #25e425; }
+}</code>
 </pre><button class="btn copy-button" data-clipboard-target="#equalto-demo1-scss">Copy Code</button>
                   </div>
                 </li>
@@ -5739,15 +5560,10 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="between-demo1-scss">// .between-1 {
-//   li { display: inline-block; width: 100px; }
-//   @include between( (
-//     'selector': 'li',
-//     'count': (4 6)
-//   ) ) { background-color: #25e425; }
-// }
-
-//</code>
+<code class="language-scss" id="between-demo1-scss">.between-1 {
+  li { display: inline-block; width: 100px; }
+  @include between('li' 4 6) { background-color: #25e425; }
+}</code>
 </pre><button class="btn copy-button" data-clipboard-target="#between-demo1-scss">Copy Code</button>
                   </div>
                 </li>
@@ -5818,27 +5634,18 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="contrast-demo1-scss">// .contrast-1 {
-//   background-color: #a6e36e; 
-//   color: contrast( (
-//     'color': #a6e36e
-//   ) );
-// }
-// .contrast-2 {
-//   background-color: #800000;
-//   color: contrast( (
-//     'color': #800000
-//   ) );
-// }
-// .contrast-3 {
-//   background-color: #6666FF;
-//   color: contrast( (
-//     'color': #6666FF, 
-//     'light': #D6D6E6
-//   ) );
-// }
-
-//</code>
+<code class="language-scss" id="contrast-demo1-scss">.contrast-1 {
+  background-color: #a6e36e; 
+  color: contrast(#a6e36e);
+}
+.contrast-2 {
+  background-color: #800000;
+  color: contrast(#800000);
+}
+.contrast-3 {
+  background-color: #6666FF;
+  color: contrast(#6666FF 'light' #D6D6E6);
+}</code>
 </pre><button class="btn copy-button" data-clipboard-target="#contrast-demo1-scss">Copy Code</button>
                   </div>
                 </li>
@@ -5873,11 +5680,11 @@ $main: (
             </header>
             <div>
               <pre class="language-scss">
-<code>@function adjacent($color $order ('saturation' $saturation) ('lightness' $lightness) ('dist' $dist))
-// $order: integer
+<code>@function adjacent($color $count ('saturation' $saturation) ('lightness' $lightness) ('scale' $scale))
+// $count: integer
 // $saturation: percent
 // $lightness: percent
-// $dist(distribution): number</code>
+// $scale: number</code>
 </pre>
             </div>
           </div>
@@ -5906,21 +5713,10 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="adjacent-demo1-scss">// .adjacent-0 { background-color: #155BDF; }
-// .adjacent-1 { background-color: adjacent( (
-//   'color': #155BDF,
-//   'count': 1
-//   ) ); }
-// .adjacent-2 { background-color: adjacent( (
-//   'color': #155BDF,
-//   'count': 2
-//   ) ); }
-// .adjacent-3 { background-color: adjacent( (
-//   'color': #155BDF,
-//   'count': 3
-//   ) ); }
-
-//</code>
+<code class="language-scss" id="adjacent-demo1-scss">.adjacent-0 { background-color: #155BDF; }
+.adjacent-1 { background-color: adjacent(#155BDF 1); }
+.adjacent-2 { background-color: adjacent(#155BDF 2); }
+.adjacent-3 { background-color: adjacent(#155BDF 3); }</code>
 </pre><button class="btn copy-button" data-clipboard-target="#adjacent-demo1-scss">Copy Code</button>
                   </div>
                 </li>
@@ -5950,11 +5746,10 @@ $main: (
             </header>
             <div>
               <pre class="language-scss">
-<code>@function complementary($color ('saturation' $saturation) ('lightness' $lightness) ('dist' $dist))
-// $order: integer
+<code>@function complementary($color ('saturation' $saturation) ('lightness' $lightness) ('scale' $scale))
 // $saturation: percent
 // $lightness: percent
-// $dist(distribution): number</code>
+// $scale: number</code>
 </pre>
             </div>
           </div>
@@ -5981,13 +5776,8 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="complementary-demo1-scss">// .complementary-0 { background-color: #155BDF; }
-// .complementary-1 { background-color: complementary( (
-//   'color': #155BDF,
-//   'count': 1
-//   ) ); }
-
-//</code>
+<code class="language-scss" id="complementary-demo1-scss">.complementary-0 { background-color: #155BDF; }
+.complementary-1 { background-color: complementary(#155BDF 1); }</code>
 </pre><button class="btn copy-button" data-clipboard-target="#complementary-demo1-scss">Copy Code</button>
                   </div>
                 </li>
@@ -6015,7 +5805,7 @@ $main: (
             </header>
             <div>
               <pre class="language-scss">
-<code>@function split-complementary($color $order ('saturation' $saturation) ('lightness' $lightness) ('dist' $dist))</code>
+<code>@function split-complementary($color $count ('saturation' $saturation) ('lightness' $lightness) ('scale' $scale))</code>
 </pre>
             </div>
           </div>
@@ -6044,21 +5834,10 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="splitcomplementary-demo1-scss">// .split-complementary-0 { background-color: #155BDF; }
-// .split-complementary-1 { background-color: split-complementary( (
-//   'color': #155BDF,
-//   'count': 1
-//   ) ); }
-// .split-complementary-2 { background-color: split-complementary( (
-//   'color': #155BDF,
-//   'count': 2
-//   ) ); }
-// .split-complementary-3 { background-color: split-complementary( (
-//   'color': #155BDF,
-//   'count': 3
-//   ) ); }
-
-//</code>
+<code class="language-scss" id="splitcomplementary-demo1-scss">.split-complementary-0 { background-color: #155BDF; }
+.split-complementary-1 { background-color: split-complementary(#155BDF 1); }
+.split-complementary-2 { background-color: split-complementary(#155BDF 2); }
+.split-complementary-3 { background-color: split-complementary(#155BDF 3); }</code>
 </pre><button class="btn copy-button" data-clipboard-target="#splitcomplementary-demo1-scss">Copy Code</button>
                   </div>
                 </li>
@@ -6088,11 +5867,11 @@ $main: (
             </header>
             <div>
               <pre class="language-scss">
-<code>@function triad($color $order ('saturation' $saturation) ('lightness' $lightness) ('dist' $dist))
-// $order: integer
+<code>@function triad($color $count ('saturation' $saturation) ('lightness' $lightness) ('scale' $scale))
+// $count: integer
 // $saturation: percent
 // $lightness: percent
-// $dist(distribution): number</code>
+// $scale: number</code>
 </pre>
             </div>
           </div>
@@ -6120,17 +5899,9 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="triad-demo1-scss">// .triad-0 { background-color: #155BDF; }
-// .triad-1 { background-color: triad( (
-//   'color': #155BDF,
-//   'count': 1
-//   ) ); }
-// .triad-2 { background-color: triad( (
-//   'color': #155BDF,
-//   'count': 2
-//   ) ); }
-
-//</code>
+<code class="language-scss" id="triad-demo1-scss">.triad-0 { background-color: #155BDF; }
+.triad-1 { background-color: triad(#155BDF 1); }
+.triad-2 { background-color: triad(#155BDF 2); }</code>
 </pre><button class="btn copy-button" data-clipboard-target="#triad-demo1-scss">Copy Code</button>
                   </div>
                 </li>
@@ -6159,11 +5930,11 @@ $main: (
             </header>
             <div>
               <pre class="language-scss">
-<code>@function rectangle($color $order ('saturation' $saturation) ('lightness' $lightness) ('dist' $dist))
-// $order: integer
+<code>@function rectangle($color $count ('saturation' $saturation) ('lightness' $lightness) ('scale' $scale))
+// $count: integer
 // $saturation: percent
 // $lightness: percent
-// $dist(distribution): number</code>
+// $scale: number</code>
 </pre>
             </div>
           </div>
@@ -6192,21 +5963,10 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="rectangle-demo1-scss">// .rectangle-0 { background-color: #155BDF; }
-// .rectangle-1 { background-color: rectangle( (
-//   'color': #155BDF,
-//   'count': 1
-//   ) ); }
-// .rectangle-2 { background-color: rectangle( (
-//   'color': #155BDF,
-//   'count': 2
-//   ) ); }
-// .rectangle-3 { background-color: rectangle( (
-//   'color': #155BDF,
-//   'count': 3
-//   ) ); }
-
-//</code>
+<code class="language-scss" id="rectangle-demo1-scss">.rectangle-0 { background-color: #155BDF; }
+.rectangle-1 { background-color: rectangle(#155BDF 1); }
+.rectangle-2 { background-color: rectangle(#155BDF 2); }
+.rectangle-3 { background-color: rectangle(#155BDF 3); }</code>
 </pre><button class="btn copy-button" data-clipboard-target="#rectangle-demo1-scss">Copy Code</button>
                   </div>
                 </li>
@@ -6236,11 +5996,11 @@ $main: (
             </header>
             <div>
               <pre class="language-scss">
-<code>@function square($color $order ('saturation' $saturation) ('lightness' $lightness) ('dist' $dist))
-// $order: integer
+<code>@function square($color $count ('saturation' $saturation) ('lightness' $lightness) ('scale' $scale))
+// $count: integer
 // $saturation: percent
 // $lightness: percent
-// $dist(distribution): number</code>
+// $scale: number</code>
 </pre>
             </div>
           </div>
@@ -6269,19 +6029,10 @@ $main: (
                   </header>
                   <div>
                     <pre>
-<code class="language-scss" id="square-demo1-scss">// .square-0 { background-color: #155BDF; }
-// .square-1 { background-color: square( (
-//   'color': #155BDF,
-//   'count': 1
-//   ) ); }
-// .square-2 { background-color: square( (
-//   'color': #155BDF,
-//   'count': 2
-//   ) ); }
-// .square-3 { background-color: square( (
-//   'color': #155BDF,
-//   'count': 3
-//   ) ); }</code>
+<code class="language-scss" id="square-demo1-scss">.square-0 { background-color: #155BDF; }
+.square-1 { background-color: square(#155BDF 1); }
+.square-2 { background-color: square(#155BDF 2); }
+.square-3 { background-color: square(#155BDF 3); }</code>
 </pre><button class="btn copy-button" data-clipboard-target="#square-demo1-scss">Copy Code</button>
                   </div>
                 </li>
