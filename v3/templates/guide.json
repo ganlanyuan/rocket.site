@@ -17,11 +17,14 @@
         "style3"
       ],
       "requests": [
-        "Requests for version 3:",
+        "<strong>Requests for version 3:</strong>",
         "+&nbsp;&nbsp;<del><a href='http://v3.modernizr.com/' target='_blank'>Modernizr</a> (`-csscolumns-`, `-csstransforms-`, `-cssanimations-`, `-flexbox-`, `-flexboxtweener-`, `-flexwrap-`).</del> Update: not required from <a href='https://github.com/ganlanyuan/rocket/tree/v3.4.2' target='_blank'>v3.4.2</a>.",
         "+&nbsp;&nbsp;<a href='http://selectivizr.com/' target='_blank'>Selectivizr</a> and a Javascript library (if you're not using one) for IE8.",
         "+&nbsp;&nbsp;Please replace `-&lt;html&gt;-` with the markup below for better IE support.",
-        "markup1"
+        "markup1",
+        "<strong>Requests for version 4:</strong>",
+        "Please replace `-&lt;html&gt;-` with the markup below for better IE support.",
+        "markup2"
       ]
     }
   }

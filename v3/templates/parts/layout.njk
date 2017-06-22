@@ -79,10 +79,9 @@
       </a></div>
       <nav class="site-nav">
         <ul>
-          {% set latestVersion = 'v4' %}
           {% set mainNav = ['guide', 'docs', 'tutorial'] %}
           {% for item in mainNav %}
-            <li {{ 'class=active' if item === page }}><a href="{{ item if page !== 'index' else latestVersion + '/' + item }}.html" {{ 'target=_blank' if item === 'github'}}>{{ item | capitalize }}</a></li>
+            <li {{ 'class=active' if item === page }}><a href="{{ '../' if page !== 'index' }}{{ 'v4/' if item === 'docs' else 'v3/' }}{{ item }}.html" {{ 'target=_blank' if item === 'github'}}>{{ item | capitalize }}</a></li>
           {% endfor %}
         </ul>
       </nav>
