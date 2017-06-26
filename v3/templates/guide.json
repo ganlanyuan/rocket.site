@@ -23,6 +23,7 @@
         "+&nbsp;&nbsp;Please replace `-&lt;html&gt;-` with the markup below for better IE support.",
         "markup1",
         "<strong>Requests for version 4:</strong>",
+        "Avoid using relative unit (rem, em) gutter for better IE capability.",
         "Please replace `-&lt;html&gt;-` with the markup below for better IE support.",
         "markup2"
       ]

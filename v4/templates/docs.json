@@ -16,7 +16,7 @@
       ],
       "grid": [
         "Create a responsive multi columns (and even multi rows) layout using `-grid-`.",
-        "<em class='capability'>IE 8+, Firefox 28+, Chrome 21+, Safari 6.2+, Opera 15+</em>",
+        "<em class='capability'>IE 9+, Firefox 4+, Chrome 19+, Safari 6+, Opera 15+</em>",
         "syntax",
         "`-@include-` grid on the parent element, pass a number list (make sure the number list count is the same with the child elements count) as a parameter.",
         "demo1",
