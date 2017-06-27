@@ -16,6 +16,7 @@
       ],
       "grid": [
         "Create a responsive multi columns (and even multi rows) layout using `-grid-`.",
+        "Avoid using relative unit (rem, em) gutter for better IE capability.",
         "<em class='capability'>IE 9+, Firefox 4+, Chrome 19+, Safari 6+, Opera 15+</em>",
         "syntax",
         "`-@include-` grid on the parent element, pass a number list (make sure the number list count is the same with the child elements count) as a parameter.",
@@ -30,9 +31,21 @@
         "`-grid-` works with breakpoints to make multi layouts for different devices.",
         "demo5"
       ],
+      "gallery": [
+        "Make a photo gallery layout.",
+        "<em class='capability'>IE 9+, Firefox 4+, Chrome 19+, Safari 6+, Opera 15+</em>",
+        "syntax",
+        "demo1",
+        "You can change the gutter and direction.",
+        "demo2",
+        "Use breakpoints to make it works on multi devices.",
+        "demo3",
+        "If the child elements are not `-li-`s, indicate them using `-selector $selector-` format in the parameter.",
+        "demo4"
+      ],
       "liquid": [
         "Make a fluid 2-columns blog layout, with a fixed sidebar and a fluid main column.",
-        "<em class='capability'>IE 8+, Firefox 4+, Chrome 19+, Safari 6+, Opera 15+</em>",
+        "<em class='capability'>IE 9+, Firefox 4+, Chrome 19+, Safari 6+, Opera 15+</em>",
         "syntax",
         "Use string `-'auto'-` to indicate the fluid main column.",
         "demo1",
@@ -54,18 +67,6 @@
         "Works with breakpoint.",
         "demo3",
         "If the child elements are not `-div-`s, indicate them using `-child ($selector1 $selector2 $selector3)-` format in the parameter.",
-        "demo4"
-      ],
-      "gallery": [
-        "Make a photo gallery layout.",
-        "<em class='capability'>IE 8+, Firefox 3.6+, Chrome 21+, Safari 6.2+, Opera 15+</em>",
-        "syntax",
-        "demo1",
-        "You can change the gutter and direction.",
-        "demo2",
-        "Use breakpoints to make it works on multi devices.",
-        "demo3",
-        "If the child elements are not `-li-`s, indicate them using `-selector $selector-` format in the parameter.",
         "demo4"
       ],
       "masonry": [

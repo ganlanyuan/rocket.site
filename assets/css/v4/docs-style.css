@@ -1938,6 +1938,9 @@ th {
     top: -9999px;
     left: -9999px;
   }
+  .responsive-table-4 td {
+    background: linear-gradient(to right, transparent 50%, #dbdbdb 50%, #dbdbdb calc(50% + 1px), transparent calc(50% + 1px)) 0 0 no-repeat;
+  }
   .responsive-table-4 td:before {
     display: inline-block;
     vertical-align: top;
@@ -2909,6 +2912,7 @@ input:checked ~ .off-canvas-1 .page-overlay {
   content: attr(data-tooltip);
   color: #fff;
   background: #b02df3;
+  border-radius: "right";
 }
 
 .tooltip-1:hover:before, .tooltip-1:hover:after {
@@ -2953,6 +2957,7 @@ input:checked ~ .off-canvas-1 .page-overlay {
   content: attr(data-tooltip);
   color: #fff;
   background: #b02df3;
+  border-radius: "bottom";
 }
 
 .tooltip-2:hover:before, .tooltip-2:hover:after {
