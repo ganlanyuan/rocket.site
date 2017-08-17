@@ -16,18 +16,24 @@
 .intro { 
   text-align: center; 
   p {
-    @include fluid-type(font-size, (300px: 24px, 1024px: 36px));
+    font-size: 18px;
+    font-size: rem(18px);
     font-weight: 300;
     margin-top: 0;
+    @include bp(1024) {
+      font-size: 24px;
+      font-size: rem(24px);
+    }
   }
   .btn { margin-bottom: 6px; }
 }
 
 // features
 .features {
-  background-color: nth($theme-square, 4);
+  background-color: nth($theme-square, 1);
   text-align: center;
   overflow: hidden;
+  color: contrast(nth($theme-square, 1));
   [class*="language-"] { background-color: rgba(0, 0, 0, 0.07); }
   @include bp(min 610) {
     ul { margin-right: -30px; }
@@ -41,6 +47,9 @@
   svg {
     margin: 50px auto 50px;
     height: 90px;
+  }
+  p {
+    color: #000;
   }
 }
 

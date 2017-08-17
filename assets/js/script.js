@@ -118,29 +118,31 @@ var searchBar = doc.querySelector('#component'),
     len = docNavs.length,
     ids = [];
 
-for (var i = len; i--;) {
-  ids.push(docNavs[i].getAttribute('href').replace('#', ''));
+if (searchBar) {
+  for (var i = len; i--;) {
+    ids.push(docNavs[i].getAttribute('href').replace('#', ''));
+  }
+
+  doc.addEventListener('keydown', function (e) {
+    e = e || window.event;
+    var code = e.keyCode;
+
+    if (code === 191 && searchBar !== doc.activeElement) {
+      searchBar.focus();
+    }
+  });
+
+  searchBar.addEventListener('keyup', function (e) {
+    e = e || window.event;
+    var code = e.keyCode;
+    var value = searchBar.value;
+
+    if (value.indexOf('/') !== -1) {
+      value = searchBar.value = value.replace('/', '');
+    }
+
+    if (ids.indexOf(value) !== -1) {
+      window.scrollTo(0, doc.querySelector('#' + value).getBoundingClientRect().top + document.documentElement.scrollTop);
+    }
+  });
 }
-
-doc.addEventListener('keydown', function (e) {
-  e = e || window.event;
-  var code = e.keyCode;
-
-  if (code === 191 && searchBar !== doc.activeElement) {
-    searchBar.focus();
-  }
-});
-
-searchBar.addEventListener('keyup', function (e) {
-  e = e || window.event;
-  var code = e.keyCode;
-  var value = searchBar.value;
-
-  if (value.indexOf('/') !== -1) {
-    value = searchBar.value = value.replace('/', '');
-  }
-
-  if (ids.indexOf(value) !== -1) {
-    window.scrollTo(0, doc.querySelector('#' + value).getBoundingClientRect().top + document.documentElement.scrollTop);
-  }
-});
