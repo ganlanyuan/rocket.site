@@ -577,11 +577,10 @@ svg {
   display: block;
   padding: 0 10px;
   transition: background-color 0.25s;
-  opacity: 0.7;
 }
 
 .site-nav a:hover {
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .site-nav .active a {
@@ -704,6 +703,13 @@ svg {
 
 .intro .btn {
   margin-bottom: 6px;
+  color: #fff;
+  background-color: #333;
+  transition: background-color 0.25s;
+}
+
+.intro .btn:hover {
+  background-color: #555;
 }
 
 .features {

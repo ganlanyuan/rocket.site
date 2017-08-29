@@ -43,7 +43,7 @@
       <div class="docs-nav-toggle"></div>
 
       {% if page === "docs" %}
-      <form action="" class="search-form">
+      <div class="search-form">
         <input type="text" list="components" name="component" id="component" placeholder="Search" autocomplete autofocus>
         <datalist id="components">
           {% for groupname, groupcontent in docs %}
@@ -52,7 +52,7 @@
             {% endfor %}
           {% endfor %}
         </datalist>
-      </form>
+      </div>
       {% endif %}
     </div>
 

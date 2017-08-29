@@ -184,6 +184,9 @@
               <a href="#fluid-type">Fluid-type</a>
             </li>
             <li>
+              <a href="#scale-type">Scale-type</a>
+            </li>
+            <li>
               <a href="#hide-text">Hide-text</a>
             </li>
             <li>
@@ -236,7 +239,7 @@
       <main>
         <div class="sticky-line">
           <div class="docs-nav-toggle"></div>
-          <form action="" class="search-form">
+          <div class="search-form">
             <input type="text" list="components" name="component" id="component" placeholder="Search" autocomplete="" autofocus=""> <datalist id="components">
               <option value="layout setting">
                 </option>
@@ -296,6 +299,8 @@
                 </option>
               <option value="fluid-type">
                 </option>
+              <option value="scale-type">
+                </option>
               <option value="hide-text">
                 </option>
               <option value="ro-breakpoint">
@@ -323,7 +328,7 @@
               <option value="square">
                 </option>
             </datalist>
-          </form>
+          </div>
         </div>
         <ul class="version-line">
           <li>
@@ -466,10 +471,7 @@
             Grid
           </h4>
           <p>
-            Create a responsive multi columns (and even multi rows) layout using <code class="language-html">grid</code>.
-          </p>
-          <p>
-            Avoid using relative unit (rem, em) gutter for better IE capability.
+            Create a responsive multi columns (and even multi rows) layout using <code class="language-html">grid</code>. Avoid using relative unit (<code class="language-html">rem</code>, <code class="language-html">em</code>) gutter for better IE capability.
           </p>
           <p>
             <em class='capability'>IE 9+, Firefox 4+, Chrome 19+, Safari 6+, Opera 15+</em>
@@ -480,18 +482,18 @@
             </header>
             <div>
               <pre class="language-scss">
-<code>@mixin grid($column ('gutter' $gutter) ('selector' $selector) $breakpoint $condition $media $direction 'keep')
+<code>@mixin grid($column ('gutter' $gutter) ('selector' $selector) $direction $breakpoint $condition $media 'keep')
 // $column: list | map
 // $selector: string (child element selector, default "div")
-// $condition: 'min' | 'max'
-// $media: media types
+// $direction: LTR | RTL
 // $breakpoint: map (e.g. small: 640px, medium: 768px, large: 1024px)
-// $direction: LTR | RTL</code>
+// $condition: 'min' | 'max'
+// $media: media types</code>
 </pre>
             </div>
           </div>
           <p>
-            <code class="language-html">@include</code> grid on the parent element, pass a number list (make sure the number list count is the same with the child elements count) as a parameter.
+            <code class="language-html">@include</code> grid on the parent element, pass a number list as a parameter. Each number in the list indicate how many columns the child element occupy.
           </p>
           <div class="demo-container" data-show="code">
             <div class="toggle-container">
@@ -558,7 +560,7 @@
             Change the column order using <code class="language-html">(cols : order)</code> format.
           </p>
           <p>
-            The order works the same way as <a href='https://drafts.csswg.org/css-flexbox-1/#order-property' target='_blank'>flexbox-order</a>. Basically smaller order column will goes left, bigger goes right, equal orders will go with their original order in the markup from left to right.
+            The order works the same way as <a href='https://drafts.csswg.org/css-flexbox-1/#order-property' target='_blank'>flexbox-order</a>. Basically smaller order column will goes left, bigger goes right, equal orders will go with their original order in the markup.
           </p>
           <div class="demo-container" data-show="code">
             <div class="toggle-container">
@@ -855,13 +857,13 @@ $main: (
             </header>
             <div>
               <pre class="language-scss">
-<code>@mixin gallery($column ('gutter' $gutter) ('selector' $selector) $breakpoint $condition $media $direction 'center-align' 'keep');
+<code>@mixin gallery($column ('gutter' $gutter) ('selector' $selector) $direction $breakpoint $condition $media 'center-align' 'keep');
 // $column: number | map
 // $selector: string (child element selector, default "li")
-// $condition: 'min' | 'max'
-// $media: media types
+// $direction: LTR | RTL
 // $breakpoint: map (e.g. small: 640px, medium: 768px, large: 1024px)
-// $direction: LTR | RTL</code>
+// $condition: 'min' | 'max'
+// $media: media types</code>
 </pre>
             </div>
           </div>
@@ -1124,13 +1126,13 @@ $main: (
             </header>
             <div>
               <pre class="language-scss">
-<code>@mixin liquid($column ('gutter' $gutter) ('selector' $selector) $breakpoint $condition $media $direction)
+<code>@mixin liquid($column ('gutter' $gutter) ('selector' $selector) $direction $breakpoint $condition $media)
 // $column: list | map
 // $selector: string (child element selector, default "div")
-// $condition: 'min' | 'max'
-// $media: media types
+// $direction: 'LTR' | 'RTL'
 // $breakpoint: map (e.g. small: 640px, medium: 768px, large: 1024px)
-// $direction: 'LTR' | 'RTL'</code>
+// $condition: 'min' | 'max'
+// $media: media types</code>
 </pre>
             </div>
           </div>
@@ -1364,13 +1366,13 @@ $main: (
             </header>
             <div>
               <pre class="language-scss">
-<code>@mixin holy-grail($column ('gutter' $gutter) ('selector' $selector) $breakpoint $condition $media $direction)
+<code>@mixin holy-grail($column ('gutter' $gutter) ('selector' $selector) $direction $breakpoint $condition $media)
 // $column: list | map
 // $selector: string (child element selector, default "div")
-// $condition: 'min' | 'max'
-// $media: media types
+// $direction: LTR | RTL
 // $breakpoint: map (e.g. small: 640px, medium: 768px, large: 1024px)
-// $direction: LTR | RTL</code>
+// $condition: 'min' | 'max'
+// $media: media types</code>
 </pre>
             </div>
           </div>
@@ -1642,9 +1644,9 @@ $main: (
 <code>@mixin masonry($column ('gutter' $gutter) ('selector' $selector) $breakpoint $condition $media 'keep');
 // $column: number | map
 // $selector: string (child element selector, default "li")
+// $breakpoint: map (e.g. small: 640px, medium: 768px, large: 1024px)
 // $condition: 'min' | 'max'
 // $media: media types
-// $breakpoint: map (e.g. small: 640px, medium: 768px, large: 1024px)
 
 // *** fallback: IE9- *** //
 .no-csscolumns {
@@ -4994,7 +4996,8 @@ th {
 <code>@mixin tooltip($direction $color ('content' $content) $border-radius)
 // $direction: left | right | top | bottom
 // $color: color (tooltip panel background color)
-// $content: String (tooltip panel content, default: attr(data-tooltip))</code>
+// $content: String | attr() (default: attr(data-tooltip))
+// $border-radius: px | em | rem | % | ...</code>
 </pre>
             </div>
           </div>
@@ -5162,6 +5165,81 @@ th {
             <div class="preview-wrapper">
               <div class="fluid-type-1">
                 Neque impedit, voluptatem quas!
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="scale-type">
+          <h4>
+            Scale-type
+          </h4>
+          <p>
+            Change <code class="language-html">font-size</code> or other properties based on scale.
+          </p>
+          <p>
+            Stolen from <a href='http://www.modularscale.com/' target='_blank'>here</a>
+          </p>
+          <p>
+            <em class='capability'>IE 6+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 10.6+</em>
+          </p>
+          <div class="code-wrapper">
+            <header class="scss">
+              scss: syntax
+            </header>
+            <div>
+              <pre class="language-scss">
+<code>@mixin scale-type($property $base $scale $selectors $reverse);
+// $property: string (default font-size)
+// $base: px | em | rem | ...
+// $scale: number
+// $selectors: string list (default ('h1', 'h2', 'h3', 'h4', 'h5', 'h6'))
+// $reverse: boolean (default true)</code>
+</pre>
+            </div>
+          </div>
+          <div class="demo-container" data-show="code">
+            <div class="toggle-container">
+              <button class="btn" data-toggle="code">Code</button><button class="btn" data-toggle="preview">Preview</button>
+            </div>
+            <div class="code-wrapper">
+              <ul>
+                <li>
+                  <header class="markup">
+                    markup
+                  </header>
+                  <div>
+                    <pre>
+<code class="language-markup" id="scaletype-demo1-markup">&lt;div class="h1"&gt;Lorem ipsum dolor sit amet, consectetur.&lt;/div&gt;
+&lt;div class="h2"&gt;Placeat magnam necessitatibus nemo eveniet quasi.&lt;/div&gt;
+&lt;div class="h3"&gt;Harum labore error soluta, veritatis recusandae?&lt;/div&gt;
+&lt;div class="h4"&gt;Consequuntur amet, est libero nemo eligendi.&lt;/div&gt;</code>
+</pre><button class="btn copy-button" data-clipboard-target="#scaletype-demo1-markup">Copy Code</button>
+                  </div>
+                </li>
+                <li>
+                  <header class="scss">
+                    scss
+                  </header>
+                  <div>
+                    <pre>
+<code class="language-scss" id="scaletype-demo1-scss">@include scale-type(1em 1.2 ('.h1' '.h2' '.h3' '.h4'));</code>
+</pre><button class="btn copy-button" data-clipboard-target="#scaletype-demo1-scss">Copy Code</button>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="preview-wrapper">
+              <div class="h1">
+                Lorem ipsum dolor sit amet, consectetur.
+              </div>
+              <div class="h2">
+                Placeat magnam necessitatibus nemo eveniet quasi.
+              </div>
+              <div class="h3">
+                Harum labore error soluta, veritatis recusandae?
+              </div>
+              <div class="h4">
+                Consequuntur amet, est libero nemo eligendi.
               </div>
             </div>
           </div>

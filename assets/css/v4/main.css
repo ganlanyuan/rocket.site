@@ -689,25 +689,16 @@ svg {
 }
 
 .intro p {
-  font-size: 24px;
-  font-size: 1.5rem;
+  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 300;
   margin-top: 0;
 }
 
-@media (min-width: 18.75em) {
-  .intro p {
-    font-size: calc(1.5rem + 12 * (100vw - 18.75rem) / 724);
-  }
-  .intro p else {
-    font-size: calc(24px + 12 * (100vw - 300px) / 724);
-  }
-}
-
 @media (min-width: 64em) {
   .intro p {
-    font-size: 36px;
-    font-size: 2.25rem;
+    font-size: 24px;
+    font-size: 1.5rem;
   }
 }
 
@@ -716,9 +707,10 @@ svg {
 }
 
 .features {
-  background-color: #abcd03;
+  background-color: #048af0;
   text-align: center;
   overflow: hidden;
+  color: #fff;
 }
 
 .features [class*="language-"] {
@@ -740,6 +732,10 @@ svg {
 .features svg {
   margin: 50px auto 50px;
   height: 90px;
+}
+
+.features p {
+  color: #000;
 }
 
 .get-started .heading2 {

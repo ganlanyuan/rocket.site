@@ -15,14 +15,13 @@
         "demo2"
       ],
       "grid": [
-        "Create a responsive multi columns (and even multi rows) layout using `-grid-`.",
-        "Avoid using relative unit (rem, em) gutter for better IE capability.",
+        "Create a responsive multi columns (and even multi rows) layout using `-grid-`. Avoid using relative unit (`-rem-`, `-em-`) gutter for better IE capability.",
         "<em class='capability'>IE 9+, Firefox 4+, Chrome 19+, Safari 6+, Opera 15+</em>",
         "syntax",
-        "`-@include-` grid on the parent element, pass a number list (make sure the number list count is the same with the child elements count) as a parameter.",
+        "`-@include-` grid on the parent element, pass a number list as a parameter. Each number in the list indicate how many columns the child element occupy.",
         "demo1",
         "Change the column order using `-(cols : order)-` format. ",
-        "The order works the same way as <a href='https://drafts.csswg.org/css-flexbox-1/#order-property' target='_blank'>flexbox-order</a>. Basically smaller order column will goes left, bigger goes right, equal orders will go with their original order in the markup from left to right.",
+        "The order works the same way as <a href='https://drafts.csswg.org/css-flexbox-1/#order-property' target='_blank'>flexbox-order</a>. Basically smaller order column will goes left, bigger goes right, equal orders will go with their original order in the markup.",
         "demo2",
         "The child elements can be separated to multi rows using a nested list. `-( (row1 row1 row1) (row2 row2) (row3 row3 row3))-` indicate 3 rows, the first row include 3 columns, 2rd row 2 columns, 3rd row 3 columns.",
         "demo3",
@@ -238,6 +237,13 @@
       "fluid-type": [
         "Make `-font-size-` or other properties change smoothly depending on the window size.",
         "Stolen from <a href='http://www.sassmeister.com/gist/7f22e44ace49b5124eec' target='_blank'>here</a> \n More on <a href='https://blog.codepen.io/2016/10/31/fluid-type-blogs/' target='_blank'>fluid-type-blogs</a>.",
+        "<em class='capability'>IE 6+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 10.6+</em>",
+        "syntax",
+        "demo1"
+      ],
+      "scale-type": [
+        "Change `-font-size-` or other properties based on scale.",
+        "Stolen from <a href='http://www.modularscale.com/' target='_blank'>here</a>",
         "<em class='capability'>IE 6+, Firefox 3.6+, Chrome 15+, Safari 4+, Opera 10.6+</em>",
         "syntax",
         "demo1"

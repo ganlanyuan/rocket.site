@@ -1,4 +1,4 @@
-{% set pagename = 'home' %}
+{% set page = 'home' %}
 {% extends "v4/templates/parts/layout.njk" %}
 
 {% block video %}
@@ -17,8 +17,8 @@
   <div class="container-narrow">
     <p>Rocket is a powerful Sass framework with many common used components and utility functions, to help you build websites faster and easier.</p>
     <div>
-      <a href="https://github.com/ganlanyuan/rocket/archive/master.zip" class="btn btn-bg btn-primary">Download</a>
-      <a href="#get-started" class="btn btn-bg btn-secondary">Get started</a>
+      <a class="btn btn-bg btn-download" href="https://github.com/ganlanyuan/rocket/archive/master.zip">Download</a>
+      <a class="btn btn-bg btn-start" href="#get-started">Get started</a>
     </div>
   </div>
 </section>
@@ -69,11 +69,7 @@
         <div class="media-body">
           <h4 class="heading4">Download Rocket</h4>
           <p>Download <code class="language-">Rocket</code> via npm, bower or download <a href="https://github.com/ganlanyuan/rocket/releases" target="_blank">the source files</a> directly.</p>
-          <pre class="language-none"><code>// bower
-bower install rocket --save
-
-// npm
-npm install rocket-sass --save</code></pre>
+          <pre class="language-none"><code>bower install rocket --save</code></pre>
         </div>
         <div class="media"><img src="assets/img/download-tools.png" alt="download tools"></div>
       </li>
@@ -113,7 +109,7 @@ npm install rocket-sass --save</code></pre>
   <div class="container-wide">
     <h2 class="heading2">Support</h2>
 
-    <p><a href="https://www.browserstack.com/" target="_blank"><img src="https://avatars0.githubusercontent.com/u/1119453?v=3&s=200" alt="BrowserStack" width="70"></a>Big thanks to <a href="https://www.browserstack.com/" target="_blank">Browserstack</a> for giving the access to test this project.</p>
+    <p><a href="https://www.browserstack.com/" target="_blank"><img src="https://avatars0.githubusercontent.com/u/1119453?v=3&s=200" alt="BrowserStack" width="50"><strong>Browserstack</strong></a></p>
   </div>
 </section>
 {% endblock %}

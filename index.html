@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-      Rocket - index
+      Rocket
     </title>
     <meta name="description" content="">
     <meta name="author" content="">
@@ -30,10 +30,10 @@
     <!-- <link href="sprite.png" rel="prefetch"> -->
     <!-- <link href="http://mydomain.com/my-next-page.htm" rel="prerender"> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
-    <link rel="stylesheet" href="assets/css/main.css">
-    <script src="assets/js/prefixfree.js" async defer>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <script src="../assets/js/prefixfree.js" async defer>
     </script>
-    <script src="assets/js/prism.js" async defer>
+    <script src="../assets/js/prism.js" async defer>
     </script>
     <script>
     /* svg4everybody:js */
@@ -49,30 +49,32 @@
     </p></noscript> <!--[if lt IE 9]>
   <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" target="_blank">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
-    <header class="site-header site-header--sub">
-      <div class="container">
-        <div class="logo">
-          <a href="index.html"><svg class="svg-logo" role="img" title="Rocket" width="54" height="56">
-          <use xlink:href="assets/svg/sprites.svg#logo"></use></svg> <svg class="svg-logo-text" role="img" title="Rocket" width="449" height="100">
-          <use xlink:href="assets/svg/sprites.svg#logo-text"></use></svg></a>
+    <div class="header-wrapper">
+      <header class="site-header">
+        <div class="container">
+          <div class="logo">
+            <a href="../index.html"><svg class="svg-logo" role="img" title="Rocket" width="54" height="56">
+            <use xlink:href="../assets/svg/sprites.svg#logo"></use></svg> <svg class="svg-logo-text" role="img" title="Rocket" width="449" height="100">
+            <use xlink:href="../assets/svg/sprites.svg#logo-text"></use></svg></a>
+          </div>
+          <nav class="site-nav">
+            <ul>
+              <li>
+                <a href="../v3/guide.html">Guide</a>
+              </li>
+              <li>
+                <a href="../v4/docs.html">Docs</a>
+              </li>
+              <li>
+                <a href="../v3/tutorial.html">Tutorial</a>
+              </li>
+            </ul>
+          </nav>
         </div>
-        <nav class="site-nav">
-          <ul>
-            <li>
-              <a href="v3/guide.html">Guide</a>
-            </li>
-            <li>
-              <a href="v4/docs.html">Docs</a>
-            </li>
-            <li>
-              <a href="v3/tutorial.html">Tutorial</a>
-            </li>
-          </ul>
-        </nav>
+      </header>
+      <div class="video-wrapper container-wide">
+        <video id="video-home" poster="assets/videos/video.png" autoplay="" loop=""><source src="assets/videos/video.mp4" type="video/mp4"> Your browser does not support the video tag.</video>
       </div>
-    </header>
-    <div class="video-wrapper container-wide">
-      <video id="video-home" poster="assets/videos/video.png" autoplay="" loop=""><source src="assets/videos/video.mp4" type="video/mp4"> Your browser does not support the video tag.</video>
     </div>
     <section class="intro section">
       <div class="container-narrow">
@@ -80,7 +82,7 @@
           Rocket is a powerful Sass framework with many common used components and utility functions, to help you build websites faster and easier.
         </p>
         <div>
-          <a href="https://github.com/ganlanyuan/rocket/archive/master.zip" class="btn btn-bg btn-primary">Download</a> <a href="#get-started" class="btn btn-bg btn-secondary">Get started</a>
+          <a class="btn btn-bg btn-download" href="https://github.com/ganlanyuan/rocket/archive/master.zip">Download</a> <a class="btn btn-bg btn-start" href="#get-started">Get started</a>
         </div>
       </div>
     </section>
@@ -138,11 +140,7 @@
                 Download <code class="language-">Rocket</code> via npm, bower or download <a href="https://github.com/ganlanyuan/rocket/releases" target="_blank">the source files</a> directly.
               </p>
               <pre class="language-none">
-<code>// bower
-bower install rocket --save
-
-// npm
-npm install rocket-sass --save</code>
+<code>bower install rocket --save</code>
 </pre>
             </div>
             <div class="media">
@@ -205,7 +203,7 @@ npm install rocket-sass --save</code>
           Support
         </h2>
         <p>
-          <a href="https://www.browserstack.com/" target="_blank"><img src="https://avatars0.githubusercontent.com/u/1119453?v=3&amp;s=200" alt="BrowserStack" width="70"></a>Big thanks to <a href="https://www.browserstack.com/" target="_blank">Browserstack</a> for giving the access to test this project.
+          <a href="https://www.browserstack.com/" target="_blank"><img src="https://avatars0.githubusercontent.com/u/1119453?v=3&amp;s=200" alt="BrowserStack" width="50"><strong>Browserstack</strong></a>
         </p>
       </div>
     </section>
@@ -229,7 +227,7 @@ npm install rocket-sass --save</code>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.16/clipboard.min.js">
     </script> 
-    <script src="assets/js/script.js">
+    <script src="../assets/js/script.js">
     </script>
   </body>
 </html>

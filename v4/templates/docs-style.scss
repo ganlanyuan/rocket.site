@@ -418,6 +418,9 @@ $responsive-table-4-data: (
 //=> {% elif componentName === "fluidtype_demo1" %}
 .fluid-type-1 { @include fluid-type('font-size' (320px: 16px, 1300px: 60px)); }
 
+//=> {% elif componentName === "scaletype_demo1" %}
+@include scale-type(1em 1.2 ('.h1' '.h2' '.h3' '.h4'));
+
 //=> {% elif componentName === "hidetext_demo1" %}
 .hide-text-1 {
   @extend %hide-text;

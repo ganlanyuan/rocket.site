@@ -6,48 +6,48 @@
 // $alignment: left | right | center
 
 //=> {% elif componentName === "grid_syntax" %}
-@mixin grid($column ('gutter' $gutter) ('selector' $selector) $breakpoint $condition $media $direction 'keep')
+@mixin grid($column ('gutter' $gutter) ('selector' $selector) $direction $breakpoint $condition $media 'keep')
 // $column: list | map
 // $selector: string (child element selector, default "div")
-// $condition: 'min' | 'max'
-// $media: media types
-// $breakpoint: map (e.g. small: 640px, medium: 768px, large: 1024px)
 // $direction: LTR | RTL
-
-//=> {% elif componentName === "liquid_syntax" %}
-@mixin liquid($column ('gutter' $gutter) ('selector' $selector) $breakpoint $condition $media $direction)
-// $column: list | map
-// $selector: string (child element selector, default "div")
+// $breakpoint: map (e.g. small: 640px, medium: 768px, large: 1024px)
 // $condition: 'min' | 'max'
 // $media: media types
-// $breakpoint: map (e.g. small: 640px, medium: 768px, large: 1024px)
-// $direction: 'LTR' | 'RTL'
-
-//=> {% elif componentName === "holygrail_syntax" %}
-@mixin holy-grail($column ('gutter' $gutter) ('selector' $selector) $breakpoint $condition $media $direction)
-// $column: list | map
-// $selector: string (child element selector, default "div")
-// $condition: 'min' | 'max'
-// $media: media types
-// $breakpoint: map (e.g. small: 640px, medium: 768px, large: 1024px)
-// $direction: LTR | RTL
 
 //=> {% elif componentName === "gallery_syntax" %}
-@mixin gallery($column ('gutter' $gutter) ('selector' $selector) $breakpoint $condition $media $direction 'center-align' 'keep');
+@mixin gallery($column ('gutter' $gutter) ('selector' $selector) $direction $breakpoint $condition $media 'center-align' 'keep');
 // $column: number | map
 // $selector: string (child element selector, default "li")
+// $direction: LTR | RTL
+// $breakpoint: map (e.g. small: 640px, medium: 768px, large: 1024px)
 // $condition: 'min' | 'max'
 // $media: media types
+
+//=> {% elif componentName === "liquid_syntax" %}
+@mixin liquid($column ('gutter' $gutter) ('selector' $selector) $direction $breakpoint $condition $media)
+// $column: list | map
+// $selector: string (child element selector, default "div")
+// $direction: 'LTR' | 'RTL'
 // $breakpoint: map (e.g. small: 640px, medium: 768px, large: 1024px)
+// $condition: 'min' | 'max'
+// $media: media types
+
+//=> {% elif componentName === "holygrail_syntax" %}
+@mixin holy-grail($column ('gutter' $gutter) ('selector' $selector) $direction $breakpoint $condition $media)
+// $column: list | map
+// $selector: string (child element selector, default "div")
 // $direction: LTR | RTL
+// $breakpoint: map (e.g. small: 640px, medium: 768px, large: 1024px)
+// $condition: 'min' | 'max'
+// $media: media types
 
 //=> {% elif componentName === "masonry_syntax" %}
 @mixin masonry($column ('gutter' $gutter) ('selector' $selector) $breakpoint $condition $media 'keep');
 // $column: number | map
 // $selector: string (child element selector, default "li")
+// $breakpoint: map (e.g. small: 640px, medium: 768px, large: 1024px)
 // $condition: 'min' | 'max'
 // $media: media types
-// $breakpoint: map (e.g. small: 640px, medium: 768px, large: 1024px)
 
 // *** fallback: IE9- *** //
 .no-csscolumns {
@@ -196,7 +196,8 @@
 @mixin tooltip($direction $color ('content' $content) $border-radius)
 // $direction: left | right | top | bottom
 // $color: color (tooltip panel background color)
-// $content: String (tooltip panel content, default: attr(data-tooltip))
+// $content: String | attr() (default: attr(data-tooltip))
+// $border-radius: px | em | rem | % | ...
 
 //=> {% elif componentName === "flexmedia_syntax" %}
 @mixin flex-media($selector $ratio)
@@ -205,6 +206,14 @@
 @mixin fluid-type($property $breakpoint);
 // $property: list | string (font-size | margin | padding)
 // $breakpoint: map
+
+//=> {% elif componentName === "scaletype_syntax" %}
+@mixin scale-type($property $base $scale $selectors $reverse);
+// $property: string (default font-size)
+// $base: px | em | rem | ...
+// $scale: number
+// $selectors: string list (default ('h1', 'h2', 'h3', 'h4', 'h5', 'h6'))
+// $reverse: boolean (default true)
 
 //=> {% elif componentName === "hidetext_syntax" %}
 @mixin hide-text();
