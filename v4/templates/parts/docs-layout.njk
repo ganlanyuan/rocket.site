@@ -28,7 +28,7 @@
       <ul>
       
         {% for componentName, component in group %}
-        <li><a href="#{{ componentName }}">{{ componentName | capitalize }}</a></li>
+        <li><a href="#{{ componentName | replace(reg_title, '') }}">{{ componentName | capitalize }}</a></li>
         {% endfor %}
       
       </ul>
@@ -77,7 +77,7 @@
     <h2>{{ groupName | capitalize }}</h2>
     {% for componentName, component in group %}
       {% set componentName_new = componentName | replace(reg_title, '') %}
-      <section id="{{ componentName }}">
+      <section id="{{ componentName_new }}">
         <h4>{{ componentName | capitalize }}</h4>
       
         {% for item in component %}
