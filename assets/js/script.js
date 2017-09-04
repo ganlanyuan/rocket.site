@@ -2,19 +2,8 @@ var doc = document,
     scrollTimer,
     resizeTimer,
     winHeight,
-    buildThresholdList = function(numSteps) {
-      var thresholds = [0];
-
-      for (var i=1.0; i<=numSteps; i++) {
-        thresholds.push(i/numSteps);
-      }
-
-      return thresholds;
-    },
-    observerOptions = {
-      rootMargin: '0px',
-      threshold: buildThresholdList(4)
-    };
+    docLists = doc.querySelectorAll('.docs-wrapper main > section'),
+    navLists = doc.querySelectorAll('.docs-wrapper nav li');
 
 var rocketSite = {
   docs: {
@@ -48,16 +37,19 @@ var rocketSite = {
       }
     },
     showActive: function () {
-      var docLists = doc.querySelectorAll('.docs-wrapper main > section'),
-          navLists = doc.querySelectorAll('.docs-wrapper nav li');
-          
       for (var i = docLists.length; i--;) {
         var rect = docLists[i].getBoundingClientRect(),
-            target = winHeight  * 0.4;
+            target = winHeight / 2,
+            nav = navLists[i];
+
         if (rect.top < target && rect.bottom >= target) {
-          navLists[i].classList.add('active');
+          if (!nav.classList.contains('active')) {
+            nav.classList.add('active');
+          }
         } else {
-          navLists[i].classList.remove('active');
+          if (nav.classList.contains('active')) {
+            nav.classList.remove('active');
+          }
         }
       }
     },
@@ -79,32 +71,12 @@ if (doc.querySelector('.docs-nav')) {
     winHeight = window.innerHeight;
     rocketSite.docs.toggleNav();
     rocketSite.docs.toggleSubnav();
-    // rocketSite.docs.showActive();
+    rocketSite.docs.showActive();
     rocketSite.docs.togglePreview();
-
-    var observer = new IntersectionObserver(docObserver, observerOptions);
-    var docLists = doc.querySelectorAll('.docs-wrapper main > section'),
-        navLists = doc.querySelectorAll('.docs-wrapper nav li');
-    [].forEach.call(docLists, function (el) {
-      observer.observe(el);
-    });
-    function docObserver(entries, observer) {
-      entries.forEach(function(entry) {
-        var index = [].indexOf.call(docLists, entry.target);
-        if (entry.intersectionRatio > 0.8) {
-          navLists[index].classList.add('active');
-        } else {
-          navLists[index].classList.remove('active');
-        }
-      });
-    }
   });
-  // window.addEventListener('scroll', function () {
-  //   clearTimeout(scrollTimer);
-  //   scrollTimer = setTimeout(function () {
-  //     rocketSite.docs.showActive();
-  //   }, 100);
-  // });
+  window.addEventListener('scroll', function () {
+    rocketSite.docs.showActive();
+  });
   window.addEventListener('resize', function () {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(function () {
